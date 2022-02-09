@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_ld.c                                       :+:      :+:    :+:   */
+/*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 20:13:26 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/08 23:04:33 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/08 20:18:02 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/09 00:05:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	inspect_complex_ld(t_complex_ld cmplx)
+int	main(void)
 {
-	printf("complex_ld: %Le + %Lei\n", cmplx.real, cmplx.imaginary);
+	const t_complex	a = complex(3.0, 4.0);
+
+	inspect(a);
+	printf("magnitude: %f\n", magnitude(a));
+	printf("quick_magnitude: %f\n", quick_magnitude(a));
+	inspect(squared(a));
+
+	const t_complex	b = complex(5.0, 6.0);
+	inspect(plus(a, b));
+	inspect(times(a, b));
+
+	return (0);
 }

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   example.c                                          :+:      :+:    :+:   */
+/*   complex_operations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 20:18:02 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/09 00:04:44 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/08 23:56:33 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/08 23:56:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int	main(void)
+t_complex	plus(t_complex a, t_complex b)
 {
-	const t_complex	a = complex(3.0, 4.0);
+	t_complex	result;
 
-	inspect(a);
-	printf("magnitude: %f\n", magnitude(a));
-	printf("quick_magnitude: %f\n", quick_magnitude(a));
-	inspect(squared(a));
+	result.real = a.real + b.real;
+	result.imaginary = a.imaginary + b.imaginary;
+	return (result);
+}
 
-	const t_complex	b = complex(5.0, 6.0);
-	inspect(plus(a, b));
-	inspect(times(a, b));
+t_complex	times(t_complex a, t_complex b)
+{
+	t_complex	result;
 
-	return (0);
+	result.real = a.real * b.real - a.imaginary * b.imaginary;
+	result.imaginary = a.real * b.imaginary + a.imaginary * b.real;
+	return (result);
 }

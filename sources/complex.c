@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   example.c                                          :+:      :+:    :+:   */
+/*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 20:18:02 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/09 00:04:44 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/08 23:56:44 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/09 00:03:13 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int	main(void)
+t_complex	complex(double real, double imaginary)
 {
-	const t_complex	a = complex(3.0, 4.0);
+	return ((t_complex){real, imaginary});
+}
 
-	inspect(a);
-	printf("magnitude: %f\n", magnitude(a));
-	printf("quick_magnitude: %f\n", quick_magnitude(a));
-	inspect(squared(a));
-
-	const t_complex	b = complex(5.0, 6.0);
-	inspect(plus(a, b));
-	inspect(times(a, b));
-
-	return (0);
+void	inspect(t_complex cmplx)
+{
+	printf("%f + %fi\n", cmplx.real, cmplx.imaginary);
 }

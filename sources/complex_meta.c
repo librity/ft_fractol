@@ -6,35 +6,35 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 23:56:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/08 23:58:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/09 00:11:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <fractol.h>
 
-double	magnitude(t_complex cmplx)
+double	magnitude(t_complex number)
 {
 	double	magnitude;
 
-	magnitude = cmplx.real * cmplx.real + cmplx.imaginary * cmplx.imaginary;
+	magnitude = number.real * number.real + number.imaginary * number.imaginary;
 	magnitude = sqrt(magnitude);
 	return (magnitude);
 }
 
-double	quick_magnitude(t_complex cmplx)
+double	quick_magnitude(t_complex number)
 {
 	double	magnitude;
 
-	magnitude = cmplx.real * cmplx.real + cmplx.imaginary * cmplx.imaginary;
+	magnitude = number.real * number.real + number.imaginary * number.imaginary;
 	return (magnitude);
 }
 
-t_complex	squared(t_complex cmplx)
+t_complex	squared(t_complex number)
 {
 	t_complex	result;
 
-	result.real = cmplx.real * cmplx.real - cmplx.imaginary * cmplx.imaginary;
-	result.imaginary = 2 * cmplx.real * cmplx.imaginary;
+	result.real = number.real * number.real
+		- number.imaginary * number.imaginary;
+	result.imaginary = 2 * number.real * number.imaginary;
 	return (result);
 }

@@ -21,6 +21,7 @@
 
 - [About](#about)
 - [Checklist](#checklist)
+- [Getting Started](#getting_started)
 - [Notes](#notes)
 - [42 São Paulo](#ft_sp)
 - [Resources](#resources)
@@ -28,6 +29,46 @@
 ## 🧐 About <a name = "about"></a>
 
 ## ✅ Checklist <a name = "checklist"></a>
+
+## 🏁 Getting Started <a name = "getting_started"></a>
+
+### ⚙️ Prerequisites
+
+This will only compile on Linux and FreeBSD.
+
+You will need a C compiler (`gcc` or `clang`)
+and [minilibx](https://github.com/42Paris/minilibx-linux),
+an X-Window API in C made by 42 Paris:
+
+```bash
+# Clone the repo
+git clone https://github.com/42Paris/minilibx-linux.git
+cd minilibx-linux
+
+# Install dependencies and build
+sudo apt install libxext-dev libxrandr-dev libx11-dev libbsd-dev libssl-dev
+make
+
+# Copy archive and headers to system path
+sudo cp libmlx.a /usr/local/lib/
+sudo cp mlx.h /usr/local/include/
+sudo cp mlx_int.h /usr/local/include/
+
+# Add pages to man (optional)
+sudo mkdir /usr/local/man/man1
+sudo cp man/man1/* /usr/local/man/man1/
+man mlx
+```
+
+### 🖥️ Installing
+
+Clone the repo and build with `make`:
+
+```bash
+$ git clone https://github.com/librity/ft_fractol.git
+$ cd ft_fractol
+$ make example
+```
 
 ## 📝 Notes <a name = "notes"></a>
 

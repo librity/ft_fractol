@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/10 21:29:40 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/10 21:12:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,6 @@ double map_d_constrained(double n, double start1, double stop1, double start2, d
 	return constrain_d(mapped, stop2, start2);
 };
 
-int resolve_color(double normalizedIterations)
-{
-	if (normalizedIterations < 0.1)
-		return (0x00010718);
-	if (normalizedIterations >= 0.1 && normalizedIterations < 0.2)
-		return (0x00071E44);
-	if (normalizedIterations >= 0.2 && normalizedIterations < 0.3)
-		return (0x001655A9);
-	if (normalizedIterations >= 0.3 && normalizedIterations < 0.4)
-		return (0x008CB5E2);
-	if (normalizedIterations >= 0.4 && normalizedIterations < 0.5)
-		return (0x00E3F3FA);
-	if (normalizedIterations >= 0.5 && normalizedIterations < 0.6)
-		return (0x00F0DBA9);
-	if (normalizedIterations >= 0.6 && normalizedIterations < 0.6)
-		return (0x00F1B146);
-	if (normalizedIterations >= 0.7 && normalizedIterations < 0.6)
-		return (0x00E99B30);
-	if (normalizedIterations >= 0.8 && normalizedIterations < 0.6)
-		return (0x00CC8729);
-	if (normalizedIterations >= 0.9)
-		return (0x006F4811);
-}
-
 void render_mandelbrot(void)
 {
 	int x;
@@ -127,10 +103,9 @@ void render_mandelbrot(void)
 			mdlbtAtXY = quick_mandelbrot(complexAtXY, max_iterations, infinity);
 
 			normalizedIterations = map_d(mdlbtAtXY.iterations, 0, max_iterations, 0, 1);
-			// brightness = map_d(normalizedIterations, 0, 1, INT_MIN, INT_MAX);
-			color = resolve_color(normalizedIterations);
+			brightness = map_d(sqrt(normalizedIterations), 0, 1, INT_MIN, INT_MAX);
 
-			mlx_pixel_put(mlx, window, x, y, color);
+			mlx_pixel_put(mlx, window, x, y, (int)brightness);
 		}
 	}
 }

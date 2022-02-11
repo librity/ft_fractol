@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   example.c                                          :+:      :+:    :+:   */
+/*   mandelbrot_5.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/10 21:29:40 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/10 21:23:44 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,18 @@ double map_d_constrained(double n, double start1, double stop1, double start2, d
 int resolve_color(double normalizedIterations)
 {
 	if (normalizedIterations < 0.1)
-		return (0x00010718);
+		return (create_trgb(0, 1, 3, 13));
 	if (normalizedIterations >= 0.1 && normalizedIterations < 0.2)
-		return (0x00071E44);
+		return (create_trgb(0, 1, 9, 28));
 	if (normalizedIterations >= 0.2 && normalizedIterations < 0.3)
-		return (0x001655A9);
+		return (create_trgb(0, 5, 22, 53));
 	if (normalizedIterations >= 0.3 && normalizedIterations < 0.4)
-		return (0x008CB5E2);
+		return (create_trgb(0, 13, 43, 93));
 	if (normalizedIterations >= 0.4 && normalizedIterations < 0.5)
-		return (0x00E3F3FA);
+		return (create_trgb(0, 74, 125, 207));
 	if (normalizedIterations >= 0.5 && normalizedIterations < 0.6)
-		return (0x00F0DBA9);
-	if (normalizedIterations >= 0.6 && normalizedIterations < 0.6)
-		return (0x00F1B146);
-	if (normalizedIterations >= 0.7 && normalizedIterations < 0.6)
-		return (0x00E99B30);
-	if (normalizedIterations >= 0.8 && normalizedIterations < 0.6)
-		return (0x00CC8729);
-	if (normalizedIterations >= 0.9)
-		return (0x006F4811);
+		return (create_trgb(0, 210, 232, 254));
+	return (create_trgb(0, 255, 255, 255));
 }
 
 void render_mandelbrot(void)

@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/09 00:22:18 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/10 18:54:10 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,17 +41,9 @@ SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
-LIBFT = libft.a
-LIBFT_PATH = $(LIBS_PATH)/libft
-LIBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LIBFT)
-
-FT_LIBBMP = ft_libbmp.a
-FT_LIBBMP_PATH = $(LIBS_PATH)/ft_libbmp
-FT_LIBBMP_ARCHIVE = $(ARCHIVES_PATH)/$(FT_LIBBMP)
-
-EXAMPLE_MAIN = $(EXAMPLES_PATH)/example.c
-EXECUTE_EXAMPLE = ./a.out
-EXAMPLE_GARBAGE = a.out a.out.dSYM
+################################################################################
+# REQUIRED
+################################################################################
 
 all: $(NAME)
 
@@ -62,42 +54,88 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
 	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $< $(SYSTEM_LIBS)
 
-build_example: $(NAME)
-	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) \
-	$(EXAMPLE_MAIN) $(NAME) \
-	$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) $(SYSTEM_LIBS)
-
-example: build_example
-	$(EXECUTE_EXAMPLE)
-
-build_libft:
-	$(MAKE_EXTERNAL) $(LIBFT_PATH)
-	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
-	$(COPY) $(LIBFT_PATH)/$(LIBFT) $(LIBFT_ARCHIVE)
-
-build_ft_libbmp:
-	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH)
-	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
-	$(COPY) $(FT_LIBBMP_PATH)/$(FT_LIBBMP) $(FT_LIBBMP_ARCHIVE)
-
 clean:
 	$(REMOVE) $(OBJECTS)
 
 fclean: clean libft_clean ft_libbmp_clean
 	$(REMOVE) $(NAME)
 
-example_clean: fclean
-	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
+re: fclean all
+
+################################################################################
+# BONUS
+################################################################################
+
+################################################################################
+# LIBS
+################################################################################
+
+LIBFT = libft.a
+LIBFT_PATH = $(LIBS_PATH)/libft
+LIBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LIBFT)
+
+build_libft:
+	$(MAKE_EXTERNAL) $(LIBFT_PATH)
+	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
+	$(COPY) $(LIBFT_PATH)/$(LIBFT) $(LIBFT_ARCHIVE)
 
 libft_clean:
 	$(MAKE_EXTERNAL) $(LIBFT_PATH) fclean
 	$(REMOVE) $(LIBFT_ARCHIVE)
 
+FT_LIBBMP = ft_libbmp.a
+FT_LIBBMP_PATH = $(LIBS_PATH)/ft_libbmp
+FT_LIBBMP_ARCHIVE = $(ARCHIVES_PATH)/$(FT_LIBBMP)
+
+build_ft_libbmp:
+	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH)
+	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
+	$(COPY) $(FT_LIBBMP_PATH)/$(FT_LIBBMP) $(FT_LIBBMP_ARCHIVE)
+
 ft_libbmp_clean:
 	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH) fclean
 	$(REMOVE) $(FT_LIBBMP_ARCHIVE)
 
-re: fclean all
+################################################################################
+# EXAMPLE
+################################################################################
+
+EXAMPLE_MAIN = $(EXAMPLES_PATH)/example.c
+EXECUTE_EXAMPLE = ./a.out
+EXAMPLE_GARBAGE = a.out a.out.dSYM
+
+example: build_example
+	$(EXECUTE_EXAMPLE)
+
+build_example: $(NAME)
+	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) \
+	$(EXAMPLE_MAIN) $(NAME) \
+	$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) $(SYSTEM_LIBS)
+
+example_clean: fclean
+	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
+
+################################################################################
+# VALGRIND
+################################################################################
+
+VALGRIND = valgrind
+VALGRIND_LOG = valgrind_leaks.log
+VALGRIND_LOG_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=$(VALGRIND_LOG)
+VALGRIND_TARGET = $(EXECUTE_EXAMPLE)
+
+vg: build_example
+	$(VALGRIND) $(VALGRIND_TARGET)
+
+vglog: build_example
+	$(VALGRIND) $(VALGRIND_LOG_FLAGS) $(VALGRIND_TARGET)
+
+vglog_clean: fclean
+	$(REMOVE) $(VALGRIND_LOG)
+
+################################################################################
+# MISC
+################################################################################
 
 norm:
 	norminette $(LIBS_PATH)
@@ -116,6 +154,38 @@ gitm:
 	git commit -m $m
 	git push
 
-.PHONY: all build_example example build_libft build_ft_libbmp \
-		clean fclean example_clean ft_libbmp_clean \
-		re norm git gitm
+################################################################################
+# PHONY
+################################################################################
+
+.PHONY: all clean fclean re \
+		build_libft libft_clean \
+		build_ft_libbmp ft_libbmp_clean \
+		build_example example example_clean \
+		vg vglog vglog_clean \
+		norm git gitm
+
+################################################################################
+# Colors
+################################################################################
+
+# Black, Red, Green, Yellow, Blue, Purple, Cyan, White
+Bk = \033[0;30m
+R = \033[0;31m
+G = \033[0;32m
+Y = \033[0;33m
+B = \033[0;34m
+P = \033[0;35m
+C = \033[0;36m
+W = \033[0;37m
+# Bold
+BkB = \033[1;30m
+RB = \033[1;31m
+GB = \033[1;32m
+YB = \033[1;33m
+BB = \033[1;34m
+PB = \033[1;35m
+CB = \033[1;36m
+WB = \033[1;37m
+# Reset Color
+RC	= \033[0m

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:13:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/09 00:20:22 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/10 19:22:18 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_complex	plus(t_complex a, t_complex b);
 t_complex	times(t_complex a, t_complex b);
 
 
-t_mdlbt		mandlebrot(t_complex number, int max_iterations, double infinity);
-t_mdlbt		quick_mandlebrot(t_complex number,
+t_mdlbt		mandelbrot(t_complex number, int max_iterations, double infinity);
+t_mdlbt		quick_mandelbrot(t_complex number,
 				int max_iterations, double infinity);
 
 #endif

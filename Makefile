@@ -6,11 +6,11 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/10 18:54:10 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/10 22:30:27 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol.a
+NAME = fractol
 
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
@@ -121,7 +121,11 @@ example_clean: fclean
 
 VALGRIND = valgrind
 VALGRIND_LOG = valgrind_leaks.log
-VALGRIND_LOG_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=$(VALGRIND_LOG)
+VALGRIND_LOG_FLAGS = --log-file=$(VALGRIND_LOG) \
+	--leak-check=full \
+	--show-leak-kinds=all \
+	--track-origins=yes \
+	--verbose
 VALGRIND_TARGET = $(EXECUTE_EXAMPLE)
 
 vg: build_example

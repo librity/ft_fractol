@@ -6,12 +6,9 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/10 21:13:37 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/11 00:00:43 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// clang -I ../includes fire_projectiles.c -lm -lbsd -lmlx -lXext -lX11 && ./a.out
-// gcc -I ../includes fire_projectiles.c -lm -lbsd -lmlx -lXext -lX11 && ./a.out
 
 #include <stdbool.h>
 #include <math.h>
@@ -30,7 +27,7 @@
 
 void *mlx;
 
-void *window;
+void *mlx_window;
 const int width = 500;
 const int height = 500;
 
@@ -105,7 +102,7 @@ void render_mandelbrot(void)
 			normalizedIterations = map_d(mdlbtAtXY.iterations, 0, max_iterations, 0, 1);
 			brightness = map_d(normalizedIterations, 0, 1, INT_MIN, INT_MAX);
 
-			mlx_pixel_put(mlx, window, x, y, (int)brightness);
+			mlx_pixel_put(mlx, mlx_window, x, y, (int)brightness);
 		}
 	}
 }
@@ -121,8 +118,8 @@ void initialize(void)
 	printf(" OK\n");
 
 	printf(" => Creating window %dx%d ...", width, height);
-	window = mlx_new_window(mlx, width, height, "Mandelbrot");
-	if (window == NULL)
+	mlx_window = mlx_new_window(mlx, width, height, "Mandelbrot");
+	if (mlx_window == NULL)
 		die();
 	printf(" OK\n");
 }
@@ -139,7 +136,7 @@ void handle_keypress(int keycode)
 int main(void)
 {
 	initialize();
-	mlx_hook(window, KeyPress, KeyPressMask, handle_keypress, mlx);
+	mlx_hook(mlx_window, KeyPress, KeyPressMask, handle_keypress, mlx);
 
 	printf(" => Rendering Mandelbrot set...");
 	render_mandelbrot();

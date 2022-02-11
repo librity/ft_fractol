@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/04 22:44:16 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/11 00:00:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +148,11 @@ int main()
 	}
 	data1 = mlx_get_data_addr(im1, &bpp1, &sl1, &endian1);
 	printf("OK (bpp1: %d, sizeline1: %d endian: %d type: %d)\n", bpp1, sl1, endian1,
-		   ((t_img *)im1)->type);
+		   ((t_mlx_img *)im1)->type);
 
 	printf(" => Fill Image1 ...");
 	color_map_2(data1, bpp1, sl1, IM1_SX, IM1_SY, endian1, 1);
-	printf("OK (pixmap : %d)\n", (int)((t_img *)im1)->pix);
+	printf("OK (pixmap : %d)\n", (int)((t_mlx_img *)im1)->pix);
 
 	printf(" => Put Image1 ...");
 	mlx_put_image_to_window(mlx, win1, im1, 20, 20);
@@ -172,11 +172,11 @@ int main()
 	}
 	data3 = mlx_get_data_addr(im3, &bpp3, &sl3, &endian3);
 	printf("OK (bpp3 %d, sizeline3 %d endian3 %d type %d)\n", bpp3, sl3, endian3,
-		   ((t_img *)im3)->type);
+		   ((t_mlx_img *)im3)->type);
 
 	printf(" => Fill Image3 ...");
 	color_map_2(data3, bpp3, sl3, IM3_SX, IM3_SY, endian3, 1);
-	printf("OK (pixmap : %d)\n", (int)((t_img *)im3)->pix);
+	printf("OK (pixmap : %d)\n", (int)((t_mlx_img *)im3)->pix);
 
 	printf(" => Put Image3 ...");
 	mlx_put_image_to_window(mlx, win1, im3, 20, 20);
@@ -197,7 +197,7 @@ int main()
 	}
 	data2 = mlx_get_data_addr(im2, &bpp2, &sl2, &endian2);
 	printf("OK (xpm %dx%d)(img bpp2: %d, sizeline2: %d endian: %d type: %d)\n",
-		   xpm1_x, xpm1_y, bpp2, sl2, endian2, ((t_img *)im2)->type);
+		   xpm1_x, xpm1_y, bpp2, sl2, endian2, ((t_mlx_img *)im2)->type);
 	sleep(2);
 
 	printf(" => Put xpm ...");

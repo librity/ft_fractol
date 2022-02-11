@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/08 20:51:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/11 00:00:39 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_vector_3d add(t_vector_3d first, t_vector_3d second)
 
 void *mlx;
 
-void *window;
+void *mlx_window;
 const int height = 1000;
 const int width = 1400;
 
@@ -68,7 +68,7 @@ void fill_window(int color)
 	{
 		y = height;
 		while (y--)
-			mlx_pixel_put(mlx, window, x, y, color);
+			mlx_pixel_put(mlx, mlx_window, x, y, color);
 	}
 }
 
@@ -94,13 +94,13 @@ void initialize(void)
 	printf(" OK (use_xshm: %d, pshm_format: %d)\n", ((t_xvar *)mlx)->use_xshm, ((t_xvar *)mlx)->pshm_format);
 
 	printf(" => Creating window %dx%d ...", width, height);
-	window = mlx_new_window(mlx, width, height, "Random Walker");
-	if (window == NULL)
+	mlx_window = mlx_new_window(mlx, width, height, "Random Walker");
+	if (mlx_window == NULL)
 		die();
 	printf(" OK\n");
 
 	printf(" => Clearing window ...");
-	mlx_clear_window(mlx, window);
+	mlx_clear_window(mlx, mlx_window);
 	// clear_window();
 	printf(" OK\n");
 }
@@ -121,7 +121,7 @@ void draw_circle(int x, int y, int size, int color)
 			radius = pow(i, 2) + pow(j, 2);
 			radius = sqrt(radius);
 			if (radius < half)
-				mlx_pixel_put(mlx, window, x + i, y + j, color);
+				mlx_pixel_put(mlx, mlx_window, x + i, y + j, color);
 			j++;
 		}
 		i++;
@@ -196,7 +196,7 @@ void handle_keypress(int keycode)
 	if (keycode == C_KEY)
 	{
 		write(1, "Clearing window...\n", 19);
-		mlx_clear_window(mlx, window);
+		mlx_clear_window(mlx, mlx_window);
 	}
 	if (keycode == R_KEY)
 	{
@@ -211,7 +211,7 @@ void handle_keypress(int keycode)
 
 void await_orders(void)
 {
-	mlx_hook(window, KeyPress, KeyPressMask, handle_keypress, mlx);
+	mlx_hook(mlx_window, KeyPress, KeyPressMask, handle_keypress, mlx);
 	mlx_loop(mlx);
 }
 

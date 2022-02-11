@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/10 22:30:27 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/11 00:58:46 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,14 +41,27 @@ SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
+FRACTOL_ARCHIVE = $(ARCHIVES_PATH)/fractol.a
+
+REQUIRED_MAIN = $(SOURCES_PATH)/main.c
+BONUS_MAIN = $(SOURCES_PATH)/main_bonus.c
+
 ################################################################################
 # REQUIRED
 ################################################################################
 
 all: $(NAME)
 
-$(NAME): build_libft build_ft_libbmp $(OBJECTS) $(HEADER)
-	$(ARCHIVE_AND_INDEX) $(NAME) $(OBJECTS)
+$(NAME): $(FRACTOL_ARCHIVE)
+	$(CC) $(CC_DEBUG_FLAGS) \
+		-I $(INCLUDES_PATH) \
+		$(REQUIRED_MAIN) $(FRACTOL_ARCHIVE) \
+		$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
+		$(SYSTEM_LIBS) \
+		-o $(NAME)
+
+$(FRACTOL_ARCHIVE): build_libft build_ft_libbmp $(OBJECTS) $(HEADER)
+	$(ARCHIVE_AND_INDEX) $(FRACTOL_ARCHIVE) $(OBJECTS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
@@ -56,6 +69,7 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 
 clean:
 	$(REMOVE) $(OBJECTS)
+	$(REMOVE) $(FRACTOL_ARCHIVE)
 
 fclean: clean libft_clean ft_libbmp_clean
 	$(REMOVE) $(NAME)
@@ -107,10 +121,12 @@ EXAMPLE_GARBAGE = a.out a.out.dSYM
 example: build_example
 	$(EXECUTE_EXAMPLE)
 
-build_example: $(NAME)
-	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) \
-	$(EXAMPLE_MAIN) $(NAME) \
-	$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) $(SYSTEM_LIBS)
+build_example: $(FRACTOL_ARCHIVE)
+	$(CC) $(CC_DEBUG_FLAGS) \
+		-I $(INCLUDES_PATH) \
+		$(EXAMPLE_MAIN) $(FRACTOL_ARCHIVE) \
+		$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
+		$(SYSTEM_LIBS)
 
 example_clean: fclean
 	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
@@ -143,10 +159,11 @@ vglog_clean: fclean
 
 norm:
 	norminette $(LIBS_PATH)
-	@echo ----------------------
+	@printf "$(C)-------------------------------------------------------$(RC)\n"
 	norminette $(INCLUDES_PATH)
-	@echo ----------------------
+	@printf "$(C)-------------------------------------------------------$(RC)\n"
 	norminette $(SOURCES_PATH)
+	@printf "$(C)-------------------------------------------------------$(RC)\n"
 
 git:
 	git add -A

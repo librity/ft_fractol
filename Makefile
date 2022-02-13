@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/13 13:26:09 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/13 13:36:53 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,7 +148,7 @@ VALGRIND_LOG_FLAGS = --log-file=$(VALGRIND_LOG) \
 	--show-leak-kinds=all \
 	--track-origins=yes \
 	--verbose
-VALGRIND_TARGET = $(NAME)
+VALGRIND_TARGET = ./$(NAME)
 
 vg: $(NAME)
 	$(VALGRIND) $(VALGRIND_TARGET)

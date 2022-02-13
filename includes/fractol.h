@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:20:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 13:51:59 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_img_buffer
 	char			*data;
 	int				width;
 	int				height;
-	int				line_size;
-	int				bpp;
+	int				line_length;
+	int				bits_per_pixel;
 	int				endian;
 }					t_img_buffer;
 
@@ -66,6 +66,7 @@ void				initialize_mlx_buffer(t_fractol *ctl);
 void				initialize_mlx_hooks(t_fractol *ctl);
 
 int					trgb_to_int(int transparency, int red, int green, int blue);
+int					rgb_to_int(int red, int green, int blue);
 bool				out_of_bounds(t_img_buffer *buffer, int x, int y);
 void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 					int color);

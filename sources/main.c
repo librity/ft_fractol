@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:17:39 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:29:32 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 13:46:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	resolve_color(double iterations, double max_iterations)
 	int		blue;
 	int		red;
 	int		green;
-	int		color;
 
 	normalized_iterations = map_d((t_map_d){iterations, 0, max_iterations, 0,
 			1});
@@ -34,8 +33,7 @@ int	resolve_color(double iterations, double max_iterations)
 	red = brightness * red_weight;
 	brightness -= 255;
 	green = brightness * green_weight;
-	color = trgb_to_int(0, red, green, blue);
-	return (color);
+	return (rgb_to_int(red, green, blue));
 }
 
 void	render_mandelbrot(t_fractol *ctl)

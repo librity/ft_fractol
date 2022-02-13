@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:28:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:15:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 13:52:25 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void	initialize_mlx_buffer(t_fractol *ctl)
 	ctl->buffer.img = mlx_new_image(ctl->mlx, ctl->width, ctl->height);
 	if (ctl->buffer.img == NULL)
 		die();
-	ctl->buffer.data = mlx_get_data_addr(ctl->buffer.img, &ctl->buffer.bpp,
-			&ctl->buffer.line_size, &ctl->buffer.endian);
+	ctl->buffer.data = mlx_get_data_addr(ctl->buffer.img,
+			&ctl->buffer.bits_per_pixel,
+			&ctl->buffer.line_length,
+			&ctl->buffer.endian);
 	if (ctl->buffer.data == NULL)
 		die();
 	ctl->buffer.width = ctl->width;

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex.c                                          :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 23:56:44 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:18:45 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/13 11:43:05 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/13 12:35:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_complex	complex(double real, double imaginary)
+void	die(void)
 {
-	return ((t_complex){real, imaginary});
+	ft_putendl(" ERROR!\n");
+	exit(1);
 }
-
-// void	inspect(t_complex number)
-// {
-// 	printf("%f + %fi\n", number.real, number.imaginary);
-// }

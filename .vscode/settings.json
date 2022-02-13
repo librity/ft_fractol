@@ -42,7 +42,13 @@
     "vector.h": "c",
     "mlx.h": "c",
     "mlx_int.h": "c",
-    "xlib.h": "c"
+    "xlib.h": "c",
+    "bit": "c",
+    "complex": "c",
+    "exception": "c",
+    "algorithm": "c",
+    "typeinfo": "c",
+    "mlx_utils.h": "c"
   },
 
   "editor.tabSize": 4,
@@ -50,5 +56,9 @@
   "editor.renderWhitespace": "all",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  "editor.detectIndentation": true
+  "editor.detectIndentation": true,
+
+  "[c]": {
+    "editor.defaultFormatter": "keyhr.42-c-format"
+  }
 }

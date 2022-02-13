@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex.c                                          :+:      :+:    :+:   */
+/*   mlx_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 23:56:44 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:18:45 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/13 13:21:28 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_complex	complex(double real, double imaginary)
+int	handle_keypress(int keycode, t_fractol *ctl)
 {
-	return ((t_complex){real, imaginary});
+	if (keycode == ESC_KEY)
+		clean_and_exit(ctl);
+	if (keycode == Q_KEY)
+		clean_and_exit(ctl);
+	return (0);
 }
 
-// void	inspect(t_complex number)
-// {
-// 	printf("%f + %fi\n", number.real, number.imaginary);
-// }
+void	clean_and_exit(t_fractol *ctl)
+{
+	mlx_destroy_image(ctl->mlx, ctl->buffer.img);
+	mlx_destroy_window(ctl->mlx, ctl->window);
+	mlx_destroy_display(ctl->mlx);
+	free(ctl->mlx);
+	exit(0);
+}

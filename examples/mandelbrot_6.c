@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/11 00:00:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 13:05:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ double map_d(double n, double start1, double stop1, double start2, double stop2)
 	return mapped;
 };
 
-double constrain_d(double n, double low, double high)
+double clamp_d(double n, double low, double high)
 {
 	return ft_max_d(ft_max_d(n, high), low);
 };
@@ -71,8 +71,8 @@ double map_d_constrained(double n, double start1, double stop1, double start2, d
 	mapped = map_d(n, start1, stop1, start2, stop2);
 
 	if (start2 < stop2)
-		return constrain_d(mapped, start2, stop2);
-	return constrain_d(mapped, stop2, start2);
+		return clamp_d(mapped, start2, stop2);
+	return clamp_d(mapped, stop2, start2);
 };
 
 int resolve_color(double normalizedIterations)
@@ -109,7 +109,7 @@ void render_mandelbrot(void)
 	double normalizedIterations;
 	double brightness;
 	t_complex complexAtXY;
-	t_mdlbt mdlbtAtXY;
+	t_mandelbrotian mdlbtAtXY;
 
 	x = width;
 	while (x--)

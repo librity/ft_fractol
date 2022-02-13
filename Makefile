@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/11 00:58:46 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/13 13:26:09 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,10 @@ EXAMPLES_PATH = ./examples
 HEADER_FILE = fractol.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = complex.c complex_meta.c complex_operations.c complex_mdlbt.c
+SOURCE_FILES = map.c \
+	complex.c complex_meta.c complex_operations.c complex_mdlbt.c \
+	mlx_init.c mlx_input.c mlx_utils.c \
+	errors.c
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
@@ -66,6 +69,9 @@ $(FRACTOL_ARCHIVE): build_libft build_ft_libbmp $(OBJECTS) $(HEADER)
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
 	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $< $(SYSTEM_LIBS)
+
+required: $(NAME)
+	./$(NAME)
 
 clean:
 	$(REMOVE) $(OBJECTS)
@@ -142,12 +148,12 @@ VALGRIND_LOG_FLAGS = --log-file=$(VALGRIND_LOG) \
 	--show-leak-kinds=all \
 	--track-origins=yes \
 	--verbose
-VALGRIND_TARGET = $(EXECUTE_EXAMPLE)
+VALGRIND_TARGET = $(NAME)
 
-vg: build_example
+vg: $(NAME)
 	$(VALGRIND) $(VALGRIND_TARGET)
 
-vglog: build_example
+vglog: $(NAME)
 	$(VALGRIND) $(VALGRIND_LOG_FLAGS) $(VALGRIND_TARGET)
 
 vglog_clean: fclean
@@ -179,7 +185,7 @@ gitm:
 # PHONY
 ################################################################################
 
-.PHONY: all clean fclean re \
+.PHONY: all required clean fclean re \
 		build_libft libft_clean \
 		build_ft_libbmp ft_libbmp_clean \
 		build_example example example_clean \

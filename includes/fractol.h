@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:51:59 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 17:58:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <X11/Xlib.h>
 # include <complex.h>
 # include <libft.h>
-# include <map.h>
 # include <math.h>
 # include <mlx.h>
 # include <stdbool.h>

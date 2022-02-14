@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:52:34 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 15:50:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/07 00:21:11 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_fibonacci(int index)
 {
-	int fibonacci;
+	int	fibonacci;
 
 	if (index < 0)
 		return (-1);

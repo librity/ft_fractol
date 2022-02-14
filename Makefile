@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/13 13:36:53 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/14 00:10:47 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,11 @@ EXAMPLES_PATH = ./examples
 HEADER_FILE = fractol.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = map.c \
+SOURCE_FILES = \
 	complex.c complex_meta.c complex_operations.c complex_mdlbt.c \
+	\
 	mlx_init.c mlx_input.c mlx_utils.c \
+	\
 	errors.c
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
@@ -77,7 +79,7 @@ clean:
 	$(REMOVE) $(OBJECTS)
 	$(REMOVE) $(FRACTOL_ARCHIVE)
 
-fclean: clean libft_clean ft_libbmp_clean
+fclean: clean
 	$(REMOVE) $(NAME)
 
 re: fclean all
@@ -165,11 +167,11 @@ vglog_clean: fclean
 
 norm:
 	norminette $(LIBS_PATH)
-	@printf "$(C)-------------------------------------------------------$(RC)\n"
+	@printf "\n$(G)=== No norminette errors found in $(LIBS_PATH) ===$(RC)\n\n"
 	norminette $(INCLUDES_PATH)
-	@printf "$(C)-------------------------------------------------------$(RC)\n"
+	@printf "\n$(G)=== No norminette errors found in $(INCLUDES_PATH) ===$(RC)\n\n"
 	norminette $(SOURCES_PATH)
-	@printf "$(C)-------------------------------------------------------$(RC)\n"
+	@printf "\n$(G)=== No norminette errors found in $(SOURCES_PATH) ===$(RC)\n\n"
 
 git:
 	git add -A

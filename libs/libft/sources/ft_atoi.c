@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:59:17 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/25 20:02:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:59:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 ** Takes in a string and parses its digits characters into an integer.
 */
 
-int			ft_atoi(const char *number_pointer)
+int	ft_atoi(const char *number_pointer)
 {
-	int number;
-	int sign;
-	int previous_number;
+	int	number;
+	int	sign;
+	int	previous_number;
 
 	number = 0;
 	sign = -1;

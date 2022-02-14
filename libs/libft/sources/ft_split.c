@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 18:38:56 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/25 20:02:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:42:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Splits string s by char c, generating an allocated string array.
 */
 
-static int			count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-	size_t word_count;
-	size_t skipper;
+	size_t	word_count;
+	size_t	skipper;
 
 	word_count = 0;
 	skipper = 1;
@@ -43,10 +43,10 @@ static char const	*skip_equal_chars(char const *s, char c)
 	return (s);
 }
 
-static void			create_words(
+static void	create_words(
 	char **words, char const *s, char c, size_t word_count)
 {
-	char *pointerator;
+	char	*pointerator;
 
 	s = skip_equal_chars(s, c);
 	while (word_count--)
@@ -64,7 +64,7 @@ static void			create_words(
 	*words = NULL;
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t	word_count;
 	char	**words;

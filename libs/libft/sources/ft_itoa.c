@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:59:17 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/25 20:02:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/07 00:27:31 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Transforms a number n into an allocated string.
 */
 
-static void		write_digits(char *string,
-								unsigned int digit_count,
-								unsigned int number,
-								int is_negative)
+static void	write_digits(char *string,
+							unsigned int digit_count,
+							unsigned int number,
+							int is_negative)
 {
 	string[digit_count] = '\0';
 	while (digit_count--)
@@ -31,7 +31,7 @@ static void		write_digits(char *string,
 		string[0] = '-';
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	unsigned int	digit_count;
 	unsigned int	number;

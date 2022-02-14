@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-int		ft_abs_i(int number)
+int	ft_abs_i(int number)
 {
 	if (number < 0)
 		return (number * -1);

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 01:52:11 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 02:35:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/13 17:16:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ static char	*initialize_line_buffer(char *read_buffer, bool *found_linebreak)
 	return (line_buffer);
 }
 
+static void	*free_line_buffer(char *line_buffer)
+{
+	free(line_buffer);
+	return (NULL);
+}
+
 static char	*read_and_join(int fd,
 							char *read_buffer,
 							char *line_buffer,
@@ -57,15 +63,13 @@ static char	*read_and_join(int fd,
 	{
 		bytes_read = read(fd, read_buffer, BUFFER_SIZE);
 		if (bytes_read < 0 || bytes_read > SSIZE_MAX)
-		{
-			free(line_buffer);
-			return (NULL);
-		}
+			return (free_line_buffer(line_buffer));
 		read_buffer[bytes_read] = '\0';
 		line_buffer = ft_strjoin_and_free(line_buffer, read_buffer);
 		if (line_buffer == NULL)
 			return (NULL);
-		if ((linebreak_position = ft_strchr(line_buffer, '\n')) != NULL)
+		linebreak_position = ft_strchr(line_buffer, '\n');
+		if (linebreak_position != NULL)
 		{
 			*found_linebreak = true;
 			*linebreak_position = '\0';
@@ -77,7 +81,7 @@ static char	*read_and_join(int fd,
 	return (line_buffer);
 }
 
-int			ft_get_next_line(int fd, char **line)
+int	ft_get_next_line(int fd, char **line)
 {
 	static char	read_buffer[BUFFER_SIZE + 1];
 	char		*line_buffer;

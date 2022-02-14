@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/02 21:58:14 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/04/09 23:00:47 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/14 00:09:02 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ REMOVE_RECURSIVE = /bin/rm -rf
 HEADER_FILE = ft_printf.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = unless.c ft_salloc.c \
+SOURCE_FILES = \
+	unless.c ft_salloc.c \
 	ft_abs.c ft_abs_i.c ft_abs_f.c ft_abs_d.c \
 	\
 	ft_min_d.c ft_max_d.c ft_clamp_d.c \
@@ -42,6 +43,8 @@ SOURCE_FILES = unless.c ft_salloc.c \
 	ft_div_mod.c ft_div_mod_i.c \
 	\
 	ft_sqrt.c ft_sqrt_i.c ft_pow.c ft_pow_i.c ft_fibonacci.c ft_factorial.c \
+	\
+	ft_map_d.c ft_map_clamped_d.c \
 	\
 	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 	ft_memmove.c ft_memchr.c ft_memcmp.c \
@@ -68,6 +71,14 @@ SOURCE_FILES = unless.c ft_salloc.c \
 	\
 	ft_itoa.c ft_i_to_buffer.c \
 	\
+	ft_ltoa.c \
+	\
+	ft_ftoa.c ft_precise_ftoa.c \
+	\
+	ft_dtoa.c ft_precise_dtoa.c \
+	\
+	ft_ldtoa.c ft_precise_ldtoa.c \
+	\
 	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 	\
 	ft_putchar.c ft_putstr.c ft_putstr_up_to.c ft_putendl.c \
@@ -93,14 +104,20 @@ SOURCE_FILES = unless.c ft_salloc.c \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 	\
-	ft_get_next_line.c
+	ft_get_next_line.c\
+	\
+	ft_printf.c ft_vprintf.c pf_c.c pf_handled_c.c pf_handled_hex.c \
+	pf_handled_int.c pf_handled_no_conversion.c pf_handled_p.c \
+	pf_handled_percent.c pf_handled_s.c pf_handled_u.c \
+	pf_hex.c pf_initializers.c pf_int.c pf_p.c pf_parse_flags.c \
+	pf_parse_wildcars.c pf_percent.c pf_s.c pf_u.c
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
-EXAMPLE_MAIN = example.c
-EXECUTE_EXAMPLE = ./a.out
-EXAMPLE_GARBAGE = a.out a.out.dSYM
+################################################################################
+# REQUIRED
+################################################################################
 
 all: $(NAME)
 
@@ -111,31 +128,60 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
 	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $<
 
-example: $(NAME)
-	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) $(EXAMPLE_MAIN) $(NAME)
-	$(EXECUTE_EXAMPLE)
-
-test:
-	$(MAKE_EXTERNAL) $(TESTS_PATH)
-
 clean:
 	$(REMOVE) $(OBJECTS)
 
 fclean: clean
 	$(REMOVE) $(NAME)
 
-example_clean: fclean
-	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
+re: fclean all
+
+################################################################################
+# TESTS
+################################################################################
+
+test:
+	$(MAKE_EXTERNAL) $(TESTS_PATH)
 
 test_clean:
 	$(MAKE_EXTERNAL) $(TESTS_PATH) fclean
 
-re: fclean all
+################################################################################
+# EXAMPLE
+################################################################################
+
+EXAMPLE_MAIN = example.c
+EXECUTE_EXAMPLE = ./a.out
+EXAMPLE_GARBAGE = a.out a.out.dSYM
+
+example: build_example
+	$(EXECUTE_EXAMPLE)
+
+build_example: $(NAME)
+	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) $(EXAMPLE_MAIN) $(NAME)
+
+example_clean: fclean
+	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
+
+################################################################################
+# VALGRIND
+################################################################################
+
+VALGRIND = valgrind
+VALGRIND_TARGET = ./a.out
+
+vg: build_example
+	$(VALGRIND) $(VALGRIND_TARGET)
+
+################################################################################
+# MISC
+################################################################################
 
 norm:
 	norminette $(INCLUDES_PATH)
-	@echo ----------------------
+	@printf "\n$(G)=== No norminette errors found in $(INCLUDES_PATH) ===$(RC)\n\n"
 	norminette $(SOURCES_PATH)
+	@printf "\n$(G)=== No norminette errors found in $(SOURCES_PATH) ===$(RC)\n\n"
 
 git:
 	git add -A
@@ -147,4 +193,37 @@ gitm:
 	git commit -m $m
 	git push
 
-.PHONY: all example test re clean fclean example_clean test_clean norme git gitm
+################################################################################
+# PHONY
+################################################################################
+
+.PHONY: all clean fclean re \
+	test_clean test \
+	example build_example example_clean \
+	vg \
+	norm git gitm
+
+################################################################################
+# Colors
+################################################################################
+
+# Black, Red, Green, Yellow, Blue, Purple, Cyan, White
+Bk = \033[0;30m
+R = \033[0;31m
+G = \033[0;32m
+Y = \033[0;33m
+B = \033[0;34m
+P = \033[0;35m
+C = \033[0;36m
+W = \033[0;37m
+# Bold
+BkB = \033[1;30m
+RB = \033[1;31m
+GB = \033[1;32m
+YB = \033[1;33m
+BB = \033[1;34m
+PB = \033[1;35m
+CB = \033[1;36m
+WB = \033[1;37m
+# Reset Color
+RC	= \033[0m

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:17:39 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:46:37 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/14 00:20:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	resolve_color(double iterations, double max_iterations)
 	int		red;
 	int		green;
 
-	normalized_iterations = map_d((t_map_d){iterations, 0, max_iterations, 0,
+	normalized_iterations = ft_map_d((t_map_d){iterations, 0, max_iterations, 0,
 			1});
-	brightness = map_d((t_map_d){sqrt(normalized_iterations), 0, 1, 0, 255
+	brightness = ft_map_d((t_map_d){sqrt(normalized_iterations), 0, 1, 0, 255
 			* 3});
 	blue = brightness * blue_weight;
 	brightness -= 255;

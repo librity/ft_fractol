@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 17:58:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/14 00:28:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ int					trgb_to_int(int transparency, int red, int green, int blue);
 int					rgb_to_int(int red, int green, int blue);
 bool				out_of_bounds(t_img_buffer *buffer, int x, int y);
 void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
-					int color);
+						int color);
 
 int					handle_keypress(int keycode, t_fractol *ctl);
+int					handle_destroy(t_fractol *ctl);
 void				clean_and_exit(t_fractol *ctl);
 
 void				die(void);

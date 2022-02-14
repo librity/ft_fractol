@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 23:56:44 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:18:45 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/14 00:20:25 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,3 @@ t_complex	complex(double real, double imaginary)
 {
 	return ((t_complex){real, imaginary});
 }
-
-// void	inspect(t_complex number)
-// {
-// 	printf("%f + %fi\n", number.real, number.imaginary);
-// }

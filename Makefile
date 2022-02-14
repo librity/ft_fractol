@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/14 00:10:47 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/14 00:15:38 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ HEADER_FILE = fractol.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
 SOURCE_FILES = \
-	complex.c complex_meta.c complex_operations.c complex_mdlbt.c \
+	complex.c complex_meta.c complex_operations.c mandelbrot.c \
 	\
 	mlx_init.c mlx_input.c mlx_utils.c \
 	\

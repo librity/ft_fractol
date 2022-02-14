@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:21:28 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/14 00:28:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ int	handle_keypress(int keycode, t_fractol *ctl)
 		clean_and_exit(ctl);
 	if (keycode == Q_KEY)
 		clean_and_exit(ctl);
+	return (0);
+}
+
+int	handle_destroy(t_fractol *ctl)
+{
+	clean_and_exit(ctl);
 	return (0);
 }
 

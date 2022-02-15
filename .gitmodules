@@ -1,0 +1,6 @@
+[submodule "libs/ft_libbmp"]
+	path = libs/ft_libbmp
+	url = https://github.com/librity/ft_libbmp
+[submodule "libs/libft"]
+	path = libs/libft
+	url = https://github.com/librity/ft_libft

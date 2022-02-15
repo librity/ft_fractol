@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/14 00:53:04 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:51:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <X11/Xlib.h>
 # include <complex.h>
+# include <ft_libbmp.h>
 # include <libft.h>
 # include <math.h>
 # include <mlx.h>
@@ -26,6 +27,14 @@
 
 # define ESC_KEY 0xFF1B
 # define Q_KEY 0x71
+
+typedef struct s_trgb
+{
+	unsigned char	transparency;
+	unsigned char	blue;
+	unsigned char	green;
+	unsigned char	red;
+}					t_trgb;
 
 typedef struct s_img_buffer
 {
@@ -65,8 +74,25 @@ void				initialize_mlx_window(t_fractol *ctl);
 void				initialize_mlx_buffer(t_fractol *ctl);
 void				initialize_mlx_hooks(t_fractol *ctl);
 
-int					trgb_to_int(int transparency, int red, int green, int blue);
-int					rgb_to_int(int red, int green, int blue);
+void				print_bits_ui(unsigned int x);
+
+void				print_color(int color);
+void				inspect_color(int color);
+void				inspect_trgb(t_trgb trgb);
+
+int					trgb_chars_to_int(unsigned char transparency,
+						unsigned char red,
+						unsigned char green,
+						unsigned char blue);
+int					rgb_chars_to_int(unsigned char red,
+						unsigned char green,
+						unsigned char blue);
+int					trgb_to_int(t_trgb color);
+t_trgb				int_to_trgb(int color);
+t_bitmap_pixel		int_to_rgb(int color);
+
+int					zero_transparency(int color);
+
 bool				out_of_bounds(t_img_buffer *buffer, int x, int y);
 void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 						int color);

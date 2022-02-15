@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/14 00:28:27 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 17:39:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	handle_keypress(int keycode, t_fractol *ctl)
 {
+	ft_printf("keycode: %i\n", keycode);
 	if (keycode == ESC_KEY)
 		clean_and_exit(ctl);
 	if (keycode == Q_KEY)

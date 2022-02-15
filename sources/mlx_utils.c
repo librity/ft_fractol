@@ -6,21 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 10:57:48 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:52:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 16:44:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-int	trgb_to_int(int transparency, int red, int green, int blue)
-{
-	return (transparency << 24 | red << 16 | green << 8 | blue);
-}
-
-int	rgb_to_int(int red, int green, int blue)
-{
-	return (trgb_to_int(0, red, green, blue));
-}
 
 bool	out_of_bounds(t_img_buffer *buffer, int x, int y)
 {

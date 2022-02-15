@@ -11,7 +11,7 @@
 
 </div>
 
-<p align="center"> A fractal visualizer for the Julia and Mandelbrot sets.
+<p align="center"> A fractal navigator for the Julia and Mandelbrot sets.
   <br>
 </p>
 
@@ -22,6 +22,7 @@
 - [About](#about)
 - [Checklist](#checklist)
 - [Getting Started](#getting_started)
+- [Gallery](#gallery)
 - [Notes](#notes)
 - [42 São Paulo](#ft_sp)
 - [Resources](#resources)
@@ -69,6 +70,8 @@ $ git clone https://github.com/librity/ft_fractol.git
 $ cd ft_fractol
 $ make example
 ```
+
+## 🎨 Gallery <a name="gallery"></a>
 
 ## 📝 Notes <a name = "notes"></a>
 

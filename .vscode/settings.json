@@ -13,6 +13,7 @@
     "*.gohtml": "html",
     "fractol.h": "c",
     "libft.h": "c",
-    "stdbool.h": "c"
+    "stdbool.h": "c",
+    "cstdio": "c"
   }
 }

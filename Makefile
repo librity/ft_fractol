@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/14 00:15:38 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/15 10:32:57 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fractol
 
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
-CC_DEBUG_FLAGS = -g
+CC_DEBUG_FLAGS = -g -fsanitize=address
 
 SYSTEM_LIBS = -lm -lbsd -lmlx -lXext -lX11
 

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/14 00:28:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/14 00:53:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <mlx.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <stdlib.h>
 
 # define WINDOW_NAME "fractol"

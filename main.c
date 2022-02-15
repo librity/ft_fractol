@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:17:39 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 10:41:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:42:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	render_mandelbrot(t_fractol *ctl)
 	int				color;
 	double			x_cartesian;
 	double			y_cartesian;
-	double			normalized_iterations;
-	double			brightness;
 	t_complex		complex_at_xy;
 	t_mandelbrotian	mdlbt_at_xy;
 	int				half_width;

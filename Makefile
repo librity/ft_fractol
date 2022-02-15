@@ -6,14 +6,16 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/15 10:32:57 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/15 14:48:50 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
+FRACTOL_ARCHIVE = $(ARCHIVES_PATH)/fractol.a
 
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
+CC_STRICT = $(CC) $(CC_FLAGS)
 CC_DEBUG_FLAGS = -g -fsanitize=address
 
 SYSTEM_LIBS = -lm -lbsd -lmlx -lXext -lX11
@@ -36,41 +38,31 @@ EXAMPLES_PATH = ./examples
 HEADER_FILE = fractol.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = \
-	complex.c complex_meta.c complex_operations.c mandelbrot.c \
-	\
-	mlx_init.c mlx_input.c mlx_utils.c \
-	\
-	errors.c
-SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
+SOURCES = $(wildcard $(SOURCES_PATH)/*.c)
 
-OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
-
-FRACTOL_ARCHIVE = $(ARCHIVES_PATH)/fractol.a
-
-REQUIRED_MAIN = $(SOURCES_PATH)/main.c
-BONUS_MAIN = $(SOURCES_PATH)/main_bonus.c
+OBJECTS = $(subst $(SOURCES_PATH)/,$(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCES)))
 
 ################################################################################
 # REQUIRED
 ################################################################################
 
+REQUIRED_MAIN = ./main.c
+
 all: $(NAME)
 
 $(NAME): $(FRACTOL_ARCHIVE)
-	$(CC) $(CC_DEBUG_FLAGS) \
+	$(CC_STRICT) $(CC_DEBUG_FLAGS) \
 		-I $(INCLUDES_PATH) \
-		$(REQUIRED_MAIN) $(FRACTOL_ARCHIVE) \
-		$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
+		$(REQUIRED_MAIN) \
+		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
 		$(SYSTEM_LIBS) \
 		-o $(NAME)
 
-$(FRACTOL_ARCHIVE): build_libft build_ft_libbmp $(OBJECTS) $(HEADER)
+$(FRACTOL_ARCHIVE): initialize build_libft build_ft_libbmp $(HEADER) $(OBJECTS)
 	$(ARCHIVE_AND_INDEX) $(FRACTOL_ARCHIVE) $(OBJECTS)
 
-$(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
-	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
-	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $< $(SYSTEM_LIBS)
+$(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
+	$(CC_STRICT) -I $(INCLUDES_PATH) -c -o $@ $<
 
 required: $(NAME)
 	./$(NAME)
@@ -84,9 +76,15 @@ fclean: clean
 
 re: fclean all
 
+initialize:
+	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
+	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
+
 ################################################################################
 # BONUS
 ################################################################################
+
+BONUS_MAIN = ./main_bonus.c
 
 ################################################################################
 # LIBS
@@ -97,8 +95,7 @@ LIBFT_PATH = $(LIBS_PATH)/libft
 LIBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LIBFT)
 
 build_libft:
-	$(MAKE_EXTERNAL) $(LIBFT_PATH)
-	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
+	$(MAKE_EXTERNAL) $(LIBFT_PATH) all
 	$(COPY) $(LIBFT_PATH)/$(LIBFT) $(LIBFT_ARCHIVE)
 
 libft_clean:
@@ -110,8 +107,7 @@ FT_LIBBMP_PATH = $(LIBS_PATH)/ft_libbmp
 FT_LIBBMP_ARCHIVE = $(ARCHIVES_PATH)/$(FT_LIBBMP)
 
 build_ft_libbmp:
-	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH)
-	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
+	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH) all
 	$(COPY) $(FT_LIBBMP_PATH)/$(FT_LIBBMP) $(FT_LIBBMP_ARCHIVE)
 
 ft_libbmp_clean:
@@ -152,26 +148,46 @@ VALGRIND_LOG_FLAGS = --log-file=$(VALGRIND_LOG) \
 	--verbose
 VALGRIND_TARGET = ./$(NAME)
 
-vg: $(NAME)
+vg: vg_build
 	$(VALGRIND) $(VALGRIND_TARGET)
 
-vglog: $(NAME)
+vglog: vg_build
 	$(VALGRIND) $(VALGRIND_LOG_FLAGS) $(VALGRIND_TARGET)
+
+vg_build: $(FRACTOL_ARCHIVE)
+	$(CC_STRICT) \
+		-I $(INCLUDES_PATH) \
+		$(REQUIRED_MAIN) \
+		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
+		$(SYSTEM_LIBS) \
+		-o $(NAME)
 
 vglog_clean: fclean
 	$(REMOVE) $(VALGRIND_LOG)
+
+################################################################################
+# CLEAN
+################################################################################
+
+tclean: clean_libs fclean example_clean vglog_clean
+
+clean_libs: libft_clean ft_libbmp_clean
 
 ################################################################################
 # MISC
 ################################################################################
 
 norm:
-	norminette $(LIBS_PATH)
-	@printf "\n$(G)=== No norminette errors found in $(LIBS_PATH) ===$(RC)\n\n"
+	# norminette $(LIBS_PATH)
+	# @printf "\n$(G)=== No norminette errors found in $(LIBS_PATH) ===$(RC)\n\n"
 	norminette $(INCLUDES_PATH)
 	@printf "\n$(G)=== No norminette errors found in $(INCLUDES_PATH) ===$(RC)\n\n"
 	norminette $(SOURCES_PATH)
 	@printf "\n$(G)=== No norminette errors found in $(SOURCES_PATH) ===$(RC)\n\n"
+	norminette $(REQUIRED_MAIN)
+	@printf "\n$(G)=== No norminette errors found in $(REQUIRED_MAIN) ===$(RC)\n\n"
+	norminette $(BONUS_MAIN)
+	@printf "\n$(G)=== No norminette errors found in $(BONUS_MAIN) ===$(RC)\n\n"
 
 git:
 	git add -A
@@ -187,12 +203,13 @@ gitm:
 # PHONY
 ################################################################################
 
-.PHONY: all required clean fclean re \
-		build_libft libft_clean \
-		build_ft_libbmp ft_libbmp_clean \
-		build_example example example_clean \
-		vg vglog vglog_clean \
-		norm git gitm
+.PHONY: all required clean fclean re initialize \
+	build_libft libft_clean \
+	build_ft_libbmp ft_libbmp_clean \
+	build_example example example_clean \
+	vg vglog vg_build vglog_clean \
+	tclean clean_libs \
+	norm git gitm
 
 ################################################################################
 # Colors

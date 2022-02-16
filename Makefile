@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/16 02:14:14 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/16 16:56:59 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ NAME = fractol
 FRACTOL_ARCHIVE = $(ARCHIVES_PATH)/fractol.a
 
 CC = gcc
-CC_FLAGS = -Wall -Wextra -Werror
-CC_STRICT = $(CC) $(CC_FLAGS)
-CC_DEBUG_FLAGS = -g -fsanitize=address
+CC_STRICT = $(CC) $(CCF_STRICT) $(CCF_OPTIMIZATION)
+CCF_STRICT = -Wall -Wextra -Werror
+CCF_OPTIMIZATION = -O3
+CCF_DEBUG = -g -fsanitize=address
 
 SYSTEM_LIBS = -lm -lbsd -lmlx -lXext -lX11
 
@@ -50,7 +51,7 @@ REQUIRED_MAIN = ./main.c
 all: $(NAME)
 
 $(NAME): $(FRACTOL_ARCHIVE)
-	$(CC_STRICT) $(CC_DEBUG_FLAGS) \
+	$(CC_STRICT) $(CCF_DEBUG) \
 		-I $(INCLUDES_PATH) \
 		$(REQUIRED_MAIN) \
 		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
@@ -129,7 +130,7 @@ example: build_example
 	$(EXECUTE_EXAMPLE)
 
 build_example: $(FRACTOL_ARCHIVE)
-	$(CC) $(CC_DEBUG_FLAGS) \
+	$(CC) $(CCF_DEBUG) \
 		-I $(INCLUDES_PATH) \
 		$(EXAMPLE_MAIN) $(FRACTOL_ARCHIVE) \
 		$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 00:20:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 01:15:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define JULIA_MSG " => Rendering Julia set..."
 
 /******************************************************************************\
- * PARAMS
+ * INITIAL PARAMS
 \******************************************************************************/
 
 # define MANDELBROT_CODE 0
@@ -41,10 +41,10 @@
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 500
 
-# define MAX_ITERATIONS 100
-# define DIVERSION_LIMIT 30
+# define MAX_ITERATIONS 50
+# define DIVERSION_LIMIT 10
 # define ZOOM 200
-# define X_OFFSET -100
+# define X_OFFSET 0
 # define Y_OFFSET 0
 # define LERP_STEPS 256
 
@@ -67,7 +67,16 @@
 # define PLUS_KEY 61
 # define MINUS_KEY 45
 
-# define ZOOM_STEP 10
+# define ZOOM_STEP 50
+
+/******************************************************************************\
+ * ZOOM STEP
+\******************************************************************************/
+
+# define ACCENT_KEY 65105
+# define P_KEY 112
+
+# define ZOOM_STEP_STEP 50
 
 /******************************************************************************\
  * NAVIGATION
@@ -78,7 +87,16 @@
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
 
-# define NAVIGATION_STEP 10
+# define NAVIGATION_STEP 0.01
+
+/******************************************************************************\
+ * NAVIGATION STEP
+\******************************************************************************/
+
+# define RSHIFT_KEY 65506
+# define SEMICOLON_KEY 59
+
+# define NAVIGATION_STEP_STEP 0.01
 
 /******************************************************************************\
  * MAX ITERATIONS

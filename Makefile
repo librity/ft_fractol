@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/15 14:48:50 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/16 01:16:59 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,7 @@ LIBS_PATH = ./libs
 ARCHIVES_PATH = ./archives
 EXAMPLES_PATH = ./examples
 
-HEADER_FILE = fractol.h
-HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
+FRACTOL_HEADER = $(INCLUDES_PATH)/fractol.h
 
 SOURCES = $(wildcard $(SOURCES_PATH)/*.c)
 
@@ -58,7 +57,7 @@ $(NAME): $(FRACTOL_ARCHIVE)
 		$(SYSTEM_LIBS) \
 		-o $(NAME)
 
-$(FRACTOL_ARCHIVE): initialize build_libft build_ft_libbmp $(HEADER) $(OBJECTS)
+$(FRACTOL_ARCHIVE): initialize build_libft build_ft_libbmp $(FRACTOL_HEADER) $(OBJECTS)
 	$(ARCHIVE_AND_INDEX) $(FRACTOL_ARCHIVE) $(OBJECTS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c

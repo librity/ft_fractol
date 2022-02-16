@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 00:04:33 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 00:28:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,21 @@ void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 						int color);
 
 int					handle_keypress(int keycode, t_fractol *ctl);
+
 int					handle_destroy(t_fractol *ctl);
 void				clean_and_exit(t_fractol *ctl);
+
+void				zoom_in(t_fractol *ctl);
+void				zoom_out(t_fractol *ctl);
+
+void				move_up(t_fractol *ctl);
+void				move_down(t_fractol *ctl);
+void				move_left(t_fractol *ctl);
+void				move_right(t_fractol *ctl);
+
+void				log_keycode(int keycode);
+void				log_zoom(t_fractol *ctl);
+void				log_position(t_fractol *ctl);
 
 double				screen_to_cartesian_x(t_fractol *ctl, int x);
 double				screen_to_cartesian_y(t_fractol *ctl, int y);

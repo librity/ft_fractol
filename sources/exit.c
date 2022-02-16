@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 11:43:05 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 00:17:57 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/16 00:17:03 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/16 00:18:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	die(void)
+int	handle_destroy(t_fractol *ctl)
 {
-	perror("ERROR!\n");
-	exit(1);
+	clean_and_exit(ctl);
+	return (0);
+}
+
+void	clean_and_exit(t_fractol *ctl)
+{
+	mlx_destroy_image(ctl->mlx, ctl->buffer.img);
+	mlx_destroy_window(ctl->mlx, ctl->window);
+	mlx_destroy_display(ctl->mlx);
+	free(ctl->mlx);
+	ft_putendl(EXIT_MSG);
+	exit(0);
 }

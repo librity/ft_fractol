@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 22:59:29 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 23:32:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	mandelbrot_to_buffer(t_fractol *ctl, int x, int y)
 	x_cartesian = screen_to_cartesian_x(ctl, x);
 	y_cartesian = screen_to_cartesian_y(ctl, y);
 	complex_at_xy = complex(x_cartesian, y_cartesian);
-	mdlbt_at_xy = quick_mandelbrot(complex_at_xy, ctl->mbt.max_iterations,
-			ctl->mbt.infinity);
+	mdlbt_at_xy = quick_mandelbrot(complex_at_xy, ctl->max_iterations,
+			ctl->infinity);
 	color = resolve_color(ctl, mdlbt_at_xy.iterations);
 	draw_to_buffer(&ctl->buffer, x, y, color);
 }

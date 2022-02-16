@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 13:37:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:00:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_mandelbrotian	julia(t_complex number, int max_iterations,
+t_mandelbrotian	julia(t_complex number, t_complex factor, int max_iterations,
 		double infinity)
 {
 	t_complex	current;
@@ -31,8 +31,8 @@ t_mandelbrotian	julia(t_complex number, int max_iterations,
 	return ((t_mandelbrotian){false, iteration});
 }
 
-t_mandelbrotian	quick_julia(t_complex number, int max_iterations,
-		double infinity)
+t_mandelbrotian	quick_julia(t_complex number, t_complex factor,
+		int max_iterations, double infinity)
 {
 	t_complex	current;
 	int			iteration;

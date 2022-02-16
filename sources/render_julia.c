@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 13:52:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 13:58:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	render_pixel(t_fractol *ctl, int x, int y)
 	x_cartesian = screen_to_cartesian_x(ctl, x);
 	y_cartesian = screen_to_cartesian_y(ctl, y);
 	complex_at_xy = complex(x_cartesian, y_cartesian);
-	mbt_at_xy = quick_julia(complex_at_xy, ctl->max_iterations,
+	mbt_at_xy = julia(complex_at_xy, ctl->julia_factor, ctl->max_iterations,
 			ctl->infinity);
 	color = quick_color(ctl, mbt_at_xy.iterations);
 	draw_to_buffer(ctl->buffer, x, y, color);

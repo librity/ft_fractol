@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:13:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 13:38:39 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 13:57:59 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ t_mandelbrotian	quick_mandelbrot(t_complex number,
 					int max_iterations,
 					double infinity);
 
-t_mandelbrotian	julia(t_complex number, int max_iterations,
+t_mandelbrotian	julia(t_complex number, t_complex factor, int max_iterations,
 					double infinity);
-t_mandelbrotian	quick_julia(t_complex number, int max_iterations,
-					double infinity);
+t_mandelbrotian	quick_julia(t_complex number, t_complex factor,
+					int max_iterations, double infinity);
 
 #endif

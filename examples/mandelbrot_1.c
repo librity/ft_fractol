@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:05:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:51:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void render_mandelbrot(void)
 	double normalized_iterations;
 	double brightness;
 	t_complex complex_at_xy;
-	t_mandelbrotian mdlbt_at_xy;
+	t_fractal mdlbt_at_xy;
 	bool is_mandelbrot;
 
 	x = width;

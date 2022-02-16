@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 13:54:25 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:02:29 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@
 # define MANDELBROT_CODE 0
 # define JULIA_CODE 1
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
 
-# define MAX_ITERATIONS 50
-# define DIVERSION_LIMIT 10
+# define MAX_ITERATIONS 100
+# define DIVERSION_LIMIT 4
 # define ZOOM 200
 # define X_OFFSET 0
 # define Y_OFFSET 0

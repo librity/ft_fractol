@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:13:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 13:57:59 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:53:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ typedef struct s_complex
 	double		imaginary;
 }				t_complex;
 
-typedef struct s_mandelbrotian
+typedef struct s_fractal
 {
 	bool		diverges;
 	int			iterations;
-}				t_mandelbrotian;
+}				t_fractal;
 
 t_complex		complex(double real, double imaginary);
 
@@ -36,16 +36,16 @@ t_complex		squared(t_complex cmplx);
 t_complex		plus(t_complex a, t_complex b);
 t_complex		times(t_complex a, t_complex b);
 
-t_mandelbrotian	mandelbrot(t_complex number,
+t_fractal		mandelbrot(t_complex number,
 					int max_iterations,
 					double infinity);
-t_mandelbrotian	quick_mandelbrot(t_complex number,
+t_fractal		quick_mandelbrot(t_complex number,
 					int max_iterations,
 					double infinity);
 
-t_mandelbrotian	julia(t_complex number, t_complex factor, int max_iterations,
+t_fractal		julia(t_complex number, t_complex factor, int max_iterations,
 					double infinity);
-t_mandelbrotian	quick_julia(t_complex number, t_complex factor,
+t_fractal		quick_julia(t_complex number, t_complex factor,
 					int max_iterations, double infinity);
 
 #endif

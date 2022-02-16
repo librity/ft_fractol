@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 13:52:56 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:03:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	render_pixel(t_fractol *ctl, int x, int y)
 {
-	int				color;
-	double			x_cartesian;
-	double			y_cartesian;
-	t_complex		complex_at_xy;
-	t_mandelbrotian	mbt_at_xy;
+	int			color;
+	double		x_cartesian;
+	double		y_cartesian;
+	t_complex	complex_at_xy;
+	t_fractal	mbt_at_xy;
 
 	x_cartesian = screen_to_cartesian_x(ctl, x);
 	y_cartesian = screen_to_cartesian_y(ctl, y);

@@ -73,6 +73,16 @@ $ make example
 
 ## 🎨 Gallery <a name="gallery"></a>
 
+<p align="center">
+  <img src="gallery/julia_1.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/julia_2.png" />
+</p>
+
+[and much, much more...](https://github.com/librity/ft_fractol/tree/main/gallery)
+
 ## 📝 Notes <a name = "notes"></a>
 
 ## 🛸 42 São Paulo <a name = "ft_sp"></a>

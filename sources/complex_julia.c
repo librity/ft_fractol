@@ -6,46 +6,46 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 14:00:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:58:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_mandelbrotian	julia(t_complex number, t_complex factor, int max_iterations,
+t_fractal	julia(t_complex number, t_complex factor, int max_iterations,
 		double infinity)
 {
 	t_complex	current;
 	int			iteration;
 
-	current = number;
+	current = plus(number, factor);
 	iteration = 0;
 	while (iteration < max_iterations)
 	{
 		if (magnitude(current) > infinity)
-			return ((t_mandelbrotian){true, iteration});
+			return ((t_fractal){true, iteration});
 		current = squared(current);
-		current = plus(current, number);
+		current = plus(current, factor);
 		iteration++;
 	}
-	return ((t_mandelbrotian){false, iteration});
+	return ((t_fractal){false, iteration});
 }
 
-t_mandelbrotian	quick_julia(t_complex number, t_complex factor,
+t_fractal	quick_julia(t_complex number, t_complex factor,
 		int max_iterations, double infinity)
 {
 	t_complex	current;
 	int			iteration;
 
-	current = number;
+	current = plus(number, factor);
 	iteration = 0;
 	while (iteration < max_iterations)
 	{
 		if (quick_magnitude(current) > infinity)
-			return ((t_mandelbrotian){true, iteration});
+			return ((t_fractal){true, iteration});
 		current = squared(current);
-		current = plus(current, number);
+		current = plus(current, factor);
 		iteration++;
 	}
-	return ((t_mandelbrotian){false, iteration});
+	return ((t_fractal){false, iteration});
 }

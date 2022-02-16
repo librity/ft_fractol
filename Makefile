@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/16 01:16:59 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/16 02:14:14 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,10 +92,12 @@ BONUS_MAIN = ./main_bonus.c
 LIBFT = libft.a
 LIBFT_PATH = $(LIBS_PATH)/libft
 LIBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LIBFT)
+LIBFT_HEADER = $(LIBFT_PATH)/includes/libft.h
 
 build_libft:
 	$(MAKE_EXTERNAL) $(LIBFT_PATH) all
 	$(COPY) $(LIBFT_PATH)/$(LIBFT) $(LIBFT_ARCHIVE)
+	$(COPY) $(LIBFT_HEADER) $(INCLUDES_PATH)
 
 libft_clean:
 	$(MAKE_EXTERNAL) $(LIBFT_PATH) fclean
@@ -104,10 +106,12 @@ libft_clean:
 FT_LIBBMP = ft_libbmp.a
 FT_LIBBMP_PATH = $(LIBS_PATH)/ft_libbmp
 FT_LIBBMP_ARCHIVE = $(ARCHIVES_PATH)/$(FT_LIBBMP)
+FT_LIBBMP_HEADER = $(FT_LIBBMP_PATH)/includes/ft_libbmp.h
 
 build_ft_libbmp:
 	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH) all
 	$(COPY) $(FT_LIBBMP_PATH)/$(FT_LIBBMP) $(FT_LIBBMP_ARCHIVE)
+	$(COPY) $(FT_LIBBMP_HEADER) $(INCLUDES_PATH)
 
 ft_libbmp_clean:
 	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH) fclean

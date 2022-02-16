@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 01:15:37 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 02:21:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
 
-# define NAVIGATION_STEP 0.01
+# define NAVIGATION_FACTOR 100
+# define NAVIGATION_STEP 10
 
 /******************************************************************************\
  * NAVIGATION STEP
@@ -96,7 +97,7 @@
 # define RSHIFT_KEY 65506
 # define SEMICOLON_KEY 59
 
-# define NAVIGATION_STEP_STEP 0.01
+# define NAVIGATION_STEP_STEP 1
 
 /******************************************************************************\
  * MAX ITERATIONS
@@ -118,5 +119,14 @@
 
 # define L_KEY 108
 # define PERIOD_KEY 46
+
+/******************************************************************************\
+ * COLOR BITWISE
+\******************************************************************************/
+
+# define T_MASK 0xFF000000
+# define R_MASK 0x00FF0000
+# define G_MASK 0x0000FF00
+# define B_MASK 0x000000FF
 
 #endif

@@ -14,6 +14,17 @@
     "fractol.h": "c",
     "libft.h": "c",
     "stdbool.h": "c",
-    "cstdio": "c"
+    "cstdio": "c",
+    "*.tcc": "c",
+    "compare": "c",
+    "random": "c",
+    "limits": "c",
+    "new": "c",
+    "numeric": "c",
+    "cmath": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "complex": "c"
   }
 }

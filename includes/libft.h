@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:58:19 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 20:48:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 02:07:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 bool				unless(bool condition);
 
 /******************************************************************************\
+ * BINARY
+\******************************************************************************/
+
+void				ft_print_bits(int x);
+void				ft_print_bits_i(int x);
+void				ft_print_bits_ui(unsigned int x);
+
+/******************************************************************************\
  * MATH
 \******************************************************************************/
 
@@ -35,9 +43,14 @@ float				ft_abs_f(float number);
 int					ft_abs_i(int number);
 int					ft_abs(int number);
 
+int					ft_min_i(int x, int y);
+int					ft_max_i(int x, int y);
+
 double				ft_min_d(double x, double y);
 double				ft_max_d(double x, double y);
+
 double				ft_clamp_d(double x, double min, double max);
+int					ft_clamp_i(int x, int min, int max);
 
 void				ft_swap(int *a, int *b);
 void				ft_swap_i(int *a, int *b);
@@ -51,6 +64,18 @@ int					ft_pow(int number, int power);
 int					ft_pow_i(int number, int power);
 int					ft_fibonacci(int index);
 int					ft_factorial(int number);
+
+typedef struct s_map_i
+{
+	int	mapped;
+	int	start1;
+	int	stop1;
+	int	start2;
+	int	stop2;
+}					t_map_i;
+
+int					ft_map_clamped_i(t_map_i args);
+int					ft_map_i(t_map_i args);
 
 typedef struct s_map_d
 {
@@ -67,6 +92,9 @@ double				ft_map_clamped_d(t_map_d args);
 double				ft_lerp_d(double from, double to, double x);
 double				ft_lerp_wsteps_d(double from, double to, double steps,
 						double x);
+
+int					ft_lerp_i(int from, int to, int x);
+int					ft_lerp_wsteps_i(int from, int to, int steps, int x);
 
 /******************************************************************************\
  * MEMORY

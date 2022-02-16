@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 09:14:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 13:51:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_fractol
 	int				fratal_code;
 	void			*mlx;
 	void			*window;
-	t_img_buffer	buffer;
+	t_img_buffer	*buffer;
 	int				max_iterations;
 	int				dye;
 	int				lerp_steps;
@@ -121,6 +121,8 @@ void				move_down(t_fractol *ctl);
 void				move_left(t_fractol *ctl);
 void				move_right(t_fractol *ctl);
 
+void				log_msg(char *message);
+void				log_endl(char *message);
 void				log_keycode(int keycode);
 void				log_zoom(t_fractol *ctl);
 void				log_position(t_fractol *ctl);

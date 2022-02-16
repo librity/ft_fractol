@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 09:15:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 13:52:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	render_pixel(t_fractol *ctl, int x, int y)
 	x_cartesian = screen_to_cartesian_x(ctl, x);
 	y_cartesian = screen_to_cartesian_y(ctl, y);
 	complex_at_xy = complex(x_cartesian, y_cartesian);
-	mbt_at_xy = quick_mandelbrot(complex_at_xy, ctl->max_iterations,
+	mbt_at_xy = quick_julia(complex_at_xy, ctl->max_iterations,
 			ctl->infinity);
 	color = quick_color(ctl, mbt_at_xy.iterations);
-	draw_to_buffer(&ctl->buffer, x, y, color);
+	draw_to_buffer(ctl->buffer, x, y, color);
 }
 
 static void	render_and_show(t_fractol *ctl)
@@ -41,12 +41,12 @@ static void	render_and_show(t_fractol *ctl)
 		while (y--)
 			render_pixel(ctl, x, y);
 	}
-	mlx_put_image_to_window(ctl->mlx, ctl->window, ctl->buffer.img, 0, 0);
+	mlx_put_image_to_window(ctl->mlx, ctl->window, ctl->buffer->img, 0, 0);
 }
 
 void	render_julia(t_fractol *ctl)
 {
-	ft_putstr(JULIA_MSG);
+	log_msg(JULIA_MSG);
 	render_and_show(ctl);
-	ft_putendl(SUCCESS_MSG);
+	log_endl(SUCCESS_MSG);
 }

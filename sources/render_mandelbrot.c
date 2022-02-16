@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   render_mandelbrot.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 22:28:46 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 22:59:29 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	render_mandelbrot(t_fractol *ctl, int x, int y)
+void	mandelbrot_to_buffer(t_fractol *ctl, int x, int y)
 {
 	int				color;
 	double			x_cartesian;
@@ -39,7 +39,14 @@ void	render_mandelbrot_set(t_fractol *ctl)
 	{
 		y = ctl->height;
 		while (y--)
-			render_mandelbrot(ctl, x, y);
+			mandelbrot_to_buffer(ctl, x, y);
 	}
 	mlx_put_image_to_window(ctl->mlx, ctl->window, ctl->buffer.img, 0, 0);
+}
+
+void	render_mandelbrot(t_fractol *ctl)
+{
+	ft_putstr(" => Rendering Mandelbrot set...");
+	render_mandelbrot_set(ctl);
+	ft_putendl(" OK");
 }

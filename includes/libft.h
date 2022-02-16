@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:58:19 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 23:57:14 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:48:43 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ typedef struct s_map_d
 
 double				ft_map_d(t_map_d args);
 double				ft_map_clamped_d(t_map_d args);
+
+double				ft_lerp_d(double from, double to, double x);
+double				ft_lerp_wsteps_d(double from, double to, double steps,
+						double x);
 
 /******************************************************************************\
  * MEMORY

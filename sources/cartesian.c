@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   cartesian.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 22:12:13 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/15 22:28:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int	resolve_color(t_fractol *ctl, double iterations)
+double	screen_to_cartesian_x(t_fractol *ctl, int x)
 {
-	double	normalized_iterations;
-	double	intensity;
-	int		color;
+	double	cartesian;
 
-	normalized_iterations = ft_map_d((t_map_d){iterations, 0,
-			ctl->mbt.max_iterations, 0, 1});
-	intensity = ft_map_d((t_map_d){sqrt(normalized_iterations), 0, 1, 0,
-			255.999});
-	color = int_color_lerp_wsteps(ctl->mbt.lerp_from, ctl->mbt.lerp_to,
-			ctl->mbt.lerp_steps, intensity);
-	return (color);
+	cartesian = x - (ctl->buffer.half_width) + ctl->mbt.x_offset;
+	cartesian /= ctl->mbt.zoom;
+	return (cartesian);
+}
+
+double	screen_to_cartesian_y(t_fractol *ctl, int y)
+{
+	double	cartesian;
+
+	cartesian = y - (ctl->buffer.half_height) + ctl->mbt.y_offset;
+	cartesian /= ctl->mbt.zoom;
+	return (cartesian);
 }

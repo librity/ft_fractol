@@ -1,51 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_mdlbt.c                                    :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/13 13:37:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 22:28:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_mandelbrotian	mandelbrot(t_complex number, int max_iterations,
-		double infinity)
+void	render_mandelbrot(t_fractol *ctl, int x, int y)
 {
-	t_complex	current;
-	int			iteration;
+	int				color;
+	double			x_cartesian;
+	double			y_cartesian;
+	t_complex		complex_at_xy;
+	t_mandelbrotian	mdlbt_at_xy;
 
-	current = number;
-	iteration = 0;
-	while (iteration < max_iterations)
-	{
-		if (magnitude(current) > infinity)
-			return ((t_mandelbrotian){true, iteration});
-		current = squared(current);
-		current = plus(current, number);
-		iteration++;
-	}
-	return ((t_mandelbrotian){false, iteration});
+	x_cartesian = screen_to_cartesian_x(ctl, x);
+	y_cartesian = screen_to_cartesian_y(ctl, y);
+	complex_at_xy = complex(x_cartesian, y_cartesian);
+	mdlbt_at_xy = quick_mandelbrot(complex_at_xy, ctl->mbt.max_iterations,
+			ctl->mbt.infinity);
+	color = resolve_color(ctl, mdlbt_at_xy.iterations);
+	draw_to_buffer(&ctl->buffer, x, y, color);
 }
 
-t_mandelbrotian	quick_mandelbrot(t_complex number, int max_iterations,
-		double infinity)
+void	render_mandelbrot_set(t_fractol *ctl)
 {
-	t_complex	current;
-	int			iteration;
+	int	x;
+	int	y;
 
-	current = number;
-	iteration = 0;
-	while (iteration < max_iterations)
+	x = ctl->width;
+	while (x--)
 	{
-		if (quick_magnitude(current) > infinity)
-			return ((t_mandelbrotian){true, iteration});
-		current = squared(current);
-		current = plus(current, number);
-		iteration++;
+		y = ctl->height;
+		while (y--)
+			render_mandelbrot(ctl, x, y);
 	}
-	return ((t_mandelbrotian){false, iteration});
+	mlx_put_image_to_window(ctl->mlx, ctl->window, ctl->buffer.img, 0, 0);
 }

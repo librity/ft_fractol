@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:28:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/14 00:28:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 22:20:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	initialize_mlx_buffer(t_fractol *ctl)
 		die();
 	ctl->buffer.width = ctl->width;
 	ctl->buffer.height = ctl->height;
+	ctl->buffer.half_width = ctl->width / 2.0;
+	ctl->buffer.half_height = ctl->height / 2.0;
 	ft_putstr(" OK\n");
 }
 

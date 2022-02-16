@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 18:51:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/15 22:29:42 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,16 @@ typedef struct s_img_buffer
 	int				line_length;
 	int				bits_per_pixel;
 	int				endian;
+	int				half_width;
+	int				half_height;
 }					t_img_buffer;
 
 typedef struct s_mandelbrot
 {
 	int				max_iterations;
+	int				lerp_steps;
+	int				lerp_from;
+	int				lerp_to;
 	double			infinity;
 	double			zoom;
 	double			x_offset;
@@ -63,9 +68,6 @@ typedef struct s_fractol
 	void			*mlx;
 	void			*window;
 	t_img_buffer	buffer;
-	int				line_size;
-	int				bpp;
-	int				endian;
 	t_mandelbrot	mbt;
 }					t_fractol;
 
@@ -93,6 +95,15 @@ t_bitmap_pixel		int_to_rgb(int color);
 
 int					zero_transparency(int color);
 
+t_trgb				trgb_color_lerp_wsteps(t_trgb from, t_trgb to, double steps,
+						double x);
+int					int_color_lerp_wsteps(int start, int end, double steps,
+						double x);
+t_trgb				trgb_color_lerp(t_trgb from, t_trgb to, double x);
+int					int_color_lerp(int start, int end, double x);
+
+int					resolve_color(t_fractol *ctl, double iterations);
+
 bool				out_of_bounds(t_img_buffer *buffer, int x, int y);
 void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 						int color);
@@ -100,6 +111,12 @@ void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 int					handle_keypress(int keycode, t_fractol *ctl);
 int					handle_destroy(t_fractol *ctl);
 void				clean_and_exit(t_fractol *ctl);
+
+double				screen_to_cartesian_x(t_fractol *ctl, int x);
+double				screen_to_cartesian_y(t_fractol *ctl, int y);
+
+void				render_mandelbrot(t_fractol *ctl, int x, int y);
+void				render_mandelbrot_set(t_fractol *ctl);
 
 void				die(void);
 

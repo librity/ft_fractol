@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 23:04:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 00:00:39 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	clean_and_exit(t_fractol *ctl)
 	mlx_destroy_window(ctl->mlx, ctl->window);
 	mlx_destroy_display(ctl->mlx);
 	free(ctl->mlx);
-	ft_putendl("=== That's all folks! ===");
+	ft_putendl(EXIT_MSG);
 	exit(0);
 }

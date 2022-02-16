@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_mandelbrot.c                                :+:      :+:    :+:   */
+/*   render_julia.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 00:02:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 00:02:25 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static void	render_and_show(t_fractol *ctl)
 	mlx_put_image_to_window(ctl->mlx, ctl->window, ctl->buffer.img, 0, 0);
 }
 
-void	render_mandelbrot(t_fractol *ctl)
+void	render_julia(t_fractol *ctl)
 {
-	ft_putstr(MBT_MSG);
+	ft_putstr(JULIA_MSG);
 	render_and_show(ctl);
 	ft_putendl(SUCCESS_MSG);
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 15:23:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:22:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,20 @@ int	lerp_color(t_fractol *ctl, double iterations)
 	color = int_color_lerp_wsteps(ctl->lerp_from, ctl->lerp_to,
 			ctl->lerp_steps, intensity);
 	return (color);
+}
+
+void	shift_colors_up(t_fractol *ctl)
+{
+	ctl->dye += DYE_SHIFT;
+	ctl->lerp_from += LERP_SHIFT;
+	ctl->lerp_to += LERP_SHIFT;
+	render_fractal(ctl);
+}
+
+void	shift_colors_down(t_fractol *ctl)
+{
+	ctl->dye -= DYE_SHIFT;
+	ctl->lerp_from -= LERP_SHIFT;
+	ctl->lerp_to -= LERP_SHIFT;
+	render_fractal(ctl);
 }

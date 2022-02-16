@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 14:53:07 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:53:43 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,24 @@ typedef struct s_fractol
 {
 	int				width;
 	int				height;
-	int				fratal_code;
 	void			*mlx;
 	void			*window;
 	t_img_buffer	*buffer;
+
+	int				fractal_code;
 	int				max_iterations;
+	double			infinity;
+	t_complex		julia_factor;
+
+	double			zoom;
+	double			scale_factor;
+	double			x_offset;
+	double			y_offset;
+
 	int				dye;
 	int				lerp_steps;
 	int				lerp_from;
 	int				lerp_to;
-	double			infinity;
-	double			zoom;
-	double			x_offset;
-	double			y_offset;
-	t_complex		julia_factor;
 }					t_fractol;
 
 void				die(void);
@@ -103,6 +107,8 @@ int					int_color_lerp(int from, int to, int x);
 
 int					quick_color(t_fractol *ctl, double iterations);
 int					lerp_color(t_fractol *ctl, double iterations);
+void				shift_colors_up(t_fractol *ctl);
+void				shift_colors_down(t_fractol *ctl);
 
 bool				out_of_bounds(t_img_buffer *buffer, int x, int y);
 void				draw_to_buffer(t_img_buffer *buffer, int x, int y,

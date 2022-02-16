@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 00:14:27 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 00:36:46 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:03:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ static void	log_and_render(t_fractol *ctl)
 
 void	zoom_in(t_fractol *ctl)
 {
-	ctl->zoom += ZOOM_STEP;
+	ctl->scale_factor /= ZOOM_MAGNIFICATION;
+	ctl->zoom *= ZOOM_MAGNIFICATION;
 	log_and_render(ctl);
 }
 
 void	zoom_out(t_fractol *ctl)
 {
-	ctl->zoom -= ZOOM_STEP;
+	ctl->scale_factor *= ZOOM_MAGNIFICATION;
+	ctl->zoom /= ZOOM_MAGNIFICATION;
 	log_and_render(ctl);
 }

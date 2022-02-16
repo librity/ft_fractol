@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:39:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 17:02:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:11:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,18 @@ void	initialize_params(t_fractol *ctl)
 {
 	ctl->width = WINDOW_WIDTH;
 	ctl->height = WINDOW_HEIGHT;
-	// ctl->fratal_code = MANDELBROT_CODE;
-	ctl->fratal_code = JULIA_CODE;
+	ctl->fractal_code = MANDELBROT_CODE;
+	// ctl->fractal_code = JULIA_CODE;
 	ctl->max_iterations = MAX_ITERATIONS;
 	ctl->infinity = DIVERSION_LIMIT;
 	ctl->zoom = ZOOM;
+	ctl->scale_factor = SCALE_FACTOR;
 	ctl->x_offset = X_OFFSET;
 	ctl->y_offset = Y_OFFSET;
 	ctl->dye = DYE4;
 	ctl->lerp_steps = LERP_STEPS;
-	ctl->lerp_from = GRADIENT2_FROM;
-	ctl->lerp_to = GRADIENT2_TO;
+	ctl->lerp_from = LERP2_FROM;
+	ctl->lerp_to = LERP2_TO;
 	initialize_julia(ctl);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 10:24:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:53:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ double	screen_to_cartesian_x(t_fractol *ctl, int x)
 
 	cartesian = x - ctl->buffer->half_width;
 	cartesian /= ctl->zoom;
-	cartesian += ctl->x_offset / NAVIGATION_FACTOR;
+	cartesian += ctl->x_offset;
 	return (cartesian);
 }
 
@@ -28,6 +28,6 @@ double	screen_to_cartesian_y(t_fractol *ctl, int y)
 
 	cartesian = y - ctl->buffer->half_height;
 	cartesian /= ctl->zoom;
-	cartesian += ctl->y_offset / NAVIGATION_FACTOR;
+	cartesian += ctl->y_offset;
 	return (cartesian);
 }

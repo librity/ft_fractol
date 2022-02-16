@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 02:21:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 09:33:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@
 # define Y_OFFSET 0
 # define LERP_STEPS 256
 
+# define DYE1 0x00FA1588
+# define DYE2 0x00f9cb9c
+# define DYE3 0x0000ff7f
+
 # define GRADIENT1_FROM 0x00000000
 # define GRADIENT1_TO 0x00FFFFFF
 # define GRADIENT2_FROM 0x00f9cb9c
@@ -67,7 +71,7 @@
 # define PLUS_KEY 61
 # define MINUS_KEY 45
 
-# define ZOOM_STEP 50
+# define ZOOM_STEP 1000
 
 /******************************************************************************\
  * ZOOM STEP
@@ -88,7 +92,7 @@
 # define RIGHT_KEY 65363
 
 # define NAVIGATION_FACTOR 100
-# define NAVIGATION_STEP 10
+# define NAVIGATION_STEP 1
 
 /******************************************************************************\
  * NAVIGATION STEP

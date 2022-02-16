@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 02:09:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 09:14:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_fractol
 	void			*window;
 	t_img_buffer	buffer;
 	int				max_iterations;
+	int				dye;
 	int				lerp_steps;
 	int				lerp_from;
 	int				lerp_to;
@@ -82,6 +83,7 @@ int					get_t(int color);
 int					get_r(int color);
 int					get_g(int color);
 int					get_b(int color);
+int					zero_transparency(int color);
 
 int					trgb_chars_to_int(unsigned char transparency,
 						unsigned char red,
@@ -93,15 +95,14 @@ int					trgb_to_int(t_trgb color);
 t_trgb				int_to_trgb(int color);
 t_bitmap_pixel		int_to_rgb(int color);
 
-int					zero_transparency(int color);
-
 t_trgb				trgb_color_lerp_wsteps(t_trgb from, t_trgb to, int steps,
 						int x);
 int					int_color_lerp_wsteps(int from, int to, int steps, int x);
 t_trgb				trgb_color_lerp(t_trgb from, t_trgb to, int x);
 int					int_color_lerp(int from, int to, int x);
 
-int					resolve_color(t_fractol *ctl, double iterations);
+int					quick_color(t_fractol *ctl, double iterations);
+int					lerp_color(t_fractol *ctl, double iterations);
 
 bool				out_of_bounds(t_img_buffer *buffer, int x, int y);
 void				draw_to_buffer(t_img_buffer *buffer, int x, int y,

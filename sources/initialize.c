@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:39:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 00:54:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 09:24:25 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	initialize_params(t_fractol *ctl)
 	ctl->zoom = ZOOM;
 	ctl->x_offset = X_OFFSET;
 	ctl->y_offset = Y_OFFSET;
+	ctl->dye = DYE3;
 	ctl->lerp_steps = LERP_STEPS;
 	ctl->lerp_from = GRADIENT1_FROM;
 	ctl->lerp_to = GRADIENT1_TO;

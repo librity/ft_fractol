@@ -74,11 +74,23 @@ $ make example
 ## 🎨 Gallery <a name="gallery"></a>
 
 <p align="center">
-  <img src="gallery/julia_1.png" />
+  <img src="gallery/julia_lerp_hotline_miami_1.png" />
 </p>
 
 <p align="center">
-  <img src="gallery/julia_2.png" />
+  <img src="gallery/julia_lerp_hotline_miami_2.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/mandelbrot_lerp_malayan_coral_5.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/mandelbrot_lerp_malayan_coral_16.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/mandelbrot_lerp_malayan_coral_24.png" />
 </p>
 
 [and much, much more...](https://github.com/librity/ft_fractol/tree/main/gallery)

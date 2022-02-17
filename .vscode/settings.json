@@ -25,6 +25,7 @@
     "tuple": "c",
     "type_traits": "c",
     "utility": "c",
-    "complex": "c"
+    "complex": "c",
+    "ft_libbmp.h": "c"
   }
 }

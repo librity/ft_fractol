@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   mlx_buffer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 10:57:48 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 16:44:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:43:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-bool	out_of_bounds(t_img_buffer *buffer, int x, int y)
+static bool	out_of_bounds(t_img_buffer *buffer, int x, int y)
 {
 	if (x < 0)
 		return (true);
@@ -25,14 +25,27 @@ bool	out_of_bounds(t_img_buffer *buffer, int x, int y)
 	return (false);
 }
 
+static int	get_index(t_img_buffer *buffer, int x, int y)
+{
+	return (y * buffer->line_length + x * buffer->bits_per_pixel / 8);
+}
+
 void	draw_to_buffer(t_img_buffer *buffer, int x, int y, int color)
 {
-	int	index;
-	int	*pxl_color;
+	int	*pixel_color;
 
 	if (out_of_bounds(buffer, x, y))
 		return ;
-	index = y * buffer->line_length + x * buffer->bits_per_pixel / 8;
-	pxl_color = (int *)&buffer->data[index];
-	*pxl_color = color;
+	pixel_color = (int *)&buffer->data[get_index(buffer, x, y)];
+	*pixel_color = color;
+}
+
+int	get_buffer_pixel(t_img_buffer *buffer, int x, int y)
+{
+	int	*pixel_color;
+
+	if (out_of_bounds(buffer, x, y))
+		return (BLACK);
+	pixel_color = (int *)&buffer->data[get_index(buffer, x, y)];
+	return (*pixel_color);
 }

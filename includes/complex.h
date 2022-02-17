@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:13:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 14:53:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:10:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,11 @@ t_complex		squared(t_complex cmplx);
 t_complex		plus(t_complex a, t_complex b);
 t_complex		times(t_complex a, t_complex b);
 
-t_fractal		mandelbrot(t_complex number,
-					int max_iterations,
-					double infinity);
-t_fractal		quick_mandelbrot(t_complex number,
-					int max_iterations,
+t_fractal		mandelbrot(t_complex number, int max_iterations,
 					double infinity);
 
-t_fractal		julia(t_complex number, t_complex factor, int max_iterations,
+t_fractal		julia(t_complex number, t_complex factor,
+					int max_iterations,
 					double infinity);
-t_fractal		quick_julia(t_complex number, t_complex factor,
-					int max_iterations, double infinity);
 
 #endif

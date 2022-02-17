@@ -6,13 +6,14 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 17:05:11 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:13:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_fractal	mandelbrot(t_complex number, int max_iterations, double infinity)
+static t_fractal	slow(t_complex number, int max_iterations,
+		double infinity)
 {
 	t_complex	current;
 	int			iteration;
@@ -30,7 +31,7 @@ t_fractal	mandelbrot(t_complex number, int max_iterations, double infinity)
 	return ((t_fractal){false, iteration});
 }
 
-t_fractal	quick_mandelbrot(t_complex number, int max_iterations,
+static t_fractal	quick(t_complex number, int max_iterations,
 		double infinity)
 {
 	t_complex	current;
@@ -51,4 +52,11 @@ t_fractal	quick_mandelbrot(t_complex number, int max_iterations,
 		iteration++;
 	}
 	return ((t_fractal){false, iteration});
+}
+
+t_fractal	mandelbrot(t_complex number, int max_iterations, double infinity)
+{
+	if (QUICK_FRACTAL)
+		return (quick(number, max_iterations, infinity));
+	return (slow(number, max_iterations, infinity));
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 13:34:45 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:58:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int					int_color_lerp_wsteps(int from, int to, int steps, int x);
 t_trgb				trgb_color_lerp(t_trgb from, t_trgb to, int x);
 int					int_color_lerp(int from, int to, int x);
 
+void				switch_color_mode(t_fractol *ctl);
 int					render_color(t_fractol *ctl, double iterations);
 int					escape_time_color(t_fractol *ctl, double iterations);
 int					lerp_color(t_fractol *ctl, double iterations);
@@ -114,9 +115,9 @@ int					bernstein_color(double iterations);
 void				shift_colors_up(t_fractol *ctl);
 void				shift_colors_down(t_fractol *ctl);
 
-bool				out_of_bounds(t_img_buffer *buffer, int x, int y);
 void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 						int color);
+int					get_buffer_pixel(t_img_buffer *buffer, int x, int y);
 
 int					handle_keypress(int keycode, t_fractol *ctl);
 
@@ -136,6 +137,7 @@ void				log_endl(char *message);
 void				log_keycode(int keycode);
 void				log_zoom(t_fractol *ctl);
 void				log_position(t_fractol *ctl);
+void				log_color_code(t_fractol *ctl);
 
 double				screen_to_cartesian_x(t_fractol *ctl, int x);
 double				screen_to_cartesian_y(t_fractol *ctl, int y);
@@ -143,5 +145,7 @@ double				screen_to_cartesian_y(t_fractol *ctl, int y);
 void				render_fractal(t_fractol *ctl);
 void				render_mandelbrot(t_fractol *ctl);
 void				render_julia(t_fractol *ctl);
+
+void				save_to_bitmap(t_fractol *ctl);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 13:43:04 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:51:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef enum e_fractal_code
 
 # define MAX_ITERATIONS 50
 # define DIVERSION_LIMIT 4
+# define QUICK_FRACTAL 1
 
 /******************************************************************************\
  * QUIT
@@ -86,7 +87,6 @@ typedef enum e_fractal_code
 \******************************************************************************/
 
 # define S_KEY 115
-# define B_KEY 98
 
 /******************************************************************************\
  *
@@ -103,18 +103,25 @@ typedef enum e_fractal_code
 # define SEMICOLON_KEY 59
 
 /******************************************************************************\
- * COLOR SHIFT
+ * COLOR MODE
 \******************************************************************************/
 
-# define L_KEY 108
-# define PERIOD_KEY 46
+# define C_KEY 99
 
 typedef enum e_color_code
 {
 	ESCAPE_TIME_CODE = 0,
 	LERP_CODE,
-	BERNSTEIN_CODE
+	BERNSTEIN_CODE,
 }	t_color_code;
+# define COLOR_MODES 3
+
+/******************************************************************************\
+ * COLOR SHIFT
+\******************************************************************************/
+
+# define L_KEY 108
+# define PERIOD_KEY 46
 
 # define DYE_SHIFT 0x00F00000
 # define LERP_SHIFT 0x00F00000
@@ -122,6 +129,12 @@ typedef enum e_color_code
 /******************************************************************************\
  * COLORS
 \******************************************************************************/
+
+# define BLACK 0x00000000
+# define WHITE 0x00FFFFFF
+# define RED 0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
 
 # define T_MASK 0xFF000000
 # define R_MASK 0x00FF0000
@@ -160,5 +173,7 @@ typedef enum e_color_code
 
 # define MBT_MSG " => Rendering Mandelbrot set..."
 # define JULIA_MSG " => Rendering Julia set..."
+
+# define BM_MSG " => Saving viewport to bitmap file..."
 
 #endif

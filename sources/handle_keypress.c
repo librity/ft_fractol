@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_input.c                                        :+:      :+:    :+:   */
+/*   handle_keypress.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 13:43:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:59:54 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	handle_keypress(int keycode, t_fractol *ctl)
 	handle_zoom(keycode, ctl);
 	handle_navigation(keycode, ctl);
 	handle_color_shift(keycode, ctl);
+	if (keycode == C_KEY)
+		switch_color_mode(ctl);
 	if (keycode == S_KEY)
 		save_to_bitmap(ctl);
 	log_keycode(keycode);

@@ -6,11 +6,18 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 13:37:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:57:39 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
+
+void	switch_color_mode(t_fractol *ctl)
+{
+	ctl->color_code = (ctl->color_code + 1) % COLOR_MODES;
+	log_color_code(ctl);
+	render_fractal(ctl);
+}
 
 int	render_color(t_fractol *ctl, double iterations)
 {

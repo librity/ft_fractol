@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   log 2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 15:39:11 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 15:53:12 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/16 00:25:05 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/17 16:02:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int	main(void)
+void	log_color_code(t_fractol *ctl)
 {
-	t_fractol		ctl;
-	t_img_buffer	buffer;
-
-	ctl.buffer = &buffer;
-	log_endl(WELCOME_MSG);
-	initialize(&ctl);
-	mlx_loop(ctl.mlx);
-	return (0);
+	if (VERBOSE)
+		ft_printf(" => Color code: %i\n", ctl->color_code);
 }

@@ -26,6 +26,9 @@
     "type_traits": "c",
     "utility": "c",
     "complex": "c",
-    "ft_libbmp.h": "c"
+    "ft_libbmp.h": "c",
+    "functional": "c",
+    "memory": "c",
+    "sstream": "c"
   }
 }

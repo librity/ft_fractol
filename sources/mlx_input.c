@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 17:29:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:43:31 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	handle_close(int keycode, t_fractol *ctl)
 
 static void	handle_zoom(int keycode, t_fractol *ctl)
 {
-	if (keycode == PLUS_KEY)
+	if (keycode == EQUALS_KEY)
 		zoom_in(ctl);
 	if (keycode == MINUS_KEY)
 		zoom_out(ctl);
@@ -54,6 +54,8 @@ int	handle_keypress(int keycode, t_fractol *ctl)
 	handle_zoom(keycode, ctl);
 	handle_navigation(keycode, ctl);
 	handle_color_shift(keycode, ctl);
+	if (keycode == S_KEY)
+		save_to_bitmap(ctl);
 	log_keycode(keycode);
 	return (0);
 }

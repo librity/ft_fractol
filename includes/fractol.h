@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 22:32:30 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:34:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_fractol
 	double			infinity;
 	t_complex		julia_factor;
 
+	int				color_code;
 	double			zoom;
 	double			scale_factor;
 	double			x_offset;
@@ -105,6 +106,7 @@ int					int_color_lerp_wsteps(int from, int to, int steps, int x);
 t_trgb				trgb_color_lerp(t_trgb from, t_trgb to, int x);
 int					int_color_lerp(int from, int to, int x);
 
+int					render_color(t_fractol *ctl, double iterations);
 int					escape_time_color(t_fractol *ctl, double iterations);
 int					lerp_color(t_fractol *ctl, double iterations);
 int					bernstein_color(double iterations);

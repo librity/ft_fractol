@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:39:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 22:26:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:40:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ static void	initialize_julia(t_fractol *ctl)
 
 static void	initialize_colors(t_fractol *ctl)
 {
+	ctl->color_code = ESCAPE_TIME_CODE;
 	ctl->dye = DYE4;
 	ctl->lerp_steps = LERP_STEPS;
-	ctl->lerp_from = LERP2_FROM;
-	ctl->lerp_to = LERP2_TO;
+	ctl->lerp_from = LERP3_FROM;
+	ctl->lerp_to = LERP3_TO;
 	if (ctl->lerp_from > ctl->lerp_to)
 		ft_swap(&ctl->lerp_from, &ctl->lerp_to);
 }

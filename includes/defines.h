@@ -6,14 +6,14 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 22:37:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:43:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define VERBOSE 0
+# define VERBOSE 1
 
 /******************************************************************************\
  * WINDOW
@@ -21,15 +21,18 @@
 
 # define WINDOW_NAME "lpaulo-m's fract-ol"
 
-# define WINDOW_WIDTH 1000
+# define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 500
 
 /******************************************************************************\
  * FRACTALS
 \******************************************************************************/
 
-# define MANDELBROT_CODE 0
-# define JULIA_CODE 1
+typedef enum e_fractal_code
+{
+	MANDELBROT_CODE = 0,
+	JULIA_CODE
+}	t_fractal_code;
 
 # define MAX_ITERATIONS 50
 # define DIVERSION_LIMIT 4
@@ -45,7 +48,7 @@
  * ZOOM
 \******************************************************************************/
 
-# define PLUS_KEY 61
+# define EQUALS_KEY 61
 # define MINUS_KEY 45
 
 # define ZOOM 200
@@ -79,6 +82,13 @@
 # define G_KEY 103
 
 /******************************************************************************\
+ * SAVE TO BITMAP
+\******************************************************************************/
+
+# define S_KEY 115
+# define B_KEY 98
+
+/******************************************************************************\
  *
 \******************************************************************************/
 
@@ -98,6 +108,13 @@
 
 # define L_KEY 108
 # define PERIOD_KEY 46
+
+typedef enum e_color_code
+{
+	ESCAPE_TIME_CODE = 0,
+	LERP_CODE,
+	BERNSTEIN_CODE
+}	t_color_code;
 
 # define DYE_SHIFT 0x00F00000
 # define LERP_SHIFT 0x00F00000
@@ -123,6 +140,10 @@
 # define LERP1_TO 0x00FFFFFF
 # define LERP2_FROM 0x00f9cb9c
 # define LERP2_TO 0x0000ff7f
+# define LERP3_FROM 0x00F14F32
+# define LERP3_TO 0x0026A7E3
+# define LERP4_FROM 0x00F49E8E
+# define LERP4_TO 0x00515656
 
 /******************************************************************************\
  * MESSAGES

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_keypress.c                                  :+:      :+:    :+:   */
+/*   key_handlers_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 15:59:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:11:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-static void	handle_close(int keycode, t_fractol *ctl)
+void	handle_close(int keycode, t_fractol *ctl)
 {
 	if (keycode == ESC_KEY)
 		clean_and_exit(ctl);
@@ -20,7 +20,7 @@ static void	handle_close(int keycode, t_fractol *ctl)
 		clean_and_exit(ctl);
 }
 
-static void	handle_zoom(int keycode, t_fractol *ctl)
+void	handle_zoom(int keycode, t_fractol *ctl)
 {
 	if (keycode == EQUALS_KEY)
 		zoom_in(ctl);
@@ -28,7 +28,7 @@ static void	handle_zoom(int keycode, t_fractol *ctl)
 		zoom_out(ctl);
 }
 
-static void	handle_navigation(int keycode, t_fractol *ctl)
+void	handle_navigation(int keycode, t_fractol *ctl)
 {
 	if (keycode == UP_KEY)
 		move_up(ctl);
@@ -40,7 +40,7 @@ static void	handle_navigation(int keycode, t_fractol *ctl)
 		move_right(ctl);
 }
 
-static void	handle_color_shift(int keycode, t_fractol *ctl)
+void	handle_color_shift(int keycode, t_fractol *ctl)
 {
 	if (keycode == L_KEY)
 		shift_colors_up(ctl);
@@ -48,16 +48,8 @@ static void	handle_color_shift(int keycode, t_fractol *ctl)
 		shift_colors_down(ctl);
 }
 
-int	handle_keypress(int keycode, t_fractol *ctl)
+void	handle_color_mode(int keycode, t_fractol *ctl)
 {
-	handle_close(keycode, ctl);
-	handle_zoom(keycode, ctl);
-	handle_navigation(keycode, ctl);
-	handle_color_shift(keycode, ctl);
 	if (keycode == C_KEY)
 		switch_color_mode(ctl);
-	if (keycode == S_KEY)
-		save_to_bitmap(ctl);
-	log_keycode(keycode);
-	return (0);
 }

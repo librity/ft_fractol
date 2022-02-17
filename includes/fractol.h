@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 15:58:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:12:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,12 @@ void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 int					get_buffer_pixel(t_img_buffer *buffer, int x, int y);
 
 int					handle_keypress(int keycode, t_fractol *ctl);
+void				handle_close(int keycode, t_fractol *ctl);
+void				handle_zoom(int keycode, t_fractol *ctl);
+void				handle_navigation(int keycode, t_fractol *ctl);
+void				handle_color_shift(int keycode, t_fractol *ctl);
+void				handle_save_to_bitmap(int keycode, t_fractol *ctl);
+void				handle_color_mode(int keycode, t_fractol *ctl);
 
 int					handle_destroy(t_fractol *ctl);
 void				clean_and_exit(t_fractol *ctl);

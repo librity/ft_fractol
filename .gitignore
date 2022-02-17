@@ -54,5 +54,13 @@ dkms.conf
 # Log files
 *.log
 
-# NAME
+# Build
 fractol
+
+# Image files
+*.ppm
+*.bmp
+*.png
+!gallery/*.ppm
+!gallery/*.bmp
+!gallery/*.png

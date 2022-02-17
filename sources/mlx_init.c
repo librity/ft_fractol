@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:28:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 13:52:56 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:17:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	initialize_mlx_buffer(t_fractol *ctl)
 void	initialize_mlx_hooks(t_fractol *ctl)
 {
 	log_msg(HOOKS_MSG);
-	mlx_hook(ctl->window, KeyPress, KeyPressMask, handle_keypress, ctl);
 	mlx_hook(ctl->window, DestroyNotify, ButtonPressMask, handle_destroy, ctl);
+	mlx_hook(ctl->window, KeyPress, KeyPressMask, handle_keypress, ctl);
 	log_endl(SUCCESS_MSG);
 }

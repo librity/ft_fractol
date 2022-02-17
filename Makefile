@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/16 16:56:59 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/17 18:20:07 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,9 +64,6 @@ $(FRACTOL_ARCHIVE): initialize build_libft build_ft_libbmp $(FRACTOL_HEADER) $(O
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
 	$(CC_STRICT) -I $(INCLUDES_PATH) -c -o $@ $<
 
-required: $(NAME)
-	./$(NAME)
-
 clean:
 	$(REMOVE) $(OBJECTS)
 	$(REMOVE) $(FRACTOL_ARCHIVE)
@@ -79,6 +76,9 @@ re: fclean all
 initialize:
 	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
+
+required: re
+	./$(NAME)
 
 ################################################################################
 # BONUS

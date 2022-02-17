@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 16:59:58 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:23:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WINDOW_NAME "lpaulo-m's fract-ol"
 
-# define WINDOW_WIDTH 500
+# define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 500
 
 /******************************************************************************\
@@ -91,6 +91,20 @@ typedef enum e_fractal_code
 \******************************************************************************/
 
 # define S_KEY 115
+
+# define BM_SEPARATOR "_"
+# define BM_MBT "mbt_"
+# define BM_JULIA "julia_"
+# define BM_X "x_"
+# define BM_Y "y_"
+# define BM_ZOOM "zoom_"
+# define BM_ITERATIONS "iter_"
+# define BM_INFINITY "inf_"
+# define BM_COLOR_MODE "cmode_"
+# define BM_DYE "dye_"
+# define BM_LERP_FROM "lerpfr_"
+# define BM_LERP_TO "lerpto_"
+# define BM_EXTENSION ".bmp"
 
 /******************************************************************************\
  *
@@ -181,6 +195,6 @@ typedef enum e_color_code
 # define MIN_ITERATIONS_MSG " => Iterations must be greater than 0"
 # define MIN_INFINITY_MSG " => Infinity must be greater than 0"
 
-# define BM_MSG " => Saving viewport to bitmap file..."
+# define BM_MSG " => Saving viewport to bitmap file: "
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:58:19 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 02:07:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:31:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ int					ft_tolower(int c);
 \******************************************************************************/
 
 size_t				ft_strlen(const char *s);
+size_t				ft_strsize(const char *s);
+
 char				*ft_strcpy(char *dest, char *src);
 void				ft_strdel(char **delete_me);
 char				*ft_strnchr(const char *s, int c, unsigned int limit);
@@ -158,13 +160,8 @@ char				**ft_split(char const *s, char c);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strjoin_and_free(char *free_me,
-						char const *dont_free_me);
-char				*ft_strjoin_and_free_free(char *free_me, char *free_me_too);
-char				*ft_strjoin_and_del(char *delete_me,
-						char const *dont_delete_me);
-char				*ft_strjoin_and_del_del(char *delete_me,
-						char *delete_me_too);
+char				*ft_strjoin_free(char *free_me, char const *dont_free_me);
+char				*ft_strjoin_free_free(char *free_me, char *free_me_too);
 
 char				*ft_itoa(int n);
 unsigned int		ft_i_to_buffer(int n, char *buffer);

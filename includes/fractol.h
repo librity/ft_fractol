@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 17:40:56 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:10:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void				render_mandelbrot(t_fractol *ctl);
 void				render_julia(t_fractol *ctl);
 
 void				save_to_bitmap(t_fractol *ctl);
+char				*build_filename(t_fractol *ctl);
 
 void				clean_and_exit(t_fractol *ctl);
 void				die(void);

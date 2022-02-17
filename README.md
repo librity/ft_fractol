@@ -22,6 +22,7 @@
 - [About](#about)
 - [Checklist](#checklist)
 - [Getting Started](#getting_started)
+- [Controls](#controls)
 - [Gallery](#gallery)
 - [Notes](#notes)
 - [42 São Paulo](#ft_sp)
@@ -68,8 +69,21 @@ Clone the repo and build with `make`:
 ```bash
 $ git clone https://github.com/librity/ft_fractol.git
 $ cd ft_fractol
-$ make example
+$ make required
 ```
+
+This should open a new window with a beautiful fractal.
+
+## 🕹️ Controls <a name="controls"></a>
+
+- `Esc` or `q`: Exits program
+- `=` and `-`: Zoom in and out
+- `Arrow Keys`: Moves the fractal
+- `c`: Switches color mode
+- `l` and `.`: Shifts color bases up and down
+- `i` and `k`: Increases and decreases iterations
+- `t` and `g`: Increases and decreases infinity
+- `s`: Saves viewport to bitmap
 
 ## 🎨 Gallery <a name="gallery"></a>
 

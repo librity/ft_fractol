@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 16:52:04 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:40:56 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,15 @@
 # define FRACTOL_H
 
 # include <X11/Xlib.h>
+# include <colors.h>
 # include <complex.h>
 # include <defines.h>
-# include <ft_libbmp.h>
 # include <libft.h>
 # include <math.h>
 # include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-typedef struct s_trgb
-{
-	unsigned char	transparency;
-	unsigned char	blue;
-	unsigned char	green;
-	unsigned char	red;
-}					t_trgb;
 
 typedef struct s_img_buffer
 {
@@ -77,32 +69,6 @@ void				initialize_mlx(t_fractol *ctl);
 void				initialize_mlx_window(t_fractol *ctl);
 void				initialize_mlx_buffer(t_fractol *ctl);
 void				initialize_mlx_hooks(t_fractol *ctl);
-
-void				print_color(int color);
-void				inspect_color(int color);
-void				inspect_trgb(t_trgb trgb);
-
-int					get_t(int color);
-int					get_r(int color);
-int					get_g(int color);
-int					get_b(int color);
-int					zero_transparency(int color);
-
-int					trgb_chars_to_int(unsigned char transparency,
-						unsigned char red,
-						unsigned char green,
-						unsigned char blue);
-int					rgb_chars_to_int(unsigned char red, unsigned char green,
-						unsigned char blue);
-int					trgb_to_int(t_trgb color);
-t_trgb				int_to_trgb(int color);
-t_bitmap_pixel		int_to_rgb(int color);
-
-t_trgb				trgb_color_lerp_wsteps(t_trgb from, t_trgb to, int steps,
-						int x);
-int					int_color_lerp_wsteps(int from, int to, int steps, int x);
-t_trgb				trgb_color_lerp(t_trgb from, t_trgb to, int x);
-int					int_color_lerp(int from, int to, int x);
 
 void				switch_color_mode(t_fractol *ctl);
 int					render_color(t_fractol *ctl, double iterations);

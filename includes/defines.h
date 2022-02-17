@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 15:51:50 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:59:58 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ typedef enum e_fractal_code
 	JULIA_CODE
 }	t_fractal_code;
 
-# define MAX_ITERATIONS 50
-# define DIVERSION_LIMIT 4
 # define QUICK_FRACTAL 1
 
 /******************************************************************************\
@@ -75,12 +73,18 @@ typedef enum e_fractal_code
 # define I_KEY 105
 # define K_KEY 107
 
+# define MAX_ITERATIONS 51
+# define MAX_ITERATIONS_STEP 100
+
 /******************************************************************************\
  * INFINITY
 \******************************************************************************/
 
 # define T_KEY 116
 # define G_KEY 103
+
+# define MY_INFINITY 4
+# define INFINITY_STEP 10
 
 /******************************************************************************\
  * SAVE TO BITMAP
@@ -173,6 +177,9 @@ typedef enum e_color_code
 
 # define MBT_MSG " => Rendering Mandelbrot set..."
 # define JULIA_MSG " => Rendering Julia set..."
+
+# define MIN_ITERATIONS_MSG " => Iterations must be greater than 0"
+# define MIN_INFINITY_MSG " => Infinity must be greater than 0"
 
 # define BM_MSG " => Saving viewport to bitmap file..."
 

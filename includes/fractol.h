@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 16:12:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:52:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ typedef struct s_fractol
 	int				lerp_to;
 }					t_fractol;
 
-void				die(void);
-
 void				initialize_params(t_fractol *ctl);
 void				initialize(t_fractol *ctl);
 
@@ -119,16 +117,17 @@ void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
 						int color);
 int					get_buffer_pixel(t_img_buffer *buffer, int x, int y);
 
+int					handle_destroy(t_fractol *ctl);
 int					handle_keypress(int keycode, t_fractol *ctl);
+
 void				handle_close(int keycode, t_fractol *ctl);
 void				handle_zoom(int keycode, t_fractol *ctl);
 void				handle_navigation(int keycode, t_fractol *ctl);
 void				handle_color_shift(int keycode, t_fractol *ctl);
 void				handle_save_to_bitmap(int keycode, t_fractol *ctl);
 void				handle_color_mode(int keycode, t_fractol *ctl);
-
-int					handle_destroy(t_fractol *ctl);
-void				clean_and_exit(t_fractol *ctl);
+void				handle_max_iterations(int keycode, t_fractol *ctl);
+void				handle_infinity(int keycode, t_fractol *ctl);
 
 void				zoom_in(t_fractol *ctl);
 void				zoom_out(t_fractol *ctl);
@@ -138,12 +137,22 @@ void				move_down(t_fractol *ctl);
 void				move_left(t_fractol *ctl);
 void				move_right(t_fractol *ctl);
 
+void				increase_max_iterations(t_fractol *ctl);
+void				decrease_max_iterations(t_fractol *ctl);
+
+void				increase_infinity(t_fractol *ctl);
+void				decrease_infinity(t_fractol *ctl);
+
 void				log_msg(char *message);
 void				log_endl(char *message);
+
 void				log_keycode(int keycode);
 void				log_zoom(t_fractol *ctl);
 void				log_position(t_fractol *ctl);
+void				log_colors(t_fractol *ctl);
 void				log_color_code(t_fractol *ctl);
+void				log_max_iterations(t_fractol *ctl);
+void				log_infinity(t_fractol *ctl);
 
 double				screen_to_cartesian_x(t_fractol *ctl, int x);
 double				screen_to_cartesian_y(t_fractol *ctl, int y);
@@ -153,5 +162,8 @@ void				render_mandelbrot(t_fractol *ctl);
 void				render_julia(t_fractol *ctl);
 
 void				save_to_bitmap(t_fractol *ctl);
+
+void				clean_and_exit(t_fractol *ctl);
+void				die(void);
 
 #endif

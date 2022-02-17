@@ -6,29 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 15:57:39 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:28:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-void	switch_color_mode(t_fractol *ctl)
-{
-	ctl->color_code = (ctl->color_code + 1) % COLOR_MODES;
-	log_color_code(ctl);
-	render_fractal(ctl);
-}
-
-int	render_color(t_fractol *ctl, double iterations)
-{
-	if (ctl->color_code == ESCAPE_TIME_CODE)
-		return (escape_time_color(ctl, iterations));
-	if (ctl->color_code == LERP_CODE)
-		return (lerp_color(ctl, iterations));
-	if (ctl->color_code == BERNSTEIN_CODE)
-		return (bernstein_color(iterations));
-	return (escape_time_color(ctl, iterations));
-}
 
 int	escape_time_color(t_fractol *ctl, double iterations)
 {

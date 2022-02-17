@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 16:52:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 22:36:43 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	render_pixel(t_fractol *ctl, int x, int y)
 			complex(x_cartesian, y_cartesian),
 			ctl->max_iterations,
 			ctl->infinity);
-	color = quick_color(ctl, mbt_at_xy.iterations);
+	color = escape_time_color(ctl, mbt_at_xy.iterations);
 	draw_to_buffer(ctl->buffer, x, y, color);
 }
 

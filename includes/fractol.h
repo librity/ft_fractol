@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 17:53:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 22:32:30 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,10 @@ int					int_color_lerp_wsteps(int from, int to, int steps, int x);
 t_trgb				trgb_color_lerp(t_trgb from, t_trgb to, int x);
 int					int_color_lerp(int from, int to, int x);
 
-int					quick_color(t_fractol *ctl, double iterations);
+int					escape_time_color(t_fractol *ctl, double iterations);
 int					lerp_color(t_fractol *ctl, double iterations);
+int					bernstein_color(double iterations);
+
 void				shift_colors_up(t_fractol *ctl);
 void				shift_colors_down(t_fractol *ctl);
 

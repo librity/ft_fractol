@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 17:07:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 22:22:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	render_pixel(t_fractol *ctl, int x, int y)
 			ctl->julia_factor,
 			ctl->max_iterations,
 			ctl->infinity);
-	color = quick_color(ctl, mbt_at_xy.iterations);
+	color = escape_time_color(ctl, mbt_at_xy.iterations);
 	draw_to_buffer(ctl->buffer, x, y, color);
 }
 

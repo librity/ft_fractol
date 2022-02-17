@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 17:22:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/16 22:33:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-int	quick_color(t_fractol *ctl, double iterations)
+int	escape_time_color(t_fractol *ctl, double iterations)
 {
 	return (iterations * ctl->dye / ctl->max_iterations);
 }
@@ -27,23 +27,19 @@ int	lerp_color(t_fractol *ctl, double iterations)
 			ctl->max_iterations, 0, 1});
 	intensity = ft_map_d((t_map_d){sqrt(normalized_iterations), 0, 1, 0,
 			255.999});
-	color = int_color_lerp_wsteps(ctl->lerp_from, ctl->lerp_to,
-			ctl->lerp_steps, intensity);
+	color = int_color_lerp_wsteps(ctl->lerp_from, ctl->lerp_to, ctl->lerp_steps,
+			intensity);
 	return (color);
 }
 
-void	shift_colors_up(t_fractol *ctl)
+int	bernstein_color(double iterations)
 {
-	ctl->dye += DYE_SHIFT;
-	ctl->lerp_from += LERP_SHIFT;
-	ctl->lerp_to += LERP_SHIFT;
-	render_fractal(ctl);
-}
+	double	red;
+	double	green;
+	double	blue;
 
-void	shift_colors_down(t_fractol *ctl)
-{
-	ctl->dye -= DYE_SHIFT;
-	ctl->lerp_from -= LERP_SHIFT;
-	ctl->lerp_to -= LERP_SHIFT;
-	render_fractal(ctl);
+	red = 9 * (1 - iterations) * pow(iterations, 3) * 255;
+	green = 15 * pow((1 - iterations), 2) * pow(iterations, 2) * 255;
+	blue = 8.5 * pow((1 - iterations), 3) * iterations * 255;
+	return (rgb_chars_to_int(red, green, blue));
 }

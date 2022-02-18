@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:06:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:26:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	handle_zoom(int keycode, t_fractol *ctl)
 		zoom_out(ctl);
 }
 
-void	handle_mouse_zoom(int mousecode, t_fractol *ctl)
+void	handle_mouse_zoom(int mousecode, int x, int y, t_fractol *ctl)
 {
 	if (mousecode == MOUSE_WHEEL_UP)
-		zoom_in(ctl);
+		mouse_zoom_in(ctl, x, y);
 	if (mousecode == MOUSE_WHEEL_DOWN)
-		zoom_out(ctl);
+		mouse_zoom_out(ctl, x, y);
 }
 
 void	handle_navigation(int keycode, t_fractol *ctl)

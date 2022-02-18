@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:02:28 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:50:40 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef enum e_fractal_code
 # define X_OFFSET 0
 # define Y_OFFSET 0
 # define SCALE_FACTOR 0.1
+# define DEADZONE 50
 
 /******************************************************************************\
  * MAX ITERATIONS

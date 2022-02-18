@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zoom.c                                             :+:      :+:    :+:   */
+/*   mouse_zoom.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 00:14:27 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:18:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:48:20 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,34 @@
 static void	log_and_render(t_fractol *ctl)
 {
 	log_zoom(ctl);
+	log_position(ctl);
 	render_fractal(ctl);
 }
 
-void	zoom_in(t_fractol *ctl)
+static void	follow_mouse(t_fractol *ctl, int x, int y)
+{
+	if (x < ctl->buffer->half_width - DEADZONE)
+		ctl->x_offset -= ctl->scale_factor;
+	else if (x > ctl->buffer->half_width + DEADZONE)
+		ctl->x_offset += ctl->scale_factor;
+	if (y < ctl->buffer->half_height - DEADZONE)
+		ctl->y_offset -= ctl->scale_factor;
+	else if (y > ctl->buffer->half_height + DEADZONE)
+		ctl->y_offset += ctl->scale_factor;
+}
+
+void	mouse_zoom_in(t_fractol *ctl, int x, int y)
 {
 	ctl->scale_factor /= ZOOM_MAGNIFICATION;
 	ctl->zoom *= ZOOM_MAGNIFICATION;
+	follow_mouse(ctl, x, y);
 	log_and_render(ctl);
 }
 
-void	zoom_out(t_fractol *ctl)
+void	mouse_zoom_out(t_fractol *ctl, int x, int y)
 {
 	ctl->scale_factor *= ZOOM_MAGNIFICATION;
 	ctl->zoom /= ZOOM_MAGNIFICATION;
+	follow_mouse(ctl, x, y);
 	log_and_render(ctl);
 }

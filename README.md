@@ -109,6 +109,10 @@ This should open a new window with a beautiful fractal.
   <img src="gallery/mandelbrot_lerp_malayan_coral_24.png" />
 </p>
 
+<p align="center">
+  <img src="gallery/julia_x_-0.382581_y_-0.643019_zoom_914412203648.733276_iter_1751_inf_314.000000_cmode_1_lerpfr_-139024413_lerpto_-125743310_.png" />
+</p>
+
 [and much, much more...](https://github.com/librity/ft_fractol/tree/main/gallery)
 
 ## 📝 Notes <a name = "notes"></a>

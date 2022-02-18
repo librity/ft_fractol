@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 20:58:55 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:02:28 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ typedef enum e_fractal_code
 
 # define EQUALS_KEY 61
 # define MINUS_KEY 45
+
+# define MOUSE_WHEEL_UP 4
+# define MOUSE_WHEEL_DOWN 5
 
 # define ZOOM 200
 # define ZOOM_MAGNIFICATION 1.2

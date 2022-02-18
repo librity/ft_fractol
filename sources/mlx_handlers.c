@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 16:53:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:08:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,12 @@ int	handle_keypress(int keycode, t_fractol *ctl)
 	handle_color_mode(keycode, ctl);
 	handle_max_iterations(keycode, ctl);
 	handle_infinity(keycode, ctl);
+	return (0);
+}
+
+int	handle_mouse(int mousecode, int x, int y, t_fractol *ctl)
+{
+	log_mouse_event(mousecode, x, y);
+	handle_mouse_zoom(mousecode, ctl);
 	return (0);
 }

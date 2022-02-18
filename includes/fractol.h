@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 20:58:46 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:11:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ void				shift_colors_down(t_fractol *ctl);
 
 int					handle_destroy(t_fractol *ctl);
 int					handle_keypress(int keycode, t_fractol *ctl);
+int					handle_mouse(int mousecode, int x, int y, t_fractol *ctl);
 
 void				handle_close(int keycode, t_fractol *ctl);
 void				handle_zoom(int keycode, t_fractol *ctl);
+void				handle_mouse_zoom(int mousecode, t_fractol *ctl);
 void				handle_navigation(int keycode, t_fractol *ctl);
 void				handle_color_shift(int keycode, t_fractol *ctl);
 void				handle_save_to_bitmap(int keycode, t_fractol *ctl);
@@ -96,6 +98,7 @@ void				log_msg(char *message);
 void				log_endl(char *message);
 
 void				log_keycode(int keycode);
+void				log_mouse_event(int mousecode, int x, int y);
 void				log_zoom(t_fractol *ctl);
 void				log_position(t_fractol *ctl);
 void				log_colors(t_fractol *ctl);

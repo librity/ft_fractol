@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 16:28:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:03:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ int	bernstein_color(double iterations)
 	red = 9 * (1 - iterations) * pow(iterations, 3) * 255;
 	green = 15 * pow((1 - iterations), 2) * pow(iterations, 2) * 255;
 	blue = 8.5 * pow((1 - iterations), 3) * iterations * 255;
-	return (rgb_chars_to_int(red, green, blue));
+	return (bm_rgb_chars_to_int(red, green, blue));
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/15 17:26:37 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:03:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_color(int color)
 
 void	inspect_color(int color)
 {
-	inspect_trgb(int_to_trgb(color));
+	inspect_trgb(bm_int_to_trgb(color));
 }
 
 void	inspect_trgb(t_trgb trgb)

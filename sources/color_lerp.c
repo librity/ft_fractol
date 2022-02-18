@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 02:09:30 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:04:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	int_color_lerp_wsteps(int from, int to, int steps, int x)
 	int	result;
 
 	x = ft_clamp_i(x, 0, 256);
-	result = ft_lerp_wsteps_i(get_t(from), get_t(to), steps, x);
-	result += ft_lerp_wsteps_i(get_r(from), get_r(to), steps, x);
-	result += ft_lerp_wsteps_i(get_g(from), get_g(to), steps, x);
-	result += ft_lerp_wsteps_i(get_b(from), get_b(to), steps, x);
+	result = ft_lerp_wsteps_i(bm_get_t(from), bm_get_t(to), steps, x);
+	result += ft_lerp_wsteps_i(bm_get_r(from), bm_get_r(to), steps, x);
+	result += ft_lerp_wsteps_i(bm_get_g(from), bm_get_g(to), steps, x);
+	result += ft_lerp_wsteps_i(bm_get_b(from), bm_get_b(to), steps, x);
 	return (result);
 }
 
@@ -54,9 +54,9 @@ int	int_color_lerp(int from, int to, int x)
 	int	result;
 
 	x = ft_clamp_i(x, 0, 256);
-	result = ft_lerp_i(get_t(from), get_t(to), x);
-	result += ft_lerp_i(get_r(from), get_r(to), x);
-	result += ft_lerp_i(get_g(from), get_g(to), x);
-	result += ft_lerp_i(get_b(from), get_b(to), x);
+	result = ft_lerp_i(bm_get_t(from), bm_get_t(to), x);
+	result += ft_lerp_i(bm_get_r(from), bm_get_r(to), x);
+	result += ft_lerp_i(bm_get_g(from), bm_get_g(to), x);
+	result += ft_lerp_i(bm_get_b(from), bm_get_b(to), x);
 	return (result);
 }

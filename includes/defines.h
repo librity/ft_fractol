@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 19:23:45 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:58:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,17 +147,6 @@ typedef enum e_color_code
 /******************************************************************************\
  * COLORS
 \******************************************************************************/
-
-# define BLACK 0x00000000
-# define WHITE 0x00FFFFFF
-# define RED 0x00FF0000
-# define GREEN 0x0000FF00
-# define BLUE 0x000000FF
-
-# define T_MASK 0xFF000000
-# define R_MASK 0x00FF0000
-# define G_MASK 0x0000FF00
-# define B_MASK 0x000000FF
 
 # define DYE1 0x00FA1588
 # define DYE2 0x00f9cb9c

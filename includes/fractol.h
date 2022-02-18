@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 18:10:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:58:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,42 +24,29 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_img_buffer
-{
-	void			*img;
-	char			*data;
-	int				width;
-	int				height;
-	int				line_length;
-	int				bits_per_pixel;
-	int				endian;
-	int				half_width;
-	int				half_height;
-}					t_img_buffer;
-
 typedef struct s_fractol
 {
-	int				width;
-	int				height;
-	void			*mlx;
-	void			*window;
-	t_img_buffer	*buffer;
+	int			width;
+	int			height;
+	void		*mlx;
+	void		*window;
+	t_mlx_image	*buffer;
 
-	int				fractal_code;
-	int				max_iterations;
-	double			infinity;
-	t_complex		julia_factor;
+	int			fractal_code;
+	int			max_iterations;
+	double		infinity;
+	t_complex	julia_factor;
 
-	int				color_code;
-	double			zoom;
-	double			scale_factor;
-	double			x_offset;
-	double			y_offset;
+	int			color_code;
+	double		zoom;
+	double		scale_factor;
+	double		x_offset;
+	double		y_offset;
 
-	int				dye;
-	int				lerp_steps;
-	int				lerp_from;
-	int				lerp_to;
+	int			dye;
+	int			lerp_steps;
+	int			lerp_from;
+	int			lerp_to;
 }					t_fractol;
 
 void				initialize_params(t_fractol *ctl);
@@ -78,10 +65,6 @@ int					bernstein_color(double iterations);
 
 void				shift_colors_up(t_fractol *ctl);
 void				shift_colors_down(t_fractol *ctl);
-
-void				draw_to_buffer(t_img_buffer *buffer, int x, int y,
-						int color);
-int					get_buffer_pixel(t_img_buffer *buffer, int x, int y);
 
 int					handle_destroy(t_fractol *ctl);
 int					handle_keypress(int keycode, t_fractol *ctl);

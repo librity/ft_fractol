@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 23:01:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:08:41 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void				initialize_mlx_buffer(t_fractol *ctl);
 void				initialize_mlx_hooks(t_fractol *ctl);
 
 void				switch_color_mode(t_fractol *ctl);
-int					render_color(t_fractol *ctl, double iterations);
-int					escape_time_color(t_fractol *ctl, double iterations);
-int					lerp_color(t_fractol *ctl, double iterations);
-int					bernstein_color(double iterations);
+int					render_color(t_fractol *ctl, int iterations);
+int					escape_time_color(t_fractol *ctl, int iterations);
+int					lerp_color(t_fractol *ctl, int iterations);
+int					bernstein_color(t_fractol *ctl, int iterations);
 
 void				shift_colors_up(t_fractol *ctl);
 void				shift_colors_down(t_fractol *ctl);

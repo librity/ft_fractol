@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 16:28:42 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:09:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	switch_color_mode(t_fractol *ctl)
 	log_and_render(ctl);
 }
 
-int	render_color(t_fractol *ctl, double iterations)
+int	render_color(t_fractol *ctl, int iterations)
 {
 	if (ctl->color_code == ESCAPE_TIME_CODE)
 		return (escape_time_color(ctl, iterations));
 	if (ctl->color_code == LERP_CODE)
 		return (lerp_color(ctl, iterations));
 	if (ctl->color_code == BERNSTEIN_CODE)
-		return (bernstein_color(iterations));
+		return (bernstein_color(ctl, iterations));
 	return (escape_time_color(ctl, iterations));
 }

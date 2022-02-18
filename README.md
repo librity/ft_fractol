@@ -90,6 +90,18 @@ This should open a new window with a beautiful fractal.
 ## 🎨 Gallery <a name="gallery"></a>
 
 <p align="center">
+  <img src="gallery/mbt_x_0.000000_y_0.000000_zoom_414.719999_iter_451_inf_4.000000_cmode_2_.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/mbt_x_-0.105700_y_-0.925569_zoom_352745.176312_iter_551_inf_54.000000_cmode_2_.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/mbt_x_-0.105700_y_-0.925569_zoom_352745.176312_iter_151_inf_54.000000_cmode_2_.png" />
+</p>
+
+<p align="center">
   <img src="gallery/julia_lerp_hotline_miami_1.png" />
 </p>
 

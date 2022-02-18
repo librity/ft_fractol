@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 23:02:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:26:05 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WINDOW_NAME "lpaulo-m's fract-ol"
 
-# define WINDOW_WIDTH 1000
+# define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 500
 
 /******************************************************************************\
@@ -141,6 +141,10 @@ typedef enum e_color_code
 	BERNSTEIN_CODE,
 }	t_color_code;
 # define COLOR_MODES 3
+
+# define ESCAPE_TIME_MODE "Escape Time"
+# define LERP_MODE "Linear Interpolation"
+# define BERNSTEIN_MODE "Bernstein Polynomials"
 
 /******************************************************************************\
  * COLOR SHIFT

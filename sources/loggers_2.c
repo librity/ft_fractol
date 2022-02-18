@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 00:25:05 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:10:46 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:31:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,14 @@ void	log_colors(t_fractol *ctl)
 void	log_color_code(t_fractol *ctl)
 {
 	if (VERBOSE)
-		ft_printf(" => Color code: %i\n", ctl->color_code);
+	{
+		if (ctl->color_code == ESCAPE_TIME_CODE)
+			ft_printf(" => Color mode: %i, %s\n", ctl->color_code,
+				ESCAPE_TIME_MODE);
+		if (ctl->color_code == LERP_CODE)
+			ft_printf(" => Color mode: %i, %s\n", ctl->color_code, LERP_MODE);
+		if (ctl->color_code == BERNSTEIN_CODE)
+			ft_printf(" => Color mode: %i, %s\n", ctl->color_code,
+				BERNSTEIN_MODE);
+	}
 }

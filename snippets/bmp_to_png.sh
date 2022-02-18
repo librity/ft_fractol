@@ -3,3 +3,5 @@
 for i in *.bmp; do
 	convert $i "${i%.bmp}.png"
 done
+
+rm *.bmp

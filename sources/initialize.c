@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:39:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/18 08:49:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:04:25 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	initialize_params(t_fractol *ctl)
 {
 	ctl->width = WINDOW_WIDTH;
 	ctl->height = WINDOW_HEIGHT;
-	// ctl->fractal_code = MANDELBROT_CODE
-	ctl->fractal_code = JULIA_CODE;
+	ctl->fractal_code = MANDELBROT_CODE;
+	// ctl->fractal_code = JULIA_CODE;
 	ctl->max_iterations = MAX_ITERATIONS;
 	ctl->infinity = MY_INFINITY;
 	ctl->zoom = ZOOM;

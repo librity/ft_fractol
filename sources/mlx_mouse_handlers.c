@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_key_handlers_2.c                               :+:      :+:    :+:   */
+/*   mlx_mouse_handlers.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:54:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:02:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	handle_color_shift(int keycode, t_fractol *ctl)
+void	handle_mouse_zoom(int mousecode, int x, int y, t_fractol *ctl)
 {
-	if (keycode == L_KEY)
-		shift_colors_up(ctl);
-	if (keycode == PERIOD_KEY)
-		shift_colors_down(ctl);
+	if (mousecode == MOUSE_WHEEL_UP)
+		mouse_zoom_in(ctl, x, y);
+	if (mousecode == MOUSE_WHEEL_DOWN)
+		mouse_zoom_out(ctl, x, y);
 }
 
-void	handle_color_mode(int keycode, t_fractol *ctl)
+void	handle_warping(int mousecode, int x, int y, t_fractol *ctl)
 {
-	if (keycode == C_KEY)
-		switch_color_mode(ctl);
-}
-
-void	handle_save_to_bitmap(int keycode, t_fractol *ctl)
-{
-	if (keycode == S_KEY)
-		save_to_bitmap(ctl);
+	if (mousecode == MOUSE_LEFT_CLICK)
+		warp(ctl, x, y);
 }

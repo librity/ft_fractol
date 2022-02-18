@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_key_handlers_2.c                               :+:      :+:    :+:   */
+/*   warping.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:54:17 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/02/16 00:14:27 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/02/17 22:59:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	handle_color_shift(int keycode, t_fractol *ctl)
+static void	log_and_render(t_fractol *ctl)
 {
-	if (keycode == L_KEY)
-		shift_colors_up(ctl);
-	if (keycode == PERIOD_KEY)
-		shift_colors_down(ctl);
+	log_position(ctl);
+	render_fractal(ctl);
 }
 
-void	handle_color_mode(int keycode, t_fractol *ctl)
+void	warp(t_fractol *ctl, int x, int y)
 {
-	if (keycode == C_KEY)
-		switch_color_mode(ctl);
-}
-
-void	handle_save_to_bitmap(int keycode, t_fractol *ctl)
-{
-	if (keycode == S_KEY)
-		save_to_bitmap(ctl);
+	ctl->x_offset = screen_to_cartesian_x(ctl, x);
+	ctl->y_offset = screen_to_cartesian_y(ctl, y);
+	log_and_render(ctl);
 }

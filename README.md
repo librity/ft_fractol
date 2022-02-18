@@ -78,7 +78,9 @@ This should open a new window with a beautiful fractal.
 
 - `Esc` or `q`: Exits program
 - `=` and `-`: Zoom in and out
+- `Mouse Wheel`: Zoom in and out
 - `Arrow Keys`: Moves the fractal
+- `Mouse Left Click`: Warp to clicked pixel
 - `c`: Switches color mode
 - `l` and `.`: Shifts color bases up and down
 - `i` and `k`: Increases and decreases iterations

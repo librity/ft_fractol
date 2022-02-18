@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:17:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:17:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:00:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int	handle_mouse(int mousecode, int x, int y, t_fractol *ctl)
 {
 	log_mouse_event(mousecode, x, y);
 	handle_mouse_zoom(mousecode, x, y, ctl);
+	handle_warping(mousecode, x, y, ctl);
 	return (0);
 }

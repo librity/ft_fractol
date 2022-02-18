@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:50:40 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:02:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ typedef enum e_fractal_code
 # define DOWN_KEY 65364
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
+
+# define MOUSE_LEFT_CLICK 1
+# define MOUSE_MIDDLE_CLICK 2
+# define MOUSE_RIGHT_CLICK 3
 
 # define X_OFFSET 0
 # define Y_OFFSET 0

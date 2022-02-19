@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/18 17:18:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:36:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	lerp_color(t_fractol *ctl, int iterations)
 
 int	bernstein_color(t_fractol *ctl, int iterations)
 {
-	unsigned int	red;
-	unsigned int	green;
-	unsigned int	blue;
+	unsigned char	red;
+	unsigned char	green;
+	unsigned char	blue;
 	double			ni;
 
 	ni = ft_map_d((t_map_d){iterations, 0, ctl->max_iterations, 0, 1});
 	red = 9.0 * (1.0 - ni) * pow(ni, 3.0) * 255.0;
 	green = 15.0 * pow((1.0 - ni), 2.0) * pow(ni, 2.0) * 255.0;
 	blue = 8.5 * pow((1.0 - ni), 3.0) * ni * 255.0;
-	return (0x00000000 | red << 16 | green << 8 | blue);
+	return (bm_rgb_chars_to_int(red, green, blue));
 }

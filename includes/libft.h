@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:58:19 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 18:31:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/19 00:36:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define LIBFT_H
 
 # include <limits.h>
+# include <stdarg.h>
 # include <stdbool.h>
 # include <stdlib.h>
 # include <sys/resource.h>
 # include <unistd.h>
-# include <stdarg.h>
 
 /******************************************************************************\
  * BOOLEANS
@@ -33,6 +33,8 @@ bool				unless(bool condition);
 void				ft_print_bits(int x);
 void				ft_print_bits_i(int x);
 void				ft_print_bits_ui(unsigned int x);
+void				ft_print_bits_ul(unsigned long x);
+void				ft_print_bits_ull(unsigned long long x);
 
 /******************************************************************************\
  * MATH
@@ -67,11 +69,11 @@ int					ft_factorial(int number);
 
 typedef struct s_map_i
 {
-	int	mapped;
-	int	start1;
-	int	stop1;
-	int	start2;
-	int	stop2;
+	int				mapped;
+	int				start1;
+	int				stop1;
+	int				start2;
+	int				stop2;
 }					t_map_i;
 
 int					ft_map_clamped_i(t_map_i args);
@@ -79,11 +81,11 @@ int					ft_map_i(t_map_i args);
 
 typedef struct s_map_d
 {
-	double	mapped;
-	double	start1;
-	double	stop1;
-	double	start2;
-	double	stop2;
+	double			mapped;
+	double			start1;
+	double			stop1;
+	double			start2;
+	double			stop2;
 }					t_map_d;
 
 double				ft_map_d(t_map_d args);
@@ -201,33 +203,46 @@ void				ft_putendl(char *s);
 
 bool				ft_is_valid_base(const char *base,
 						const size_t base_length);
-void				ft_aux_handle_minus_sign_li(long int *number_pointer);
+void				ft_aux_handle_minus_sign_l(long *number_pointer);
+void				ft_aux_handle_minus_sign_ll(long long *number_pointer);
+void				ft_aux_handle_minus_sign_d(double *number_pointer);
 
 void				ft_putnbr(int n);
 void				ft_putnbr_i(int number);
 void				ft_putnbr_ui(unsigned int number);
+void				ft_putnbr_l(long number);
 void				ft_putnbr_ul(unsigned long number);
-void				ft_putnbr_li(long int number);
+void				ft_putnbr_ll(long long number);
+void				ft_putnbr_ull(unsigned long long number);
 
 void				ft_putnbr_base(int number, char *base);
 void				ft_putnbr_base_i(int number, char *base);
 void				ft_putnbr_base_ui(unsigned int number, const char *base);
+void				ft_putnbr_base_l(long number, const char *base);
 void				ft_putnbr_base_ul(unsigned long number, const char *base);
-void				ft_putnbr_base_li(long int number, const char *base);
+void				ft_putnbr_base_ll(long long number, const char *base);
+void				ft_putnbr_base_ull(unsigned long long number,
+						const char *base);
+
+void				ft_putnbr_precise_d(double n, int precision);
+void				ft_putnbr_d(double number);
 
 void				ft_puthex_uppercase(unsigned int number);
 void				ft_puthex_downcase(unsigned int number);
 
 unsigned int		ft_count_digits(int number);
 unsigned int		ft_count_digits_i(int number);
-unsigned int		ft_count_digits_i(int number);
 unsigned int		ft_count_digits_ui(unsigned int number);
 unsigned int		ft_count_digits_ul(unsigned long number);
+unsigned int		ft_count_digits_ull(unsigned long long number);
 
 unsigned int		ft_count_digits_hex_ui(unsigned int number);
 unsigned int		ft_count_digits_hex_ul(unsigned long number);
 
 unsigned int		ft_count_chars_i(int number);
+
+unsigned int		ft_count_chars_d(double number, int precision);
+unsigned int		ft_count_digits_d(double number, int precision);
 
 char				*ft_skip_digits(char *digits);
 char				*ft_skip_number(char *digits);
@@ -310,12 +325,34 @@ typedef struct s_parse_wildcards
 	size_t			parser;
 }					t_parse_wildcards;
 
+int					ft_printf(const char *format, ...);
+void				pf_vprintf(t_printf *print_control);
+
+void				pf_initialize_print_control(t_printf *print_control,
+						const char *format);
+void				pf_initialize_flag_control(t_printf *print_control,
+						t_parse_flags *flag_control);
+void				pf_initialize_wildcard_control(t_printf *print_control,
+						t_parse_flags *flag_control,
+						t_parse_wildcards *wildcard_control);
+
+void				pf_parse_flags(t_printf *print_control,
+						t_parse_flags *control);
+void				pf_parse_wildcars(t_printf *print_control,
+						t_parse_flags *flag_control);
+
+bool				pf_handled_no_conversion(t_printf *print_control);
+
 typedef struct s_handle_percent
 {
 	unsigned char	print_me;
 	int				char_count;
 	t_parse_flags	flag_control;
 }					t_handle_percent;
+bool				pf_handled_percent(t_printf *print_control);
+void				pf_print_percent(t_printf *print_control,
+						t_handle_percent *control,
+						t_parse_flags *flag_control);
 
 typedef struct s_handle_c
 {
@@ -323,6 +360,10 @@ typedef struct s_handle_c
 	int				char_count;
 	t_parse_flags	flag_control;
 }					t_handle_c;
+bool				pf_handled_s(t_printf *print_control);
+void				pf_print_c(t_printf *print_control,
+						t_handle_c *control,
+						t_parse_flags *flag_control);
 
 typedef struct s_handle_s
 {
@@ -332,16 +373,24 @@ typedef struct s_handle_s
 	bool			is_null;
 	t_parse_flags	flag_control;
 }					t_handle_s;
+bool				pf_handled_c(t_printf *print_control);
+void				pf_print_s(t_printf *print_control,
+						t_handle_s *control,
+						t_parse_flags *flag_control);
 
 typedef struct s_handle_int
 {
-	long int		print_me;
+	long			print_me;
 	int				digit_count;
 	int				char_count;
 	bool			is_negative;
 	bool			is_zero_with_zero_precision;
 	t_parse_flags	flag_control;
 }					t_handle_int;
+bool				pf_handled_int(t_printf *print_control);
+void				pf_print_int(t_printf *print_control,
+						t_handle_int *control,
+						t_parse_flags *flag_control);
 
 typedef struct s_handle_u
 {
@@ -350,6 +399,10 @@ typedef struct s_handle_u
 	bool			is_zero_with_zero_precision;
 	t_parse_flags	flag_control;
 }					t_handle_u;
+bool				pf_handled_u(t_printf *print_control);
+void				pf_print_u(t_printf *print_control,
+						t_handle_u *control,
+						t_parse_flags *flag_control);
 
 typedef struct s_handle_p
 {
@@ -358,6 +411,10 @@ typedef struct s_handle_p
 	bool			is_zero_with_zero_precision;
 	t_parse_flags	flag_control;
 }					t_handle_p;
+bool				pf_handled_p(t_printf *print_control);
+void				pf_printf_p(t_printf *print_control,
+						t_handle_p *control,
+						t_parse_flags *flag_control);
 
 typedef struct s_handle_hex
 {
@@ -367,52 +424,23 @@ typedef struct s_handle_hex
 	bool			is_zero_with_zero_precision;
 	t_parse_flags	flag_control;
 }					t_handle_hex;
-
-int					ft_printf(const char *format, ...);
-void				ft_vprintf(t_printf *print_control);
-
-void				initialize_print_control(t_printf *print_control,
-						const char *format);
-void				initialize_flag_control(t_printf *print_control,
-						t_parse_flags *flag_control);
-void				initialize_wildcard_control(t_printf *print_control,
-						t_parse_flags *flag_control,
-						t_parse_wildcards *wildcard_control);
-
-bool				handled_no_conversion(t_printf *print_control);
-bool				handled_percent(t_printf *print_control);
-bool				handled_s(t_printf *print_control);
-bool				handled_c(t_printf *print_control);
-bool				handled_int(t_printf *print_control);
-bool				handled_u(t_printf *print_control);
-bool				handled_p(t_printf *print_control);
-bool				handled_hex(t_printf *print_control);
-
-void				parse_flags(t_printf *print_control,
-						t_parse_flags *control);
-void				parse_wildcars(t_printf *print_control,
-						t_parse_flags *flag_control);
-
-void				printf_percent(t_printf *print_control,
-						t_handle_percent *control,
-						t_parse_flags *flag_control);
-void				printf_c(t_printf *print_control,
-						t_handle_c *control,
-						t_parse_flags *flag_control);
-void				printf_s(t_printf *print_control,
-						t_handle_s *control,
-						t_parse_flags *flag_control);
-void				printf_int(t_printf *print_control,
-						t_handle_int *control,
-						t_parse_flags *flag_control);
-void				printf_u(t_printf *print_control,
-						t_handle_u *control,
-						t_parse_flags *flag_control);
-void				printf_p(t_printf *print_control,
-						t_handle_p *control,
-						t_parse_flags *flag_control);
-void				printf_hex(t_printf *print_control,
+bool				pf_handled_hex(t_printf *print_control);
+void				pf_printf_hex(t_printf *print_control,
 						t_handle_hex *control,
+						t_parse_flags *flag_control);
+
+typedef struct s_handle_float
+{
+	double			print_me;
+	int				digit_count;
+	int				char_count;
+	bool			is_negative;
+	bool			is_zero_with_zero_precision;
+	t_parse_flags	flag_control;
+}					t_handle_float;
+bool				pf_handled_f(t_printf *print_control);
+void				pf_print_f(t_printf *print_control,
+						t_handle_float *control,
 						t_parse_flags *flag_control);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 00:25:05 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 22:10:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/19 00:42:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	log_mouse_event(int mousecode, int x, int y)
 void	log_zoom(t_fractol *ctl)
 {
 	if (VERBOSE)
-		ft_printf(" => Zoom: %i\n", (int)ctl->zoom);
+		ft_printf(" => Zoom: %f\n", ctl->zoom);
 }
 
 void	log_position(t_fractol *ctl)
 {
 	if (VERBOSE)
-		ft_printf(" => Fractal position: X=%i, Y=%i\n", (int)ctl->x_offset,
-			(int)ctl->y_offset);
+		ft_printf(" => Fractal position: X=%f, Y=%f\n", ctl->x_offset,
+			ctl->y_offset);
 }
 
 void	log_max_iterations(t_fractol *ctl)

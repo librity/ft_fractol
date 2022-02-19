@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/19 01:07:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:40:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ typedef enum e_fractal_code
 # define BM_SEPARATOR "_"
 # define BM_MBT "mbt_"
 # define BM_JULIA "julia_"
+# define BM_JULIA_REAL "real_"
+# define BM_JULIA_IMAGINARY "imgry_"
 # define BM_X "x_"
 # define BM_Y "y_"
 # define BM_ZOOM "zoom_"

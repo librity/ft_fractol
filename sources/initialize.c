@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:39:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/18 17:04:25 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:38:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	initialize_julia(t_fractol *ctl)
 	// ctl->julia_factor = complex(1.0, 0.0);
 	// ctl->julia_factor = complex(2.0, 0.0);
 	// ctl->julia_factor = complex(3.0, 0.0);
+	// ctl->julia_factor = complex(1.0, 1.0);
 	// Dendrite fractal
 	// ctl->julia_factor = complex(0.0, 1.0);
 	// Douady's rabbit fractal

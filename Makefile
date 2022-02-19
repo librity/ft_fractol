@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/18 09:15:18 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/19 10:22:37 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,8 +77,11 @@ initialize:
 	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
 
-required: re
-	./$(NAME)
+mbt: re
+	./$(NAME) mandelbrot
+
+julia: re
+	./$(NAME) julia -0.391 -0.587
 
 ################################################################################
 # BONUS

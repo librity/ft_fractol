@@ -6,20 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 13:43:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 19:07:25 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/19 10:19:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
-
-static char	*resolve_fractal(t_fractol *ctl)
-{
-	if (ctl->fractal_code == MANDELBROT_CODE)
-		return (ft_strdup(BM_MBT));
-	if (ctl->fractal_code == JULIA_CODE)
-		return (ft_strdup(BM_JULIA));
-	return (ft_strdup(""));
-}
 
 static char	*cat_double(char *filename, const char *label, double number)
 {
@@ -35,6 +26,23 @@ static char	*cat_int(char *filename, const char *label, int number)
 	filename = ft_strjoin_free_free(filename, ft_itoa(number));
 	filename = ft_strjoin_free(filename, BM_SEPARATOR);
 	return (filename);
+}
+
+static char	*resolve_fractal(t_fractol *ctl)
+{
+	char	*filename;
+
+	if (ctl->fractal_code == MANDELBROT_CODE)
+		return (ft_strdup(BM_MBT));
+	if (ctl->fractal_code == JULIA_CODE)
+	{
+		filename = ft_strdup(BM_JULIA);
+		filename = cat_double(filename, BM_JULIA_REAL, ctl->julia_factor.real);
+		filename = cat_double(filename, BM_JULIA_IMAGINARY,
+				ctl->julia_factor.imaginary);
+		return (filename);
+	}
+	return (ft_strdup(""));
 }
 
 static char	*resolve_colors(t_fractol *ctl, char *filename)

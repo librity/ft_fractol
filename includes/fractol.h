@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/18 17:08:41 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/19 01:05:54 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void				save_to_bitmap(t_fractol *ctl);
 char				*build_filename(t_fractol *ctl);
 
 void				clean_and_exit(t_fractol *ctl);
+void				help_and_die(void);
 void				die(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/18 17:26:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/19 01:07:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,17 @@ typedef enum e_color_code
 # define WELCOME_MSG "=== lpaulo-m presents: fract-ol ==="
 # define EXIT_MSG "=== That's all folks! ==="
 # define SUCCESS_MSG " DONE"
+
+# define HELP_MSG "Welcome to lpaulo-m's fract-ol!\n\
+\n\
+USAGE:\n\
+	fractol [fractal] [params]\n\
+\n\
+EXAMPLES:\n\
+	fractol mandelbrot		|Start the REST API (recommended)\n\
+	fractol julia -0.391 -0.587	|Start the HTML Explorer\n\
+\n\
+"
 
 # define MLX_MSG " => Initializing minilibx..."
 # define WINDOW_MSG " => Creating window..."

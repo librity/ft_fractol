@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:58:19 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/19 00:36:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 01:18:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ void				ft_print_bits_ull(unsigned long long x);
  * MATH
 \******************************************************************************/
 
-double				ft_abs_d(double number);
-float				ft_abs_f(float number);
 int					ft_abs_i(int number);
 int					ft_abs(int number);
+
+float				ft_abs_f(float number);
+double				ft_abs_d(double number);
+long double			ft_abs_ld(long double number);
 
 int					ft_min_i(int x, int y);
 int					ft_max_i(int x, int y);
@@ -62,8 +64,11 @@ void				ft_div_mod_i(int a, int b, int *div, int *mod);
 
 int					ft_sqrt(int number);
 int					ft_sqrt_i(int number);
+
 int					ft_pow(int number, int power);
 int					ft_pow_i(int number, int power);
+long long			ft_pow_ll(long long number, int power);
+
 int					ft_fibonacci(int index);
 int					ft_factorial(int number);
 
@@ -102,6 +107,8 @@ int					ft_lerp_wsteps_i(int from, int to, int steps, int x);
  * MEMORY
 \******************************************************************************/
 
+# define MALLOC_ERROR_MESSAGE "ERROR: Unable to allocate required memory.\n"
+
 void				*ft_salloc(size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -110,6 +117,7 @@ void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+void				*ft_calloc(size_t nmemb, size_t size);
 
 /******************************************************************************\
  * CHARS
@@ -140,6 +148,7 @@ char				*ft_strcpy(char *dest, char *src);
 void				ft_strdel(char **delete_me);
 char				*ft_strnchr(const char *s, int c, unsigned int limit);
 
+char				*ft_strdup(const char *s);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
@@ -149,13 +158,6 @@ char				*ft_strnstr(const char *haystack,
 						size_t len);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
-int					ft_atoi(const char *number_pointer);
-unsigned int		ft_atoui(const char *number_pointer);
-unsigned int		ft_atoui_strict(const char *number_pointer);
-
-void				*ft_calloc(size_t nmemb, size_t size);
-char				*ft_strdup(const char *s);
-
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
@@ -164,20 +166,44 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strjoin_free(char *free_me, char const *dont_free_me);
 char				*ft_strjoin_free_free(char *free_me, char *free_me_too);
+char				*ft_strjoin_del(char **delete_me,
+						const char *dont_delete_me);
+char				*ft_strjoin_del_del(char **delete_me, char **delete_me_too);
+
+/******************************************************************************\
+ * STRING TO NUMBER
+\******************************************************************************/
+
+int					ft_atoi(const char *number_pointer);
+unsigned int		ft_atoui(const char *number_pointer);
+unsigned int		ft_atoui_strict(const char *number_pointer);
+
+long				ft_atol(const char *number_pointer);
+unsigned long		ft_atoul(const char *number_pointer);
+
+long long			ft_atoll(const char *number_pointer);
+unsigned long long	ft_atoull(const char *number_pointer);
+
+double				ft_atof(const char *number_pointer);
+long double			ft_atold(const char *number_pointer);
+
+/******************************************************************************\
+ * NUMBER TO STRING
+\******************************************************************************/
 
 char				*ft_itoa(int n);
 unsigned int		ft_i_to_buffer(int n, char *buffer);
 
 char				*ft_ltoa(long n);
 
-char				*ft_ftoa(float n);
 char				*ft_precise_ftoa(float n, int precision);
+char				*ft_ftoa(float n);
 
 char				*ft_precise_dtoa(double n, int precision);
 char				*ft_dtoa(double n);
 
-char				*ft_ldtoa(long double n);
 char				*ft_precise_ldtoa(long double n, int precision);
+char				*ft_ldtoa(long double n);
 
 /******************************************************************************\
  * PRINT STRINGS
@@ -197,15 +223,20 @@ void				ft_putendl(char *s);
  * PRINT NUMBERS
 \******************************************************************************/
 
+# define DEFAULT_PRINT_FLOAT_PRECISION 6
+
 # define DECIMAL_BASE "0123456789"
-# define DOWNCASE_HEX_BASE "0123456789abcdef"
+# define LOWERCASE_HEX_BASE "0123456789abcdef"
 # define UPPERCASE_HEX_BASE "0123456789ABCDEF"
 
 bool				ft_is_valid_base(const char *base,
 						const size_t base_length);
 void				ft_aux_handle_minus_sign_l(long *number_pointer);
 void				ft_aux_handle_minus_sign_ll(long long *number_pointer);
+
+void				ft_aux_handle_minus_sign_f(float *number_pointer);
 void				ft_aux_handle_minus_sign_d(double *number_pointer);
+void				ft_aux_handle_minus_sign_ld(long double *number_pointer);
 
 void				ft_putnbr(int n);
 void				ft_putnbr_i(int number);
@@ -224,11 +255,17 @@ void				ft_putnbr_base_ll(long long number, const char *base);
 void				ft_putnbr_base_ull(unsigned long long number,
 						const char *base);
 
+void				ft_putnbr_precise_f(float n, int precision);
+void				ft_putnbr_f(float number);
+
 void				ft_putnbr_precise_d(double n, int precision);
 void				ft_putnbr_d(double number);
 
+void				ft_putnbr_precise_ld(long double n, int precision);
+void				ft_putnbr_ld(long double number);
+
 void				ft_puthex_uppercase(unsigned int number);
-void				ft_puthex_downcase(unsigned int number);
+void				ft_puthex_lowercase(unsigned int number);
 
 unsigned int		ft_count_digits(int number);
 unsigned int		ft_count_digits_i(int number);
@@ -241,11 +278,19 @@ unsigned int		ft_count_digits_hex_ul(unsigned long number);
 
 unsigned int		ft_count_chars_i(int number);
 
+unsigned int		ft_count_chars_f(float number, int precision);
+unsigned int		ft_count_digits_f(float number, int precision);
+
 unsigned int		ft_count_chars_d(double number, int precision);
 unsigned int		ft_count_digits_d(double number, int precision);
 
+unsigned int		ft_count_chars_ld(long double number, int precision);
+unsigned int		ft_count_digits_ld(long double number, int precision);
+
 char				*ft_skip_digits(char *digits);
 char				*ft_skip_number(char *digits);
+char				*ft_skip_whitespace(char *digits);
+char				*ft_skip_plus_or_minus(char *digits);
 
 /******************************************************************************\
  * LINKED_LISTS
@@ -258,16 +303,23 @@ typedef struct s_list
 }					t_list;
 
 t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
-int					ft_lstsize(t_list *lst);
-t_list				*ft_lstlast(t_list *lst);
-void				ft_lstadd_back(t_list **lst, t_list *new);
-void				ft_lstdelone(t_list *lst, void (*del)(void *));
-void				ft_lstclear(t_list **lst, void (*del)(void *));
-void				ft_lstiter(t_list *lst, void (*f)(void *));
+t_list				*ft_lstnew_safe(void *content);
+
 t_list				*ft_lstmap(t_list *lst,
 						void *(*f)(void *),
 						void (*del)(void *));
+t_list				*ft_lstmap_safe(t_list *lst, void *(*f)(void *));
+void				ft_lstiter(t_list *lst, void (*f)(void *));
+
+t_list				*ft_lstlast(t_list *lst);
+
+int					ft_lstsize(t_list *lst);
+
+void				ft_lstadd_front(t_list **lst, t_list *new);
+void				ft_lstadd_back(t_list **lst, t_list *new);
+
+void				ft_lstdelone(t_list *lst, void (*del)(void *));
+void				ft_lstclear(t_list **lst, void (*del)(void *));
 
 /******************************************************************************\
  * FT_GET_NEXT_LINE
@@ -343,6 +395,10 @@ void				pf_parse_wildcars(t_printf *print_control,
 
 bool				pf_handled_no_conversion(t_printf *print_control);
 
+/******************************************************************************\
+ * FT_PRINTF PERCENT
+\******************************************************************************/
+
 typedef struct s_handle_percent
 {
 	unsigned char	print_me;
@@ -354,6 +410,10 @@ void				pf_print_percent(t_printf *print_control,
 						t_handle_percent *control,
 						t_parse_flags *flag_control);
 
+/******************************************************************************\
+ * FT_PRINTF CHAR
+\******************************************************************************/
+
 typedef struct s_handle_c
 {
 	unsigned char	print_me;
@@ -364,6 +424,10 @@ bool				pf_handled_s(t_printf *print_control);
 void				pf_print_c(t_printf *print_control,
 						t_handle_c *control,
 						t_parse_flags *flag_control);
+
+/******************************************************************************\
+ * FT_PRINTF STRING
+\******************************************************************************/
 
 typedef struct s_handle_s
 {
@@ -377,6 +441,10 @@ bool				pf_handled_c(t_printf *print_control);
 void				pf_print_s(t_printf *print_control,
 						t_handle_s *control,
 						t_parse_flags *flag_control);
+
+/******************************************************************************\
+ * FT_PRINTF INT
+\******************************************************************************/
 
 typedef struct s_handle_int
 {
@@ -392,6 +460,10 @@ void				pf_print_int(t_printf *print_control,
 						t_handle_int *control,
 						t_parse_flags *flag_control);
 
+/******************************************************************************\
+ * FT_PRINTF UNSIGNED INT
+\******************************************************************************/
+
 typedef struct s_handle_u
 {
 	unsigned int	print_me;
@@ -404,6 +476,10 @@ void				pf_print_u(t_printf *print_control,
 						t_handle_u *control,
 						t_parse_flags *flag_control);
 
+/******************************************************************************\
+ * FT_PRINTF POINTERS
+\******************************************************************************/
+
 typedef struct s_handle_p
 {
 	unsigned long	print_me;
@@ -415,6 +491,10 @@ bool				pf_handled_p(t_printf *print_control);
 void				pf_printf_p(t_printf *print_control,
 						t_handle_p *control,
 						t_parse_flags *flag_control);
+
+/******************************************************************************\
+ * FT_PRINTF HEXADECIMAL
+\******************************************************************************/
 
 typedef struct s_handle_hex
 {
@@ -429,7 +509,11 @@ void				pf_printf_hex(t_printf *print_control,
 						t_handle_hex *control,
 						t_parse_flags *flag_control);
 
-typedef struct s_handle_float
+/******************************************************************************\
+ * FT_PRINTF FLOAT DOUBLE
+\******************************************************************************/
+
+typedef struct s_handle_f
 {
 	double			print_me;
 	int				digit_count;
@@ -437,10 +521,28 @@ typedef struct s_handle_float
 	bool			is_negative;
 	bool			is_zero_with_zero_precision;
 	t_parse_flags	flag_control;
-}					t_handle_float;
+}					t_handle_f;
 bool				pf_handled_f(t_printf *print_control);
 void				pf_print_f(t_printf *print_control,
-						t_handle_float *control,
+						t_handle_f *control,
+						t_parse_flags *flag_control);
+
+/******************************************************************************\
+ * FT_PRINTF LONG DOUBLE
+\******************************************************************************/
+
+typedef struct s_handle_lf
+{
+	long double		print_me;
+	int				digit_count;
+	int				char_count;
+	bool			is_negative;
+	bool			is_zero_with_zero_precision;
+	t_parse_flags	flag_control;
+}					t_handle_lf;
+bool				pf_handled_lf(t_printf *print_control);
+void				pf_print_lf(t_printf *print_control,
+						t_handle_lf *control,
 						t_parse_flags *flag_control);
 
 #endif

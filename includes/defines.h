@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/19 15:40:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 01:46:13 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,8 +193,8 @@ USAGE:\n\
 	fractol [fractal] [params]\n\
 \n\
 EXAMPLES:\n\
-	fractol mandelbrot		|Start the REST API (recommended)\n\
-	fractol julia -0.391 -0.587	|Start the HTML Explorer\n\
+	fractol mandelbrot		Start the REST API (recommended)\n\
+	fractol julia -0.391 -0.587	Start the HTML Explorer\n\
 \n\
 "
 

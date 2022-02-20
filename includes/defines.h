@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 19:43:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:17:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef enum e_fractal_code
 # define JULIA_ARG "julia"
 # define NEWTON_ARG "newton"
 
-# define NEWTON_ROOT_COLOR 1
+# define NEWTON_ROOT_COLOR 0
 
 /******************************************************************************\
  * QUIT
@@ -191,10 +191,6 @@ typedef enum e_color_code
  * MESSAGES
 \******************************************************************************/
 
-# define WELCOME_MSG "=== lpaulo-m presents: fract-ol ==="
-# define EXIT_MSG "=== That's all folks! ==="
-# define SUCCESS_MSG " DONE"
-
 # define HELP_MSG "Welcome to lpaulo-m's fract-ol!\n\
 \n\
 USAGE:\n\
@@ -206,6 +202,23 @@ EXAMPLES:\n\
 	fractol newton			Newton fractal for the polynomial (z^3 - 1)\n\
 \n\
 "
+
+# define WELCOME_MSG "=== lpaulo-m presents: fract-ol ===\n\
+\n\
+	CONTROLS:\n\
+	Esc or q: Exits program\n\
+	= and -: Zoom in and out\n\
+	Mouse Wheel: Zoom in and out\n\
+	Arrow Keys: Moves the fractal\n\
+	Mouse Left Click: Warp to clicked pixel\n\
+	c: Switches color algorithm\n\
+	l and .: Shifts color bases up and down\n\
+	i and k: Increases and decreases iterations\n\
+	t and g: Increases and decreases infinity\n\
+	s: Saves viewport to bitmap\n\
+"
+
+# define EXIT_MSG "=== That's all folks! ==="
 
 # define MLX_MSG " => Initializing minilibx..."
 # define WINDOW_MSG " => Creating window..."
@@ -221,5 +234,7 @@ EXAMPLES:\n\
 # define MIN_INFINITY_MSG " => Infinity must be greater than 0"
 
 # define BM_MSG " => Saving viewport to bitmap file: "
+
+# define SUCCESS_MSG " DONE"
 
 #endif

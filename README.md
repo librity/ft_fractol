@@ -132,6 +132,18 @@ $ fractol julia -0.391 -0.587
   <img src="gallery/julia_x_-0.382581_y_-0.643019_zoom_914412203648.733276_iter_1751_inf_314.000000_cmode_1_lerpfr_-139024413_lerpto_-125743310_.png" />
 </p>
 
+<p align="center">
+  <img src="gallery/newton_x_0.100000_y_0.100000_zoom_200.000000_iter_51_inf_4.000000_cmode_0_dye_16225338_.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/newton_x_0.000000_y_0.000000_zoom_200.000000_iter_51_inf_4.000000_cmode_1_lerpfr_2533347_lerpto_15814450_.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/newton_x_-0.404436_y_0.003761_zoom_414.719999_iter_251_inf_4.000000_cmode_2_.png" />
+</p>
+
 [and much, much more...](https://github.com/librity/ft_fractol/tree/main/gallery)
 
 ## 📝 Notes <a name = "notes"></a>

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 19:33:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:43:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ USAGE:\n\
 EXAMPLES:\n\
 	fractol mandelbrot		Mandelbrot fractal\n\
 	fractol julia -0.391 -0.587	Julia fractal\n\
+	fractol newton			Newton fractal for the polynomial (z^3 - 1)\n\
 \n\
 "
 
@@ -214,7 +215,7 @@ EXAMPLES:\n\
 # define RED_MSG " => Rendering red screen (invalid fractal code)..."
 # define MBT_MSG " => Rendering Mandelbrot set..."
 # define JULIA_MSG " => Rendering Julia set..."
-# define NEWTON_MSG " => Rendering Newton set for polynomial (z^3 - 1)..."
+# define NEWTON_MSG " => Rendering roots of polynomial (z^3 - 1)..."
 
 # define MIN_ITERATIONS_MSG " => Iterations must be greater than 0"
 # define MIN_INFINITY_MSG " => Infinity must be greater than 0"

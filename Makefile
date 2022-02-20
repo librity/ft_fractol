@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/20 17:34:34 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/20 19:39:54 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,12 +100,6 @@ julia: re
 
 newton: re
 	./$(NAME) newton
-
-################################################################################
-# BONUS
-################################################################################
-
-BONUS_MAIN = ./main_bonus.c
 
 ################################################################################
 # LIBS
@@ -213,8 +207,6 @@ norm:
 	@printf "\n$(G)=== No norminette errors found in $(SOURCES_PATH) ===$(RC)\n\n"
 	norminette $(REQUIRED_MAIN)
 	@printf "\n$(G)=== No norminette errors found in $(REQUIRED_MAIN) ===$(RC)\n\n"
-	norminette $(BONUS_MAIN)
-	@printf "\n$(G)=== No norminette errors found in $(BONUS_MAIN) ===$(RC)\n\n"
 
 git:
 	git add -A

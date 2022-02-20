@@ -2,6 +2,7 @@
 
 <div align="center">
 
+![![norminette](https://github.com/librity/ft_fractol/actions/workflows/norminette_v3.yml/badge.svg)](https://github.com/librity/ft_fractol/actions/workflows/norminette_v3.yml)
 ![42 São Paulo](https://img.shields.io/badge/42-SP-1E2952)
 ![License](https://img.shields.io/github/license/librity/ft_fractol?color=yellow)
 ![Code size in bytes](https://img.shields.io/github/languages/code-size/librity/ft_fractol?color=blue)

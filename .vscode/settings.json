@@ -29,6 +29,13 @@
     "ft_libbmp.h": "c",
     "functional": "c",
     "memory": "c",
-    "sstream": "c"
+    "sstream": "c",
+    "exception": "c",
+    "algorithm": "c",
+    "istream": "c",
+    "ostream": "c",
+    "streambuf": "c",
+    "string_view": "c",
+    "typeinfo": "c"
   }
 }

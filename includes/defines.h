@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 17:31:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:38:02 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
  * FRACTALS
 \******************************************************************************/
 
+# define QUICK_FRACTAL 1
+
 typedef enum e_fractal_code
 {
 	MANDELBROT_CODE = 0,
@@ -38,8 +40,6 @@ typedef enum e_fractal_code
 # define MANDELBROT_ARG "mandelbrot"
 # define JULIA_ARG "julia"
 # define NEWTON_ARG "newton"
-
-# define QUICK_FRACTAL 1
 
 /******************************************************************************\
  * QUIT
@@ -110,6 +110,7 @@ typedef enum e_fractal_code
 # define BM_JULIA "julia_"
 # define BM_JULIA_REAL "real_"
 # define BM_JULIA_IMAGINARY "imgry_"
+# define BM_NEWTON "newton_"
 # define BM_X "x_"
 # define BM_Y "y_"
 # define BM_ZOOM "zoom_"

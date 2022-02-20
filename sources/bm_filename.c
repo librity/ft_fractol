@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 13:43:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 02:08:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:38:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static char	*resolve_fractal(t_fractol *ctl)
 				ctl->julia_factor.imaginary);
 		return (filename);
 	}
+	if (ctl->fractal_code == NEWTON_CODE)
+		return (ft_strdup(BM_NEWTON));
 	return (ft_strdup(""));
 }
 

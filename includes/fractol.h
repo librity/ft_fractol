@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 17:32:22 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:10:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_fractol
 	int			max_iterations;
 	long double	infinity;
 	t_complex	julia_factor;
+	long double	newton_tolerance;
 
 	int			color_code;
 	long double	zoom;

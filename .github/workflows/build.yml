@@ -1,3 +1,5 @@
+# TODO: Add minilibx-linux as submodule and enable workflow.
+
 name: Build
 
 on: push
@@ -8,7 +10,7 @@ jobs:
     steps:
       - name: Checkout to project repository
         uses: actions/checkout@v2
-      - name: Checkout submodules # checkout rest
+      - name: Checkout submodules
         shell: bash
         run: |
           # If your submodules are configured to use SSH instead of HTTPS please uncomment the following line

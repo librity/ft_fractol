@@ -6,23 +6,42 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 19:13:39 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:34:02 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
+static int	get_root_color(int index)
+{
+	const int	root_colors[NEWTON_Z3M1_ROOTS] = {RED, GREEN, BLUE};
+
+	return (root_colors[index]);
+}
+
+static int	render_root_color(t_newton_z3m1 newton)
+{
+	if (newton.is_root)
+		return (get_root_color(newton.root_index));
+	return (BLACK);
+}
+
 static void	render_pixel(t_fractol *ctl, int x, int y)
 {
-	int			color;
-	long double	x_cartesian;
-	long double	y_cartesian;
+	int				color;
+	long double		x_cartesian;
+	long double		y_cartesian;
+	t_newton_z3m1	newton_at_xy;
 
 	x_cartesian = screen_to_cartesian_x(ctl, x);
 	y_cartesian = screen_to_cartesian_y(ctl, y);
-	color = newton_z3m1(complex(x_cartesian, y_cartesian),
+	newton_at_xy = newton_z3m1(complex(x_cartesian, y_cartesian),
 			ctl->newton_tolerance,
 			ctl->max_iterations);
+	if (ctl->newton_root_color)
+		color = render_root_color(newton_at_xy);
+	else
+		color = render_color(ctl, newton_at_xy.iterations);
 	bm_draw_to_mlx_image(ctl->buffer, x, y, color);
 }
 

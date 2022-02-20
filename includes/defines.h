@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 18:38:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:33:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef enum e_fractal_code
 # define MANDELBROT_ARG "mandelbrot"
 # define JULIA_ARG "julia"
 # define NEWTON_ARG "newton"
+
+# define NEWTON_ROOT_COLOR 1
 
 /******************************************************************************\
  * QUIT

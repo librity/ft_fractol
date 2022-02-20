@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:13:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 19:13:27 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:23:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,15 @@ t_fractal		julia(t_complex number, t_complex factor,
 					int max_iterations,
 					long double infinity);
 
+# define NEWTON_Z3M1_ROOTS 3
+
 typedef struct s_newton_z3m1
 {
-	bool		diverges;
+	bool		is_root;
 	int			iterations;
-	int			root;
+	int			root_index;
 }				t_newton_z3m1;
-int				newton_z3m1(t_complex z, long double tolerance,
+t_newton_z3m1	newton_z3m1(t_complex z, long double tolerance,
 					int max_iterations);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:39:11 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 15:58:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:06:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ static bool	is_julia(int argc, char *fractal)
 	return (true);
 }
 
+static t_complex	parse_julia_factor(char **argv)
+{
+	long double	real;
+	long double	imaginary;
+
+	real = ft_atold(argv[2]);
+	imaginary = ft_atold(argv[3]);
+	return (complex(real, imaginary));
+}
+
 void	handle_arguments(t_fractol *ctl, int argc, char **argv)
 {
 	if (is_mandelbrot(argc, argv[1]))
@@ -40,7 +50,7 @@ void	handle_arguments(t_fractol *ctl, int argc, char **argv)
 	if (is_julia(argc, argv[1]))
 	{
 		ctl->fractal_code = JULIA_CODE;
-		ctl->julia_factor = complex(ft_atold(argv[2]), ft_atold(argv[3]));
+		ctl->julia_factor = parse_julia_factor(argv);
 		return ;
 	}
 	help_and_die();

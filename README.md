@@ -70,28 +70,15 @@ Clone the repo and build with `make`:
 ```bash
 $ git clone https://github.com/librity/ft_fractol.git
 $ cd ft_fractol
-$ make mbt
+$ make
+$ fractol mandelbrot
 ```
 
-This should open a new window with a beautiful fractal.
+This should open a new window rendering the mandelbrot fractal.
+You can also render the julia set, that requires a complex factor:
 
-```C
-	ctl->julia_factor = complex(0.3, 0.4);
-	ctl->julia_factor = complex(-2.0, 0.0);
-	ctl->julia_factor = complex(-1.0, 0.0);
-	ctl->julia_factor = complex(0.0, 0.0);
-	ctl->julia_factor = complex(1.0, 0.0);
-	ctl->julia_factor = complex(2.0, 0.0);
-	ctl->julia_factor = complex(3.0, 0.0);
-	ctl->julia_factor = complex(1.0, 1.0);
-	// Dendrite fractal
-	ctl->julia_factor = complex(0.0, 1.0);
-	// Douady's rabbit fractal
-	ctl->julia_factor = complex(-0.123, 0.745);
-	// San Marco fractal
-	ctl->julia_factor = complex(-0.75, 0.0);
-	// Siegel disk fractal
-	ctl->julia_factor = complex(-0.391, -0.587);
+```bash
+$ fractol julia -0.391 -0.587
 ```
 
 ## 🕹️ Controls <a name="controls"></a>

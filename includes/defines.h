@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 15:27:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:31:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,13 @@
 typedef enum e_fractal_code
 {
 	MANDELBROT_CODE = 0,
-	JULIA_CODE
+	JULIA_CODE,
+	NEWTON_CODE
 }	t_fractal_code;
+
+# define MANDELBROT_ARG "mandelbrot"
+# define JULIA_ARG "julia"
+# define NEWTON_ARG "newton"
 
 # define QUICK_FRACTAL 1
 
@@ -180,13 +185,6 @@ typedef enum e_color_code
 # define LERP4_TO 0x00515656
 
 /******************************************************************************\
- * ARGUMENTS
-\******************************************************************************/
-
-# define MANDELBROT_ARG "mandelbrot"
-# define JULIA_ARG "julia"
-
-/******************************************************************************\
  * MESSAGES
 \******************************************************************************/
 
@@ -210,8 +208,10 @@ EXAMPLES:\n\
 # define BUFFER_MSG " => Initializing image buffer..."
 # define HOOKS_MSG " => Adding hooks..."
 
+# define RED_MSG " => Rendering red screen (invalid fractal code)..."
 # define MBT_MSG " => Rendering Mandelbrot set..."
 # define JULIA_MSG " => Rendering Julia set..."
+# define NEWTON_MSG " => Rendering Newton set for polynomial (z^3 - 1)..."
 
 # define MIN_ITERATIONS_MSG " => Iterations must be greater than 0"
 # define MIN_INFINITY_MSG " => Infinity must be greater than 0"

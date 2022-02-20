@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 15:58:19 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:32:22 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,12 @@ void			log_infinity(t_fractol *ctl);
 long double		screen_to_cartesian_x(t_fractol *ctl, int x);
 long double		screen_to_cartesian_y(t_fractol *ctl, int y);
 
+void			render_red(t_fractol *ctl);
+
 void			render_fractal(t_fractol *ctl);
 void			render_mandelbrot(t_fractol *ctl);
 void			render_julia(t_fractol *ctl);
+void			render_newton(t_fractol *ctl);
 
 void			save_to_bitmap(t_fractol *ctl);
 char			*build_filename(t_fractol *ctl);

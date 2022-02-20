@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:28:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 01:58:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:48:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ static void	initialize_mlx_core(t_fractol *ctl)
 {
 	log_msg(MLX_MSG);
 	ctl->mlx = mlx_init();
-	if (ctl->mlx == NULL)
-		die();
+	die_if_null(ctl->mlx);
 	log_endl(SUCCESS_MSG);
 }
 
 static void	initialize_mlx_window(t_fractol *ctl)
 {
 	log_msg(WINDOW_MSG);
-	ctl->window = mlx_new_window(ctl->mlx, ctl->width, ctl->height,
+	ctl->window = mlx_new_window(ctl->mlx,
+			ctl->width,
+			ctl->height,
 			WINDOW_NAME);
-	if (ctl->window == NULL)
-		die();
+	die_if_null(ctl->window);
 	log_endl(SUCCESS_MSG);
 }
 
@@ -35,14 +35,12 @@ static void	initialize_mlx_buffer(t_fractol *ctl)
 {
 	log_msg(BUFFER_MSG);
 	ctl->buffer->img = mlx_new_image(ctl->mlx, ctl->width, ctl->height);
-	if (ctl->buffer->img == NULL)
-		die();
+	die_if_null(ctl->buffer->img);
 	ctl->buffer->data = mlx_get_data_addr(ctl->buffer->img,
 			&ctl->buffer->bits_per_pixel,
 			&ctl->buffer->line_length,
 			&ctl->buffer->endian);
-	if (ctl->buffer->data == NULL)
-		die();
+	die_if_null(ctl->buffer->data);
 	ctl->buffer->width = ctl->width;
 	ctl->buffer->height = ctl->height;
 	ctl->buffer->half_width = ctl->width / 2.0;

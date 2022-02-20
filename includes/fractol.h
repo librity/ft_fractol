@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 19:33:42 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:45:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ char			*build_filename(t_fractol *ctl);
 void			clean_and_exit(t_fractol *ctl);
 void			help_and_die(void);
 void			die(void);
+void			die_if_null(void *ptr);
 
 #endif

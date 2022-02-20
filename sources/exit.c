@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 00:17:03 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 20:30:18 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:45:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	die(void)
 {
 	perror("ERROR!\n");
 	exit(1);
+}
+
+void	die_if_null(void *ptr)
+{
+	if (ptr == NULL)
+		die();
 }

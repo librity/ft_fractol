@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/20 19:39:54 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/20 20:28:44 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,22 +81,33 @@ mbt: re
 	./$(NAME) mandelbrot
 
 julia: re
-#	 ./$(NAME) julia 0.3 0.4
-#	 ./$(NAME) julia -2.0 0.0
-#	 ./$(NAME) julia -1.0 0.0
-#	 ./$(NAME) julia 0.0 0.0
-#	 ./$(NAME) julia 1.0 0.0
-#	 ./$(NAME) julia 2.0 0.0
-#	 ./$(NAME) julia 3.0 0.0
-#	 ./$(NAME) julia 1.0 1.0
+#	 ./$(NAME) julia  0.3       0.4
+#	 ./$(NAME) julia  -2.0      0.0
+#	 ./$(NAME) julia  -1.0      0.0
+#	 ./$(NAME) julia  0.0       0.0
+#	 ./$(NAME) julia  1.0       0.0
+#	 ./$(NAME) julia  2.0       0.0
+#	 ./$(NAME) julia  3.0       0.0
+#	 ./$(NAME) julia  1.0       1.0
+
+#	 ./$(NAME) julia  −0.4      0.6
+#	 ./$(NAME) julia  0.285     0.0
+#	 ./$(NAME) julia  0.285     0.01
+#	 ./$(NAME) julia  0.45      0.1428
+#	 ./$(NAME) julia  −0.70176  −0.3842
+#	 ./$(NAME) julia  −0.835    −0.2321
+#	 ./$(NAME) julia  −0.8      0.156
+#	 ./$(NAME) julia  −0.7269   0.1889
+#	 ./$(NAME) julia  0.0       −0.8
+
 #	 Dendrite fractal
-#	 ./$(NAME) julia 0.0 1.0
+#	 ./$(NAME) julia  0.0       1.0
 #	 Douady's rabbit fractal
-#	 ./$(NAME) julia -0.123 0.745
+#	 ./$(NAME) julia  -0.123    0.745
 #	 San Marco fractal
-#	 ./$(NAME) julia -0.75 0.0
+#	 ./$(NAME) julia  -0.75     0.0
 #	 Siegel disk fractal
-	./$(NAME) julia -0.391 -0.587
+	./$(NAME) julia   -0.391    -0.587
 
 newton: re
 	./$(NAME) newton

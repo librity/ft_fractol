@@ -6,14 +6,14 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 20:17:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:32:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define VERBOSE 1
+# define VERBOSE 0
 
 /******************************************************************************\
  * WINDOW
@@ -205,7 +205,7 @@ EXAMPLES:\n\
 
 # define WELCOME_MSG "=== lpaulo-m presents: fract-ol ===\n\
 \n\
-	CONTROLS:\n\
+    CONTROLS:\n\
 	Esc or q: Exits program\n\
 	= and -: Zoom in and out\n\
 	Mouse Wheel: Zoom in and out\n\

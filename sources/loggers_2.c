@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 00:25:05 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/19 00:41:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 02:13:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	log_infinity(t_fractol *ctl)
 {
 	if (VERBOSE)
-		ft_printf(" => Infinity: %f\n", ctl->infinity);
+		ft_printf(" => Infinity: %Lf\n", ctl->infinity);
 }
 
 void	log_colors(t_fractol *ctl)

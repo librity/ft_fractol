@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_mandelbrot.c                               :+:      :+:    :+:   */
+/*   cplx_mandelbrot.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 15:13:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 02:17:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
 static t_fractal	slow(t_complex number, int max_iterations,
-		double infinity)
+		long double infinity)
 {
 	t_complex	current;
 	int			iteration;
@@ -32,11 +32,11 @@ static t_fractal	slow(t_complex number, int max_iterations,
 }
 
 static t_fractal	quick(t_complex number, int max_iterations,
-		double infinity)
+		long double infinity)
 {
 	t_complex	current;
 	int			iteration;
-	double		temp;
+	long double	temp;
 
 	current = number;
 	iteration = 0;
@@ -54,7 +54,8 @@ static t_fractal	quick(t_complex number, int max_iterations,
 	return ((t_fractal){false, iteration});
 }
 
-t_fractal	mandelbrot(t_complex number, int max_iterations, double infinity)
+t_fractal	mandelbrot(t_complex number, int max_iterations,
+		long double infinity)
 {
 	if (QUICK_FRACTAL)
 		return (quick(number, max_iterations, infinity));

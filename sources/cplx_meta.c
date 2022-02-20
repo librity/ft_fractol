@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_meta.c                                     :+:      :+:    :+:   */
+/*   cplx_meta.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 23:56:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 16:41:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 02:16:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-double	magnitude(t_complex number)
+t_complex	complex(long double real, long double imaginary)
 {
-	double	magnitude;
+	return ((t_complex){real, imaginary});
+}
+
+long double	magnitude(t_complex number)
+{
+	long double	magnitude;
 
 	magnitude = number.real * number.real + number.imaginary * number.imaginary;
 	magnitude = sqrt(magnitude);
 	return (magnitude);
 }
 
-double	quick_magnitude(t_complex number)
+long double	quick_magnitude(t_complex number)
 {
-	double	magnitude;
+	long double	magnitude;
 
 	magnitude = number.real * number.real + number.imaginary * number.imaginary;
 	return (magnitude);

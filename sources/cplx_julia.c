@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_julia.c                                    :+:      :+:    :+:   */
+/*   cplx_julia.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 15:13:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 02:18:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
 static t_fractal	slow(t_complex number, t_complex factor, int max_iterations,
-		double infinity)
+		long double infinity)
 {
 	t_complex	current;
 	int			iteration;
@@ -32,10 +32,10 @@ static t_fractal	slow(t_complex number, t_complex factor, int max_iterations,
 }
 
 static t_fractal	quick(t_complex number, t_complex factor,
-		int max_iterations, double infinity)
+		int max_iterations, long double infinity)
 {
-	int		iteration;
-	double	temp;
+	int			iteration;
+	long double	temp;
 
 	iteration = 0;
 	while (iteration < max_iterations)
@@ -53,7 +53,7 @@ static t_fractal	quick(t_complex number, t_complex factor,
 }
 
 t_fractal	julia(t_complex number, t_complex factor, int max_iterations,
-		double infinity)
+		long double infinity)
 {
 	if (QUICK_FRACTAL)
 		return (quick(number, factor, max_iterations, infinity));

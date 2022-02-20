@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 21:05:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 02:17:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	render_pixel(t_fractol *ctl, int x, int y)
 {
 	int			color;
-	double		x_cartesian;
-	double		y_cartesian;
+	long double	x_cartesian;
+	long double	y_cartesian;
 	t_fractal	julia_at_xy;
 
 	x_cartesian = screen_to_cartesian_x(ctl, x);

@@ -6,15 +6,15 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 17:53:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 02:08:28 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-double	screen_to_cartesian_x(t_fractol *ctl, int x)
+long double	screen_to_cartesian_x(t_fractol *ctl, int x)
 {
-	double	cartesian;
+	long double	cartesian;
 
 	cartesian = x - ctl->buffer->half_width;
 	cartesian /= ctl->zoom;
@@ -22,9 +22,9 @@ double	screen_to_cartesian_x(t_fractol *ctl, int x)
 	return (cartesian);
 }
 
-double	screen_to_cartesian_y(t_fractol *ctl, int y)
+long double	screen_to_cartesian_y(t_fractol *ctl, int y)
 {
-	double	cartesian;
+	long double	cartesian;
 
 	cartesian = y - ctl->buffer->half_height;
 	cartesian /= ctl->zoom;

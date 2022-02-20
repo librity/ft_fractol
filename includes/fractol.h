@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 02:15:39 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 15:58:19 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_fractol
 	int			lerp_from;
 	int			lerp_to;
 }				t_fractol;
+
+void			handle_arguments(t_fractol *ctl, int argc, char **argv);
 
 void			initialize_params(t_fractol *ctl, t_mlx_image *buffer);
 void			initialize_mlx(t_fractol *ctl);

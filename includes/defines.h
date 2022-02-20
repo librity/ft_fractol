@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 01:46:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/20 15:27:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,13 @@ typedef enum e_color_code
 # define LERP4_TO 0x00515656
 
 /******************************************************************************\
+ * ARGUMENTS
+\******************************************************************************/
+
+# define MANDELBROT_ARG "mandelbrot"
+# define JULIA_ARG "julia"
+
+/******************************************************************************\
  * MESSAGES
 \******************************************************************************/
 
@@ -190,11 +197,11 @@ typedef enum e_color_code
 # define HELP_MSG "Welcome to lpaulo-m's fract-ol!\n\
 \n\
 USAGE:\n\
-	fractol [fractal] [params]\n\
+	fractol [mandelbrot/julia] [params]\n\
 \n\
 EXAMPLES:\n\
-	fractol mandelbrot		Start the REST API (recommended)\n\
-	fractol julia -0.391 -0.587	Start the HTML Explorer\n\
+	fractol mandelbrot		Mandelbrot fractal\n\
+	fractol julia -0.391 -0.587	Julia fractal\n\
 \n\
 "
 

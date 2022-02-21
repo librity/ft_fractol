@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/20 20:28:44 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/20 21:00:13 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -170,18 +170,17 @@ example_clean: fclean
 ################################################################################
 
 VALGRIND = valgrind
-VALGRIND_FLAGS = --leak-check=full \
-	--show-leak-kinds=all
+VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all
 VALGRIND_LOG = valgrind_leaks.log
 VALGRIND_LOG_FLAGS = --log-file=$(VALGRIND_LOG) \
 	--leak-check=full \
 	--show-leak-kinds=all \
 	--track-origins=yes \
 	--verbose
-VALGRIND_TARGET = ./$(NAME)
+VALGRIND_TARGET = ./$(NAME) julia   -0.391    -0.587
 
 vg: vg_build
-	$(VALGRIND) $(VALGRIND_TARGET)
+	$(VALGRIND) $(VALGRIND_FLAGS) $(VALGRIND_TARGET)
 
 vglog: vg_build
 	$(VALGRIND) $(VALGRIND_LOG_FLAGS) $(VALGRIND_TARGET)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot_3.c                                     :+:      :+:    :+:   */
+/*   mandelbrot_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 14:51:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:20:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 #include <mlx.h>
 
-#include <libft.h>
 #include <fractol.h>
 
 #define ESC_KEY 0xFF1B
@@ -40,10 +39,8 @@ const double half_height = height / 2;
 const double x_offset = -100;
 const double y_offset = 0;
 
-int create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+const int white = 0x00FFFFFF;
+const int black = 0x00000000;
 
 void die(void)
 {
@@ -51,29 +48,17 @@ void die(void)
 	exit(1);
 }
 
-double map_d(double n, double start1, double stop1, double start2, double stop2)
+int create_trgb(int t, int r, int g, int b)
 {
-	double mapped;
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
-	mapped = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;
-	return mapped;
-};
-
-double clamp_d(double n, double low, double high)
+int resolve_color(bool is_mandelbrot)
 {
-	return ft_max_d(ft_max_d(n, high), low);
-};
-
-double map_d_constrained(double n, double start1, double stop1, double start2, double stop2)
-{
-	double mapped;
-
-	mapped = map_d(n, start1, stop1, start2, stop2);
-
-	if (start2 < stop2)
-		return clamp_d(mapped, start2, stop2);
-	return clamp_d(mapped, stop2, start2);
-};
+	if (is_mandelbrot)
+		return (black);
+	return (white);
+}
 
 void render_mandelbrot(void)
 {
@@ -82,10 +67,11 @@ void render_mandelbrot(void)
 	int color;
 	double x_cartesian;
 	double y_cartesian;
-	double normalizedIterations;
+	double normalized_iterations;
 	double brightness;
-	t_complex complexAtXY;
-	t_fractal mdlbtAtXY;
+	t_complex complex_at_xy;
+	t_fractal mdlbt_at_xy;
+	bool is_mandelbrot;
 
 	x = width;
 	while (x--)
@@ -96,13 +82,12 @@ void render_mandelbrot(void)
 			x_cartesian = (x - half_width + x_offset) / zoom;
 			y_cartesian = (y - half_height + y_offset) / zoom;
 
-			complexAtXY = complex(x_cartesian, y_cartesian);
-			mdlbtAtXY = quick_mandelbrot(complexAtXY, max_iterations, infinity);
+			complex_at_xy = cplx_build(x_cartesian, y_cartesian);
+			mdlbt_at_xy = quick_mandelbrot(complex_at_xy, max_iterations, infinity);
+			is_mandelbrot = !mdlbt_at_xy.diverges;
+			color = resolve_color(is_mandelbrot);
 
-			normalizedIterations = map_d(mdlbtAtXY.iterations, 0, max_iterations, 0, 1);
-			brightness = map_d(sqrt(normalizedIterations), 0, 1, INT_MIN, INT_MAX);
-
-			mlx_pixel_put(mlx, mlx_window, x, y, (int)brightness);
+			mlx_pixel_put(mlx, mlx_window, x, y, color);
 		}
 	}
 }
@@ -122,6 +107,10 @@ void initialize(void)
 	if (mlx_window == NULL)
 		die();
 	printf(" OK\n");
+
+	printf(" => Rendering Mandelbrot set...");
+	render_mandelbrot();
+	printf(" OK\n");
 }
 
 void handle_keypress(int keycode)
@@ -133,15 +122,15 @@ void handle_keypress(int keycode)
 		exit(0);
 }
 
+void await_orders(void)
+{
+	mlx_hook(mlx_window, KeyPress, KeyPressMask, handle_keypress, mlx);
+	mlx_loop(mlx);
+}
+
 int main(void)
 {
 	initialize();
-	mlx_hook(mlx_window, KeyPress, KeyPressMask, handle_keypress, mlx);
-
-	printf(" => Rendering Mandelbrot set...");
-	render_mandelbrot();
-	printf(" OK\n");
-
-	mlx_loop(mlx);
+	await_orders();
 	return (0);
 }

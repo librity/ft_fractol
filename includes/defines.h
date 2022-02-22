@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 21:03:33 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:40:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef enum e_fractal_code
 
 # define ZOOM 200
 # define ZOOM_MAGNIFICATION 1.2
+# define ZOOM_PRECISION_LIMIT 8493597287725995556.500000
 
 /******************************************************************************\
  * NAVIGATION

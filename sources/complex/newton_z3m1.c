@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cplx_newton_z3m1.c                                 :+:      :+:    :+:   */
+/*   newton_z3m1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 21:26:00 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:59:47 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_complex	polynomial(t_complex z)
 
 static t_complex	polyn_derivative(t_complex z)
 {
-	return (times_s(times(z, z), 3));
+	return (times_s(cplx_times(z, z), 3));
 }
 
 t_newton_z3m1	newton_z3m1(t_complex z, long double tolerance,

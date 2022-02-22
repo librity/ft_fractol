@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/22 11:21:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:15:15 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,9 @@ void			render_newton(t_fractol *ctl);
 void			save_to_bitmap(t_fractol *ctl);
 char			*build_filename(t_fractol *ctl);
 
+void			clean(t_fractol *ctl);
 void			clean_and_exit(t_fractol *ctl);
+
 void			help_and_die(void);
 void			die(void);
 void			die_if_null(void *ptr);

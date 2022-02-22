@@ -57,6 +57,9 @@ dkms.conf
 # Build
 fractol
 
+# Tests
+test
+
 # Image files
 *.ppm
 *.bmp

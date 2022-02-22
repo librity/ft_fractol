@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:13:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 21:21:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:59:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_complex		by_s(t_complex x, long double scalar);
 
 t_complex		plus(t_complex a, t_complex b);
 t_complex		minus(t_complex a, t_complex b);
-t_complex		times(t_complex a, t_complex b);
+t_complex		cplx_times(t_complex a, t_complex b);
 t_complex		by(t_complex a, t_complex b);
 t_complex		cplx_pow(t_complex number, int power);
 

@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/22 11:54:15 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/22 13:12:40 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ FRACTOL_ARCHIVE = $(ARCHIVES_PATH)/fractol.a
 
 CC = gcc
 CC_STRICT = $(CC) $(CCF_STRICT) $(CCF_OPTIMIZATION)
+
 CCF_STRICT = -Wall -Wextra -Werror
 CCF_OPTIMIZATION = -O3
 CCF_DEBUG = -g -fsanitize=address
 
-SYSTEM_LIBS = -lm -lbsd -lmlx -lXext -lX11
+CCF_LIBS = -lm -lbsd -lmlx -lXext -lX11
 
 MAKE_EXTERNAL = make -C
 SAFE_MAKEDIR = mkdir -p
@@ -32,9 +33,7 @@ REMOVE_RECURSIVE = /bin/rm -rf
 OBJECTS_PATH = ./objects
 SOURCES_PATH = ./sources
 INCLUDES_PATH = ./includes
-LIBS_PATH = ./libs
 ARCHIVES_PATH = ./archives
-EXAMPLES_PATH = ./examples
 
 FRACTOL_HEADER = $(INCLUDES_PATH)/fractol.h
 
@@ -56,7 +55,7 @@ $(NAME): $(FRACTOL_ARCHIVE)
 		-I $(INCLUDES_PATH) \
 		$(REQUIRED_MAIN) \
 		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
-		$(SYSTEM_LIBS) \
+		$(CCF_LIBS) \
 		-o $(NAME)
 
 $(FRACTOL_ARCHIVE): initialize build_libft build_ft_libbmp $(FRACTOL_HEADER) $(OBJECTS)
@@ -128,6 +127,8 @@ newton: re
 # LIBS
 ################################################################################
 
+LIBS_PATH = ./libs
+
 LIBFT = libft.a
 LIBFT_PATH = $(LIBS_PATH)/libft
 LIBFT_ARCHIVE = $(ARCHIVES_PATH)/$(LIBFT)
@@ -157,8 +158,34 @@ ft_libbmp_clean:
 	$(REMOVE) $(FT_LIBBMP_ARCHIVE)
 
 ################################################################################
+# TESTS
+################################################################################
+
+TESTS_PATH = ./tests
+
+TEST_SOURCES = $(wildcard $(TESTS_PATH)/*.c)
+CCF_TEST_LIBS = -lrt -lm
+EXECUTE_TESTS = ./test
+
+build_tests: $(FRACTOL_ARCHIVE)
+	$(CC) $(CCF_DEBUG) \
+		-I $(INCLUDES_PATH) \
+		$(TEST_SOURCES) \
+		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
+		$(CCF_LIBS) $(CCF_TEST_LIBS) \
+		-o $(EXECUTE_TESTS)
+
+test: build_tests
+	$(EXECUTE_TESTS)
+
+tests_clean:
+	$(REMOVE_RECURSIVE) $(EXECUTE_TESTS)
+
+################################################################################
 # EXAMPLE
 ################################################################################
+
+EXAMPLES_PATH = ./examples
 
 EXAMPLE_MAIN = $(EXAMPLES_PATH)/example.c
 EXECUTE_EXAMPLE = ./a.out
@@ -172,7 +199,7 @@ build_example: $(FRACTOL_ARCHIVE)
 		-I $(INCLUDES_PATH) \
 		$(EXAMPLE_MAIN) $(FRACTOL_ARCHIVE) \
 		$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
-		$(SYSTEM_LIBS)
+		$(CCF_LIBS)
 
 example_clean: fclean
 	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
@@ -202,7 +229,7 @@ vg_build: $(FRACTOL_ARCHIVE)
 		-I $(INCLUDES_PATH) \
 		$(REQUIRED_MAIN) \
 		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
-		$(SYSTEM_LIBS) \
+		$(CCF_LIBS) \
 		-o $(NAME)
 
 vglog_clean: fclean
@@ -212,7 +239,7 @@ vglog_clean: fclean
 # CLEAN
 ################################################################################
 
-tclean: clean_libs fclean example_clean vglog_clean
+tclean: clean_libs fclean tests_clean example_clean vglog_clean
 
 clean_libs: libft_clean ft_libbmp_clean
 
@@ -247,6 +274,7 @@ gitm:
 .PHONY: all required clean fclean re initialize \
 	build_libft libft_clean \
 	build_ft_libbmp ft_libbmp_clean \
+	build_tests test tests_clean \
 	build_example example example_clean \
 	vg vglog vg_build vglog_clean \
 	tclean clean_libs \

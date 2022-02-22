@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cplx_arithmetic.c                                  :+:      :+:    :+:   */
+/*   arithmetic.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 23:56:33 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 17:03:16 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:59:42 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_complex	minus(t_complex a, t_complex b)
 	return (result);
 }
 
-t_complex	times(t_complex a, t_complex b)
+t_complex	cplx_times(t_complex a, t_complex b)
 {
 	t_complex	result;
 
@@ -60,6 +60,6 @@ t_complex	cplx_pow(t_complex number, int power)
 		return (complex(0.0, 0.0));
 	if (power == 0)
 		return (complex(1.0, 0.0));
-	result = times(number, cplx_pow(number, power - 1));
+	result = cplx_times(number, cplx_pow(number, power - 1));
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:18:02 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/09 00:05:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:59:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 
 	const t_complex	b = complex(5.0, 6.0);
 	inspect(plus(a, b));
-	inspect(times(a, b));
+	inspect(cplx_times(a, b));
 
 	return (0);
 }

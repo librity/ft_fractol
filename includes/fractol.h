@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 22:28:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:21:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_fractol
 }				t_fractol;
 
 void			handle_arguments(t_fractol *ctl, int argc, char **argv);
+t_complex		parse_julia_factor(char **argv);
 
 void			initialize_params(t_fractol *ctl, t_mlx_image *buffer);
 void			initialize_mlx(t_fractol *ctl);

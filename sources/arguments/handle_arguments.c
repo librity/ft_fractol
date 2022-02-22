@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:39:11 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 21:18:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:21:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,6 @@ static bool	is_newton(int argc, char *fractal)
 	if (ft_strncmp(fractal, NEWTON_ARG, ft_strsize(NEWTON_ARG)) != 0)
 		return (false);
 	return (true);
-}
-
-static t_complex	parse_julia_factor(char **argv)
-{
-	long double	real;
-	long double	imaginary;
-
-	real = ft_atold(argv[2]);
-	imaginary = ft_atold(argv[3]);
-	return (complex(real, imaginary));
 }
 
 static bool	is_julia(int argc, char *fractal)

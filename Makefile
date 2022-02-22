@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/20 21:00:13 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/22 11:54:15 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,10 @@ EXAMPLES_PATH = ./examples
 
 FRACTOL_HEADER = $(INCLUDES_PATH)/fractol.h
 
-SOURCES = $(wildcard $(SOURCES_PATH)/*.c)
+SOURCES = $(wildcard $(SOURCES_PATH)/**/*.c) $(wildcard $(SOURCES_PATH)/*.c)
 
-OBJECTS = $(subst $(SOURCES_PATH)/,$(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCES)))
+OBJECTS = $(patsubst $(SOURCES_PATH)/%.c, $(OBJECTS_PATH)/%.o, $(SOURCES))
+OBJECT_DIRECTORIES = $(sort $(dir $(OBJECTS)))
 
 ################################################################################
 # REQUIRED
@@ -73,9 +74,20 @@ fclean: clean
 
 re: fclean all
 
-initialize:
-	$(SAFE_MAKEDIR) $(ARCHIVES_PATH)
-	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
+initialize: $(ARCHIVES_PATH) $(OBJECTS_PATH) $(OBJECT_DIRECTORIES)
+
+$(ARCHIVES_PATH):
+	$(SAFE_MAKEDIR) $@
+
+$(OBJECTS_PATH):
+	$(SAFE_MAKEDIR) $@
+
+$(OBJECT_DIRECTORIES):
+	$(SAFE_MAKEDIR) $@
+
+################################################################################
+# FRACTALS
+################################################################################
 
 mbt: re
 	./$(NAME) mandelbrot
@@ -90,24 +102,24 @@ julia: re
 #	 ./$(NAME) julia  3.0       0.0
 #	 ./$(NAME) julia  1.0       1.0
 
-#	 ./$(NAME) julia  −0.4      0.6
+#	 ./$(NAME) julia  -0.4      0.6
 #	 ./$(NAME) julia  0.285     0.0
 #	 ./$(NAME) julia  0.285     0.01
 #	 ./$(NAME) julia  0.45      0.1428
-#	 ./$(NAME) julia  −0.70176  −0.3842
-#	 ./$(NAME) julia  −0.835    −0.2321
-#	 ./$(NAME) julia  −0.8      0.156
-#	 ./$(NAME) julia  −0.7269   0.1889
-#	 ./$(NAME) julia  0.0       −0.8
+	 ./$(NAME) julia  -0.70176  -0.3842
+#	 ./$(NAME) julia  -0.835    -0.2321
+#	 ./$(NAME) julia  -0.8      0.156
+#	 ./$(NAME) julia  -0.7269   0.1889
+#	 ./$(NAME) julia  0.0       -0.8
 
-#	 Dendrite fractal
+############# Dendrite fractal ##############
 #	 ./$(NAME) julia  0.0       1.0
-#	 Douady's rabbit fractal
+########## Douady's rabbit fractal ##########
 #	 ./$(NAME) julia  -0.123    0.745
-#	 San Marco fractal
+############# San Marco fractal #############
 #	 ./$(NAME) julia  -0.75     0.0
-#	 Siegel disk fractal
-	./$(NAME) julia   -0.391    -0.587
+############ Siegel disk fractal ############
+#	./$(NAME) julia   -0.391    -0.587
 
 newton: re
 	./$(NAME) newton

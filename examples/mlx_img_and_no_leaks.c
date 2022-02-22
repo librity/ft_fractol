@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 03:39:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/16 14:51:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:25:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void render_mandelbrot(void)
 			x_cartesian = (x - half_width + x_offset) / zoom;
 			y_cartesian = (y - half_height + y_offset) / zoom;
 
-			complex_at_xy = complex(x_cartesian, y_cartesian);
+			complex_at_xy = cx_new(x_cartesian, y_cartesian);
 			mdlbt_at_xy = quick_mandelbrot(complex_at_xy, max_iterations, infinity);
 
 			color = resolve_color(mdlbt_at_xy.iterations);

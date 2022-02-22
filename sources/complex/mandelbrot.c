@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cplx_mandelbrot.c                                  :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 20:34:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:29:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_fractal	slow_mandelbrot(t_complex number, int max_iterations,
+t_fractal	cx_slow_mandelbrot(t_complex number, int max_iterations,
 		long double infinity)
 {
 	t_complex	current;
@@ -22,16 +22,16 @@ t_fractal	slow_mandelbrot(t_complex number, int max_iterations,
 	iteration = 0;
 	while (iteration < max_iterations)
 	{
-		if (magnitude(current) > infinity)
+		if (cx_magnitude(current) > infinity)
 			return ((t_fractal){true, iteration});
-		current = squared(current);
-		current = plus(current, number);
+		current = cx_squared(current);
+		current = cx_plus(current, number);
 		iteration++;
 	}
 	return ((t_fractal){false, iteration});
 }
 
-t_fractal	fast_mandelbrot(t_complex number, int max_iterations,
+t_fractal	cx_fast_mandelbrot(t_complex number, int max_iterations,
 		long double infinity)
 {
 	int			iteration;
@@ -39,8 +39,8 @@ t_fractal	fast_mandelbrot(t_complex number, int max_iterations,
 	t_complex	current;
 
 	iteration = 0;
-	aux = complex(0, 0);
-	current = complex(0, 0);
+	aux = cx_new(0, 0);
+	current = cx_new(0, 0);
 	while (iteration < max_iterations)
 	{
 		if (current.real + current.imaginary > infinity)

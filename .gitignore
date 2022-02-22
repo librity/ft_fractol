@@ -60,6 +60,9 @@ fractol
 # Tests
 test
 
+# Examples
+examples/example.c
+
 # Image files
 *.ppm
 *.bmp

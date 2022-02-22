@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/22 13:12:40 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/22 13:37:36 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ OBJECTS_PATH = ./objects
 SOURCES_PATH = ./sources
 INCLUDES_PATH = ./includes
 ARCHIVES_PATH = ./archives
+BITMAPS_PATH = ./bitmaps
 
 FRACTOL_HEADER = $(INCLUDES_PATH)/fractol.h
 
@@ -73,7 +74,7 @@ fclean: clean
 
 re: fclean all
 
-initialize: $(ARCHIVES_PATH) $(OBJECTS_PATH) $(OBJECT_DIRECTORIES)
+initialize: $(ARCHIVES_PATH) $(OBJECTS_PATH) $(OBJECT_DIRECTORIES) $(BITMAPS_PATH)
 
 $(ARCHIVES_PATH):
 	$(SAFE_MAKEDIR) $@
@@ -82,6 +83,9 @@ $(OBJECTS_PATH):
 	$(SAFE_MAKEDIR) $@
 
 $(OBJECT_DIRECTORIES):
+	$(SAFE_MAKEDIR) $@
+
+$(BITMAPS_PATH):
 	$(SAFE_MAKEDIR) $@
 
 ################################################################################
@@ -167,7 +171,7 @@ TEST_SOURCES = $(wildcard $(TESTS_PATH)/*.c)
 CCF_TEST_LIBS = -lrt -lm
 EXECUTE_TESTS = ./test
 
-build_tests: $(FRACTOL_ARCHIVE)
+build_tests: re
 	$(CC) $(CCF_DEBUG) \
 		-I $(INCLUDES_PATH) \
 		$(TEST_SOURCES) \

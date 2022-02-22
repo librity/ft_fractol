@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:39:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 22:28:45 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:42:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	initialize_fractal_params(t_fractol *ctl)
 {
-	ctl->julia_factor = complex(-0.391, -0.587);
+	ctl->julia_factor = cx_new(-0.391, -0.587);
 	ctl->newton_tolerance = 0.000001;
 	ctl->use_newton_root_color = USE_NEWTON_ROOT_COLOR;
 	ctl->render_fractal = render_red;
-	ctl->calculate_mbt = fast_mandelbrot;
-	ctl->calculate_julia = fast_julia;
-	ctl->calculate_newton = newton_z3m1;
+	ctl->calculate_mbt = cx_fast_mandelbrot;
+	ctl->calculate_julia = cx_fast_julia;
+	ctl->calculate_newton = cx_newton_z3m1;
 }
 
 static void	initialize_colors(t_fractol *ctl)

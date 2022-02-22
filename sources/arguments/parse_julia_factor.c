@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:39:11 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/22 11:25:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:25:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ t_complex	parse_julia_factor(char **argv)
 	real = ft_atold(argv[2]);
 	imaginary = ft_atold(argv[3]);
 	print_parsed_julia_factor(real, imaginary);
-	return (complex(real, imaginary));
+	return (cx_new(real, imaginary));
 }

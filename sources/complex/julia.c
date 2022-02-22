@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cplx_julia.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 20:33:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:29:02 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_fractal	slow_julia(t_complex number, t_complex factor, int max_iterations,
+t_fractal	cx_slow_julia(t_complex number, t_complex factor, int max_iterations,
 		long double infinity)
 {
 	t_complex	current;
@@ -22,16 +22,16 @@ t_fractal	slow_julia(t_complex number, t_complex factor, int max_iterations,
 	iteration = 0;
 	while (iteration < max_iterations)
 	{
-		if (magnitude(current) > infinity)
+		if (cx_magnitude(current) > infinity)
 			return ((t_fractal){true, iteration});
-		current = squared(current);
-		current = plus(current, factor);
+		current = cx_squared(current);
+		current = cx_plus(current, factor);
 		iteration++;
 	}
 	return ((t_fractal){false, iteration});
 }
 
-t_fractal	fast_julia(t_complex number, t_complex factor,
+t_fractal	cx_fast_julia(t_complex number, t_complex factor,
 		int max_iterations, long double infinity)
 {
 	int			iteration;
@@ -40,7 +40,7 @@ t_fractal	fast_julia(t_complex number, t_complex factor,
 	iteration = 0;
 	while (iteration < max_iterations)
 	{
-		if (quick_magnitude(number) > infinity)
+		if (cx_quick_magnitude(number) > infinity)
 			return ((t_fractal){true, iteration});
 		temp = number.real;
 		number.real = number.real * number.real;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_mandelbrot.c                                :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 22:16:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:25:22 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	render_pixel(t_fractol *ctl, int x, int y)
 	x_cartesian = screen_to_cartesian_x(ctl, x);
 	y_cartesian = screen_to_cartesian_y(ctl, y);
 	mbt_at_xy = ctl->calculate_mbt(
-			complex(x_cartesian, y_cartesian),
+			cx_new(x_cartesian, y_cartesian),
 			ctl->max_iterations,
 			ctl->infinity);
 	color = ctl->render_color(ctl, mbt_at_xy.iterations);

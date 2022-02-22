@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bm_filename.c                                      :+:      :+:    :+:   */
+/*   filename.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 13:43:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 18:38:32 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:35:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,18 @@ static char	*cat_int(char *filename, const char *label, int number)
 	return (filename);
 }
 
-static char	*resolve_fractal(t_fractol *ctl)
+static char	*resolve_colors(t_fractol *ctl, char *filename)
+{
+	if (ctl->color_code == BERNSTEIN_CODE)
+		return (filename);
+	if (ctl->color_code == ESCAPE_TIME_CODE)
+		return (cat_int(filename, BM_DYE, ctl->dye));
+	filename = cat_int(filename, BM_LERP_FROM, ctl->lerp_from);
+	filename = cat_int(filename, BM_LERP_TO, ctl->lerp_to);
+	return (filename);
+}
+
+static char	*bootstrap_filename(t_fractol *ctl)
 {
 	char	*filename;
 
@@ -44,25 +55,14 @@ static char	*resolve_fractal(t_fractol *ctl)
 	}
 	if (ctl->fractal_code == NEWTON_CODE)
 		return (ft_strdup(BM_NEWTON));
-	return (ft_strdup(""));
-}
-
-static char	*resolve_colors(t_fractol *ctl, char *filename)
-{
-	if (ctl->color_code == BERNSTEIN_CODE)
-		return (filename);
-	if (ctl->color_code == ESCAPE_TIME_CODE)
-		return (cat_int(filename, BM_DYE, ctl->dye));
-	filename = cat_int(filename, BM_LERP_FROM, ctl->lerp_from);
-	filename = cat_int(filename, BM_LERP_TO, ctl->lerp_to);
-	return (filename);
+	return (ft_strdup(BM_DIRECTORY));
 }
 
 char	*build_filename(t_fractol *ctl)
 {
 	char	*filename;
 
-	filename = resolve_fractal(ctl);
+	filename = bootstrap_filename(ctl);
 	filename = cat_ldouble(filename, BM_X, ctl->x_offset);
 	filename = cat_ldouble(filename, BM_Y, ctl->y_offset);
 	filename = cat_ldouble(filename, BM_ZOOM, ctl->zoom);

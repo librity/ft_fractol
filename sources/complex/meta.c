@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cplx_meta.c                                        :+:      :+:    :+:   */
+/*   meta.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 23:56:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 16:55:35 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:25:19 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-t_complex	conjugate(t_complex number)
+t_complex	cx_conjugate(t_complex number)
 {
 	t_complex	result;
 
@@ -21,7 +21,7 @@ t_complex	conjugate(t_complex number)
 	return (result);
 }
 
-long double	magnitude(t_complex number)
+long double	cx_magnitude(t_complex number)
 {
 	long double	magnitude;
 
@@ -30,7 +30,7 @@ long double	magnitude(t_complex number)
 	return (magnitude);
 }
 
-long double	quick_magnitude(t_complex number)
+long double	cx_quick_magnitude(t_complex number)
 {
 	long double	magnitude;
 
@@ -38,7 +38,7 @@ long double	quick_magnitude(t_complex number)
 	return (magnitude);
 }
 
-t_complex	squared(t_complex number)
+t_complex	cx_squared(t_complex number)
 {
 	t_complex	result;
 
@@ -48,7 +48,7 @@ t_complex	squared(t_complex number)
 	return (result);
 }
 
-t_complex	square_root(t_complex number)
+t_complex	cx_square_root(t_complex number)
 {
 	t_complex	result;
 	long double	root_of_square_sum;

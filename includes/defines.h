@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/22 13:39:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:55:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 # define WINDOW_NAME "lpaulo-m's fract-ol"
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 100
+# define WINDOW_HEIGHT 100
 
 /******************************************************************************\
  * FRACTALS

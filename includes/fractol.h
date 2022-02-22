@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/22 13:15:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:06:33 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <libft.h>
 # include <math.h>
 # include <mlx.h>
+# include <pthread.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>

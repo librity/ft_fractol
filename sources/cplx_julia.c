@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 02:18:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 20:33:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-static t_fractal	slow(t_complex number, t_complex factor, int max_iterations,
+t_fractal	slow_julia(t_complex number, t_complex factor, int max_iterations,
 		long double infinity)
 {
 	t_complex	current;
@@ -31,7 +31,7 @@ static t_fractal	slow(t_complex number, t_complex factor, int max_iterations,
 	return ((t_fractal){false, iteration});
 }
 
-static t_fractal	quick(t_complex number, t_complex factor,
+t_fractal	fast_julia(t_complex number, t_complex factor,
 		int max_iterations, long double infinity)
 {
 	int			iteration;
@@ -50,12 +50,4 @@ static t_fractal	quick(t_complex number, t_complex factor,
 		iteration++;
 	}
 	return ((t_fractal){false, iteration});
-}
-
-t_fractal	julia(t_complex number, t_complex factor, int max_iterations,
-		long double infinity)
-{
-	if (QUICK_FRACTAL)
-		return (quick(number, factor, max_iterations, infinity));
-	return (slow(number, factor, max_iterations, infinity));
 }

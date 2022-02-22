@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 00:14:27 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/17 16:57:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:07:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	log_and_render(t_fractol *ctl)
 {
 	log_infinity(ctl);
-	render_fractal(ctl);
+	ctl->render_fractal(ctl);
 }
 
 void	increase_infinity(t_fractol *ctl)

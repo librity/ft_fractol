@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 20:45:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:19:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,35 @@
 
 typedef struct s_fractol
 {
-	int			width;
-	int			height;
-	void		*mlx;
-	void		*window;
-	t_mlx_image	*buffer;
+	int				width;
+	int				height;
+	void			*mlx;
+	void			*window;
+	t_mlx_image		*buffer;
 
-	int			fractal_code;
-	int			max_iterations;
-	long double	infinity;
-	t_complex	julia_factor;
-	long double	newton_tolerance;
-	bool		newton_root_color;
+	int				max_iterations;
+	long double		infinity;
+	t_complex		julia_factor;
+	long double		newton_tolerance;
+	bool			newton_root_color;
 
-	int			color_code;
-	long double	zoom;
-	long double	scale_factor;
-	long double	x_offset;
-	long double	y_offset;
+	int				fractal_code;
+	void			(*render_fractal)(struct s_fractol *ctl);
 
-	int			dye;
-	int			lerp_steps;
-	int			lerp_from;
-	int			lerp_to;
+	t_mbt_cb		calculate_mbt;
+	t_julia_cb		calculate_julia;
+	t_newton_cb		calculate_newton;
+
+	int				color_code;
+	long double		zoom;
+	long double		scale_factor;
+	long double		x_offset;
+	long double		y_offset;
+
+	int				dye;
+	int				lerp_steps;
+	int				lerp_from;
+	int				lerp_to;
 }				t_fractol;
 
 void			handle_arguments(t_fractol *ctl, int argc, char **argv);
@@ -117,7 +123,6 @@ long double		screen_to_cartesian_y(t_fractol *ctl, int y);
 
 void			render_red(t_fractol *ctl);
 
-void			render_fractal(t_fractol *ctl);
 void			render_mandelbrot(t_fractol *ctl);
 void			render_julia(t_fractol *ctl);
 void			render_newton(t_fractol *ctl);

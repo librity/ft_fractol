@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:06:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 19:25:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:26:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ t_newton_z3m1	newton_z3m1(t_complex z, long double tolerance,
 		while (root_index < NEWTON_Z3M1_ROOTS)
 		{
 			difference = minus(z, get_root(root_index));
-			if (ft_abs_ld(difference.real) < tolerance
-				&& ft_abs_ld(difference.imaginary) < tolerance)
-				return ((t_newton_z3m1){true, iteration, root_index});
+			if (ft_abs_ld(difference.real) < tolerance)
+				if (ft_abs_ld(difference.imaginary) < tolerance)
+					return ((t_newton_z3m1){true, iteration, root_index});
 			root_index++;
 		}
 		iteration++;

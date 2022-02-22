@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:44:29 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/18 17:09:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:07:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	log_and_render(t_fractol *ctl)
 {
 	log_color_code(ctl);
-	render_fractal(ctl);
+	ctl->render_fractal(ctl);
 }
 
 void	switch_color_mode(t_fractol *ctl)

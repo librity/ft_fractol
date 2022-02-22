@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:13:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 19:23:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:21:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,27 @@ typedef struct s_fractal
 	bool		diverges;
 	int			iterations;
 }				t_fractal;
-t_fractal		mandelbrot(t_complex number, int max_iterations,
+
+typedef t_fractal		(*t_mbt_cb)(
+			t_complex number,
+			int max_iterations,
+			long double infinity);
+t_fractal		slow_mandelbrot(t_complex number, int max_iterations,
 					long double infinity);
-t_fractal		julia(t_complex number, t_complex factor,
+t_fractal		fast_mandelbrot(t_complex number, int max_iterations,
+					long double infinity);
+
+typedef t_fractal		(*t_julia_cb)(
+			t_complex number,
+			t_complex factor,
+			int max_iterations,
+			long double infinity);
+t_fractal		slow_julia(t_complex number,
+					t_complex factor,
+					int max_iterations,
+					long double infinity);
+t_fractal		fast_julia(t_complex number,
+					t_complex factor,
 					int max_iterations,
 					long double infinity);
 
@@ -61,6 +79,11 @@ typedef struct s_newton_z3m1
 	int			iterations;
 	int			root_index;
 }				t_newton_z3m1;
+
+typedef t_newton_z3m1	(*t_newton_cb)(
+			t_complex number,
+			long double tolerance,
+			int max_iterations);
 t_newton_z3m1	newton_z3m1(t_complex z, long double tolerance,
 					int max_iterations);
 

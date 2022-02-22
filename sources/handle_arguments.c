@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:39:11 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 17:23:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:18:05 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,20 @@ void	handle_arguments(t_fractol *ctl, int argc, char **argv)
 	if (is_mandelbrot(argc, argv[1]))
 	{
 		ctl->fractal_code = MANDELBROT_CODE;
+		ctl->render_fractal = render_mandelbrot;
 		return ;
 	}
 	if (is_julia(argc, argv[1]))
 	{
 		ctl->fractal_code = JULIA_CODE;
+		ctl->render_fractal = render_julia;
 		ctl->julia_factor = parse_julia_factor(argv);
 		return ;
 	}
 	if (is_newton(argc, argv[1]))
 	{
 		ctl->fractal_code = NEWTON_CODE;
+		ctl->render_fractal = render_newton;
 		return ;
 	}
 	help_and_die();

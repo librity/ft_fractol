@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:28:23 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 20:48:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 21:08:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void	initialize_mlx(t_fractol *ctl)
 	initialize_mlx_window(ctl);
 	initialize_mlx_buffer(ctl);
 	initialize_mlx_hooks(ctl);
-	render_fractal(ctl);
+	ctl->render_fractal(ctl);
 }

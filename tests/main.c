@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:27:24 by aroque            #+#    #+#             */
-/*   Updated: 2022/02/22 13:16:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:52:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ MU_TEST(mandelbrot_integration)
 	increase_max_iterations(&ctl);
 	zoom_in(&ctl);
 	save_to_bitmap(&ctl);
+	warp(&ctl, 0, 0);
+	increase_infinity(&ctl);
+	save_to_bitmap(&ctl);
+	mouse_zoom_in(&ctl, 0, 0);
+	save_to_bitmap(&ctl);
 
 	clean(&ctl);
 }
@@ -72,6 +77,11 @@ MU_TEST(julia_integration)
 	increase_max_iterations(&ctl);
 	zoom_in(&ctl);
 	save_to_bitmap(&ctl);
+	warp(&ctl, 0, 0);
+	increase_infinity(&ctl);
+	save_to_bitmap(&ctl);
+	mouse_zoom_in(&ctl, 0, 0);
+	save_to_bitmap(&ctl);
 
 	clean(&ctl);
 }
@@ -98,6 +108,11 @@ MU_TEST(newton_integration)
 	save_to_bitmap(&ctl);
 	increase_max_iterations(&ctl);
 	zoom_in(&ctl);
+	save_to_bitmap(&ctl);
+	warp(&ctl, 0, 0);
+	increase_infinity(&ctl);
+	save_to_bitmap(&ctl);
+	mouse_zoom_in(&ctl, 0, 0);
 	save_to_bitmap(&ctl);
 
 	clean(&ctl);

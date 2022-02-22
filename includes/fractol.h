@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 21:19:14 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:28:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_fractol
 	long double		infinity;
 	t_complex		julia_factor;
 	long double		newton_tolerance;
-	bool			newton_root_color;
+	bool			use_newton_root_color;
 
 	int				fractal_code;
 	void			(*render_fractal)(struct s_fractol *ctl);
@@ -45,11 +45,13 @@ typedef struct s_fractol
 	t_julia_cb		calculate_julia;
 	t_newton_cb		calculate_newton;
 
-	int				color_code;
 	long double		zoom;
 	long double		scale_factor;
 	long double		x_offset;
 	long double		y_offset;
+
+	int				color_code;
+	int				(*render_color)(struct s_fractol *ctl, int iterations);
 
 	int				dye;
 	int				lerp_steps;
@@ -63,7 +65,8 @@ void			initialize_params(t_fractol *ctl, t_mlx_image *buffer);
 void			initialize_mlx(t_fractol *ctl);
 
 void			switch_color_mode(t_fractol *ctl);
-int				render_color(t_fractol *ctl, int iterations);
+void			resolve_color_renderer(t_fractol *ctl);
+
 int				escape_time_color(t_fractol *ctl, int iterations);
 int				lerp_color(t_fractol *ctl, int iterations);
 int				bernstein_color(t_fractol *ctl, int iterations);

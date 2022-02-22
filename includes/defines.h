@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/21 21:40:53 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:21:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ typedef enum e_fractal_code
 # define MANDELBROT_ARG "mandelbrot"
 # define JULIA_ARG "julia"
 # define NEWTON_ARG "newton"
-
-# define NEWTON_ROOT_COLOR 0
 
 /******************************************************************************\
  * QUIT
@@ -187,6 +185,12 @@ typedef enum e_color_code
 # define LERP3_TO 0x0026A7E3
 # define LERP4_FROM 0x00F49E8E
 # define LERP4_TO 0x00515656
+
+# define USE_NEWTON_ROOT_COLOR 0
+# define NEWTON_ROOT_COLOR_1 0x00FF0000
+# define NEWTON_ROOT_COLOR_2 0x0000FF00
+# define NEWTON_ROOT_COLOR_3 0x000000FF
+# define NEWTON_NOT_ROOT_COLOR 0x00FFFFFF
 
 /******************************************************************************\
  * MESSAGES

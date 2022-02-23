@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/23 09:49:27 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/22 13:37:36 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,8 @@ CC_STRICT = $(CC) $(CCF_STRICT) $(CCF_OPTIMIZATION)
 CCF_STRICT = -Wall -Wextra -Werror
 CCF_OPTIMIZATION = -O3
 CCF_DEBUG = -g -fsanitize=address
-CCF_MINILIBX = -L $(MINILIBX_PATH)
-CCF_LIBS = $(CCF_MINILIBX) -lm -lbsd -lmlx -lXext -lX11
 
-ARCHIVES = $(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE)
+CCF_LIBS = -lm -lbsd -lmlx -lXext -lX11
 
 MAKE_EXTERNAL = make -C
 SAFE_MAKEDIR = mkdir -p
@@ -57,25 +55,26 @@ $(NAME): $(FRACTOL_ARCHIVE)
 	$(CC_STRICT) $(CCF_DEBUG) \
 		-I $(INCLUDES_PATH) \
 		$(REQUIRED_MAIN) \
-		$(ARCHIVES) \
+		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
 		$(CCF_LIBS) \
 		-o $(NAME)
 
-$(FRACTOL_ARCHIVE): initialize  $(FRACTOL_HEADER) $(OBJECTS)
+$(FRACTOL_ARCHIVE): initialize build_libft build_ft_libbmp $(FRACTOL_HEADER) $(OBJECTS)
 	$(ARCHIVE_AND_INDEX) $(FRACTOL_ARCHIVE) $(OBJECTS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
 	$(CC_STRICT) -I $(INCLUDES_PATH) -c -o $@ $<
 
+clean:
+	$(REMOVE) $(OBJECTS)
+	$(REMOVE) $(FRACTOL_ARCHIVE)
+
+fclean: clean
+	$(REMOVE) $(NAME)
+
 re: fclean all
 
-################################################################################
-# INITIALIZE
-################################################################################
-
-initialize: make_dirs build_libs
-
-make_dirs: $(ARCHIVES_PATH) $(OBJECTS_PATH) $(OBJECT_DIRECTORIES) $(BITMAPS_PATH)
+initialize: $(ARCHIVES_PATH) $(OBJECTS_PATH) $(OBJECT_DIRECTORIES) $(BITMAPS_PATH)
 
 $(ARCHIVES_PATH):
 	$(SAFE_MAKEDIR) $@
@@ -88,21 +87,6 @@ $(OBJECT_DIRECTORIES):
 
 $(BITMAPS_PATH):
 	$(SAFE_MAKEDIR) $@
-
-build_libs: build_minilibx build_libft build_ft_libbmp
-
-################################################################################
-# CLEAN
-################################################################################
-
-clean:
-	$(REMOVE) $(OBJECTS)
-	$(REMOVE) $(FRACTOL_ARCHIVE)
-
-fclean: clean
-	$(REMOVE) $(NAME)
-
-tclean: clean_libs fclean tests_clean example_clean vglog_clean
 
 ################################################################################
 # FRACTALS
@@ -177,13 +161,6 @@ ft_libbmp_clean:
 	$(MAKE_EXTERNAL) $(FT_LIBBMP_PATH) fclean
 	$(REMOVE) $(FT_LIBBMP_ARCHIVE)
 
-MINILIBX_PATH = $(LIBS_PATH)/minilibx-linux
-
-build_minilibx:
-	$(MAKE_EXTERNAL) $(MINILIBX_PATH)
-
-clean_libs: libft_clean ft_libbmp_clean
-
 ################################################################################
 # TESTS
 ################################################################################
@@ -198,7 +175,7 @@ build_tests: re
 	$(CC) $(CCF_DEBUG) \
 		-I $(INCLUDES_PATH) \
 		$(TEST_SOURCES) \
-		$(ARCHIVES) \
+		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
 		$(CCF_LIBS) $(CCF_TEST_LIBS) \
 		-o $(EXECUTE_TESTS)
 
@@ -225,7 +202,7 @@ build_example: $(FRACTOL_ARCHIVE)
 	$(CC) $(CCF_DEBUG) \
 		-I $(INCLUDES_PATH) \
 		$(EXAMPLE_MAIN) $(FRACTOL_ARCHIVE) \
-		$(ARCHIVES) \
+		$(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
 		$(CCF_LIBS)
 
 example_clean: fclean
@@ -255,7 +232,7 @@ vg_build: $(FRACTOL_ARCHIVE)
 	$(CC_STRICT) \
 		-I $(INCLUDES_PATH) \
 		$(REQUIRED_MAIN) \
-		$(ARCHIVES) \
+		$(FRACTOL_ARCHIVE) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) \
 		$(CCF_LIBS) \
 		-o $(NAME)
 
@@ -263,10 +240,20 @@ vglog_clean: fclean
 	$(REMOVE) $(VALGRIND_LOG)
 
 ################################################################################
+# CLEAN
+################################################################################
+
+tclean: clean_libs fclean tests_clean example_clean vglog_clean
+
+clean_libs: libft_clean ft_libbmp_clean
+
+################################################################################
 # MISC
 ################################################################################
 
 norm:
+	# norminette $(LIBS_PATH)
+	# @printf "\n$(G)=== No norminette errors found in $(LIBS_PATH) ===$(RC)\n\n"
 	norminette $(INCLUDES_PATH)
 	@printf "\n$(G)=== No norminette errors found in $(INCLUDES_PATH) ===$(RC)\n\n"
 	norminette $(SOURCES_PATH)
@@ -288,17 +275,12 @@ gitm:
 # PHONY
 ################################################################################
 
-.PHONY: all required clean fclean re \
-	initialize make_dirs build_libs \
-\
+.PHONY: all required clean fclean re initialize \
 	build_libft libft_clean \
 	build_ft_libbmp ft_libbmp_clean \
-	build_minilibx \
-\
 	build_tests test tests_clean \
 	build_example example example_clean \
 	vg vglog vg_build vglog_clean \
-\
 	tclean clean_libs \
 	norm git gitm
 

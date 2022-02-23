@@ -67,6 +67,7 @@
     "queue": "c",
     "stdexcept": "c",
     "cinttypes": "c",
-    "cstdbool": "c"
+    "cstdbool": "c",
+    "math.h": "c"
   }
 }

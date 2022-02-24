@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:58:19 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/20 01:18:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/24 15:19:31 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,6 @@ char				*ft_ldtoa(long double n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
-void				ft_putnbr_fd(int n, int fd);
 
 void				ft_putchar(char c);
 void				ft_putstr(char *s);
@@ -237,6 +236,8 @@ void				ft_aux_handle_minus_sign_ll(long long *number_pointer);
 void				ft_aux_handle_minus_sign_f(float *number_pointer);
 void				ft_aux_handle_minus_sign_d(double *number_pointer);
 void				ft_aux_handle_minus_sign_ld(long double *number_pointer);
+
+void				ft_putnbr_fd(int n, int fd);
 
 void				ft_putnbr(int n);
 void				ft_putnbr_i(int number);

@@ -8,7 +8,7 @@ jobs:
   linter:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout to project repository
+      - name: Checkout project repo
         uses: actions/checkout@v2
       - name: Checkout submodules
         shell: bash
@@ -18,5 +18,5 @@ jobs:
           auth_header="$(git config --local --get http.https://github.com/.extraheader)"
           git submodule sync --recursive
           git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
-      - name: Builds with make
+      - name: Build with make
         run: make all

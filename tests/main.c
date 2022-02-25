@@ -6,12 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:27:24 by aroque            #+#    #+#             */
-/*   Updated: 2022/02/22 13:52:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:07:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <fractol.h>
 #include <fractol.h>
 #include "minunit.h"
 

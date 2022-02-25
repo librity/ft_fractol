@@ -6,11 +6,13 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/02/23 11:43:50 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/02/25 10:37:51 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
+
+FRACTOL_HEADER = $(INCLUDES_PATH)/fractol.h
 FRACTOL_ARCHIVE = $(ARCHIVES_PATH)/fractol.a
 
 CC = gcc
@@ -35,8 +37,6 @@ SOURCES_PATH = ./sources
 INCLUDES_PATH = ./includes
 ARCHIVES_PATH = ./archives
 BITMAPS_PATH = ./bitmaps
-
-FRACTOL_HEADER = $(INCLUDES_PATH)/fractol.h
 
 SOURCES = $(wildcard $(SOURCES_PATH)/**/*.c) $(wildcard $(SOURCES_PATH)/*.c)
 

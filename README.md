@@ -12,7 +12,7 @@
 
 </div>
 
-<p align="center"> A fractal navigator for the Julia and Mandelbrot sets.
+<p align="center"> A fractal navigator in pure C.
   <br>
 </p>
 
@@ -31,6 +31,25 @@
 
 ## 🧐 About <a name = "about"></a>
 
+This is an interactive program
+that lets you explore the three fractals:
+The Mandelbrot and Julia sets,
+and the Newton fractal of the polynomial `z^3 - 1`.
+All three produce beautiful geometric structures
+that repeat themselves over increasing levels of detail.
+
+It also lets you switch between three different color modes (algorithms):
+Escape-Time, Linear Interpolation and Bernstein polynomials.
+The first one is the quickest while the last two are the prettiest.
+
+This is my favorite project from the 42 curriculum:
+I not only learned a lot,
+I now have a folder full of sick desktop background I can show off.
+It taught me how to translate mathematical objects and operations
+into structures and functions.
+I also learned many different C optimizations,
+from compiler flags to changes in workflow and logic.
+
 ## ✅ Checklist <a name = "checklist"></a>
 
 ### Mandatory
@@ -47,10 +66,10 @@
 - [x] Test in workspaces
 - [x] Turn in `Makefile`, `*.h`, `*.c` , `.linux` , `.gitignore`
 - [x] DON’T turn in libs as submodules.
-- [x] Recieves the fractal type as arguments
+- [x] Receives the fractal type as arguments
   - [x] Bad arguments: exits properly with a help message
 - [x] Allowed functions:
-  - [x] open, close, read, write, malloc, free, perror, strerror, exit
+  - [x] `open`, `close`, `read`, `write`, `malloc`, `free`, `perror`, `strerror`, `exit`
   - [x] All `math.h`
   - [x] All `mlx.h`
   - [x] All `libft.h`
@@ -87,6 +106,7 @@
 - [ ] Render with threads (optimization).
 - [ ] Change julia parameters on keypress
 - [ ] Fullscreen mode on keypress
+  - [ ] Awaiting Pull Request https://github.com/42Paris/minilibx-linux/pull/45
 - [ ] Switch fractal on keypress
 - [ ] Random colors on keypress
 - [ ] Add anti-aliasing
@@ -206,6 +226,68 @@ $ fractol newton
 [and much, much more...](https://github.com/librity/ft_fractol/tree/main/gallery)
 
 ## 📝 Notes <a name = "notes"></a>
+
+We can understand the basic workflow of the program from its `main.c`:
+all its function behave on the program's highest levels of abstraction.
+
+We have a control structure `ctl` of type `t_fractol`
+where we inject anything that might change during runtime:
+we have the window size,
+the mlx instance, window and buffer,
+rendering params like the maximum number of iterations,
+and function pointers that allow us to dynamically change
+which fractal and how color is rendered.
+We set all its default settings with `initialize_params`:
+this ensures that the program won't crash if you forgot to set a param.
+
+The window buffer is mostly handled by `minilibx`:
+we just create it in `initialize_mlx`,
+then set the color of its pixels and draw it to the window
+whenever we render a fractal.
+
+In `handle_arguments` we verify and parse the strings
+we received from the shell.
+If the arguments don't match any of the options
+we exit the program with a help message.
+
+We then `initialize_mlx`, which safely creates an `mlx` instance,
+window and image (a.k.a. the frame buffer).
+We always check and exit the program if any of the pointers are `NULL`:
+**Not doing this WILL CRASH YOUR COMPUTER AND IT'S REALLY NOT FUNNY**
+(mine crashed three times during this project).
+We also set the event handlers with `mlx_hooks`:
+this will let us interact with the program
+with our mouse and keyboard (zoom in/out, move, etc.)
+We finally render the first frame of the fractal and draw it to the window.
+
+When we run the function `mlx_loop` we initialize the internal workflow
+of `mlx`.
+It basically listens for events and runs the handlers functions we set.
+All our handlers do basically the same thing:
+they change a `ctl` parameter, then render another frame
+and draw it to the window.
+
+The renderer's is where the magic happens:
+
+1. Iterate through every pixel in the buffer
+2. Transform it to a complex number (`pixel(x, y) = x + y*i`)
+3. Run the fractal algorithm on that number
+4. Run the color algorithm on the number of iterations
+5. Draw that color to the buffer's pixel.
+
+The Mandelbrot algorithm iterates the complex number `c`
+inside the function `Fn(z) = z^2 + c`,
+where `F0(z) = 0`.
+
+The Julia algorithm is very similar to Mandelbrot's:
+we iterate the complex number `c` and factor `f`
+inside the function `Fn(z) = z^2 + f`,
+where `F0(z) = c`.
+
+The Newton fractal iterates the
+[Newton–Raphson method](https://en.wikipedia.org/wiki/Newton's_method)
+over an arbitrary differentiable function (`z^3 - 1` in this case)
+for every pixel on the screen.
 
 ## 🛸 42 São Paulo <a name = "ft_sp"></a>
 

@@ -267,7 +267,7 @@ All our handlers do basically the same thing:
 they change a `ctl` parameter, then render another frame
 and draw it to the window.
 
-The renderer's is where the magic happens:
+The renderers is where the magic happens:
 
 1. Iterate through every pixel in the buffer
 2. Transform it to a complex number (`pixel(x, y) = x + y*i`)

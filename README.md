@@ -145,7 +145,7 @@ man mlx
 Clone the repo and build with `make`:
 
 ```bash
-$ git clone https://github.com/librity/ft_fractol.git
+$ git clone --recurse-submodules https://github.com/librity/ft_fractol.git
 $ cd ft_fractol
 $ make
 $ fractol mandelbrot
